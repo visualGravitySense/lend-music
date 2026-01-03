@@ -7,7 +7,7 @@ const LogoContainer = styled(Box)({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  justifyContent: 'center',
+  justifyContent: 'flex-start',
   textDecoration: 'none',
   gap: '0.75rem',
 });
@@ -20,7 +20,15 @@ const LogoImage = styled('img')({
 
 export default function SitemarkIcon() {
   return (
-    <LogoContainer component="a" href="#" sx={{ textDecoration: 'none', mr: 2 }}>
+    <LogoContainer 
+      component="a" 
+      href="#" 
+      sx={{ 
+        textDecoration: 'none', 
+        mr: 2,
+        justifyContent: 'flex-start',
+      }}
+    >
       <LogoImage src="/lend-logo.svg" alt="LendMusic Logo" />
       <Typography
         variant="body2"

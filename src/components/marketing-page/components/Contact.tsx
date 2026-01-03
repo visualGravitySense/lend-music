@@ -12,6 +12,10 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import BusinessIcon from '@mui/icons-material/Business';
 import PersonIcon from '@mui/icons-material/Person';
+import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import CallIcon from '@mui/icons-material/Call';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 const contactInfo = {
   company: {
@@ -121,6 +125,116 @@ export default function Contact() {
           >
             Võtke Ühendust
           </Typography>
+          
+          {/* Motivation Enhancement - Value Proposition */}
+          <Typography
+            variant="body1"
+            sx={{
+              color: 'text.secondary',
+              maxWidth: '700px',
+              mx: 'auto',
+              mb: 3,
+              fontSize: { xs: '1rem', md: '1.125rem' },
+            }}
+          >
+            Oleme siin, et aidata! Vastame teie küsimustele ja pakume personaalset nõustamist.
+          </Typography>
+          
+          {/* Social Proof - Motivation Enhancement */}
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: 2,
+              flexWrap: 'wrap',
+              mb: 2,
+            }}
+          >
+            <Box
+              sx={(theme) => ({
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1.5,
+                px: 3,
+                py: 1.5,
+                borderRadius: '16px',
+                background: theme.palette.mode === 'dark'
+                  ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.15), rgba(0, 229, 161, 0.05))'
+                  : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
+                border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.2)' : 'rgba(0, 168, 107, 0.2)'}`,
+                transition: 'all 0.3s ease',
+                '&:hover': {
+                  transform: 'translateY(-2px)',
+                  boxShadow: theme.palette.mode === 'dark'
+                    ? '0 4px 12px rgba(0, 229, 161, 0.2)'
+                    : '0 4px 12px rgba(0, 168, 107, 0.15)',
+                },
+              })}
+            >
+              <Box
+                sx={(theme) => ({
+                  p: 1,
+                  borderRadius: '10px',
+                  bgcolor: theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.2)' : 'rgba(0, 168, 107, 0.15)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                })}
+              >
+                <CheckCircleRoundedIcon
+                  sx={{
+                    fontSize: '1.25rem',
+                    color: 'primary.main',
+                  }}
+                />
+              </Box>
+              <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 600 }}>
+                30+ aastat kogemust
+              </Typography>
+            </Box>
+            <Box
+              sx={(theme) => ({
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1.5,
+                px: 3,
+                py: 1.5,
+                borderRadius: '16px',
+                background: theme.palette.mode === 'dark'
+                  ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.15), rgba(0, 229, 161, 0.05))'
+                  : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
+                border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.2)' : 'rgba(0, 168, 107, 0.2)'}`,
+                transition: 'all 0.3s ease',
+                '&:hover': {
+                  transform: 'translateY(-2px)',
+                  boxShadow: theme.palette.mode === 'dark'
+                    ? '0 4px 12px rgba(0, 229, 161, 0.2)'
+                    : '0 4px 12px rgba(0, 168, 107, 0.15)',
+                },
+              })}
+            >
+              <Box
+                sx={(theme) => ({
+                  p: 1,
+                  borderRadius: '10px',
+                  bgcolor: theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.2)' : 'rgba(0, 168, 107, 0.15)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                })}
+              >
+                <AccessTimeIcon
+                  sx={{
+                    fontSize: '1.25rem',
+                    color: 'primary.main',
+                  }}
+                />
+              </Box>
+              <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 600 }}>
+                Kiire vastus
+              </Typography>
+            </Box>
+          </Box>
         </Box>
 
         <Grid container spacing={3}>
@@ -129,11 +243,11 @@ export default function Contact() {
             <Card
               sx={(theme) => ({
                 height: '100%',
-                p: 3,
+                p: 4,
                 bgcolor: 'background.paper',
-                borderRadius: 3,
+                borderRadius: 4,
                 border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.2)' : 'rgba(0, 168, 107, 0.2)'}`,
-                transition: 'all 0.3s ease',
+                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                 position: 'relative',
                 overflow: 'hidden',
                 ...theme.applyStyles('dark', {
@@ -147,55 +261,84 @@ export default function Contact() {
                   right: 0,
                   bottom: 0,
                   background: theme.palette.mode === 'dark'
-                    ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.05) 0%, transparent 100%)'
-                    : 'linear-gradient(135deg, rgba(0, 168, 107, 0.05) 0%, transparent 100%)',
+                    ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.08) 0%, transparent 100%)'
+                    : 'linear-gradient(135deg, rgba(0, 168, 107, 0.08) 0%, transparent 100%)',
                   opacity: 0,
-                  transition: 'opacity 0.3s ease',
+                  transition: 'opacity 0.4s ease',
                 },
                 '&:hover': {
-                  transform: 'translateY(-8px)',
-                  borderColor: theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.4)' : 'rgba(0, 168, 107, 0.4)',
+                  transform: 'translateY(-12px) scale(1.02)',
+                  borderColor: theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.5)' : 'rgba(0, 168, 107, 0.5)',
                   boxShadow: theme.palette.mode === 'dark'
-                    ? '0 10px 30px rgba(0, 229, 161, 0.2)'
-                    : '0 10px 30px rgba(0, 168, 107, 0.15)',
+                    ? '0 20px 40px rgba(0, 229, 161, 0.25)'
+                    : '0 20px 40px rgba(0, 168, 107, 0.2)',
                   '&::before': {
                     opacity: 1,
                   },
                 },
               })}
             >
-              <Stack spacing={2}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                  <BusinessIcon
+              <Stack spacing={3}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
+                  <Box
                     sx={(theme) => ({
-                      color: 'primary.main',
-                      fontSize: '2rem',
-                      ...theme.applyStyles('dark', {
-                        color: '#00E5A1',
-                      }),
+                      p: 2,
+                      borderRadius: '16px',
+                      background: theme.palette.mode === 'dark'
+                        ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.2), rgba(0, 229, 161, 0.1))'
+                        : 'linear-gradient(135deg, rgba(0, 168, 107, 0.15), rgba(0, 168, 107, 0.08))',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.3)' : 'rgba(0, 168, 107, 0.3)'}`,
                     })}
-                  />
+                  >
+                    <BusinessIcon
+                      sx={(theme) => ({
+                        color: 'primary.main',
+                        fontSize: '2.5rem',
+                        ...theme.applyStyles('dark', {
+                          color: '#00E5A1',
+                        }),
+                      })}
+                    />
+                  </Box>
                   <Typography
                     variant="h5"
                     sx={{
                       color: 'text.primary',
                       fontWeight: 700,
+                      fontSize: { xs: '1.25rem', md: '1.5rem' },
                     }}
                   >
                     {contactInfo.company.name}
                   </Typography>
                 </Box>
 
-                <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1.5 }}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: 2,
+                    p: 2,
+                    borderRadius: '12px',
+                    bgcolor: 'action.hover',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      bgcolor: 'action.selected',
+                      transform: 'translateX(4px)',
+                    },
+                  }}
+                >
                   <LocationOnIcon
                     sx={{
-                      color: 'text.secondary',
+                      color: 'primary.main',
                       mt: 0.5,
-                      fontSize: '1.25rem',
+                      fontSize: '1.5rem',
                     }}
                   />
                   <Box>
-                    <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                    <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 500, mb: 0.5 }}>
                       {contactInfo.company.address}
                     </Typography>
                     <Typography variant="body2" sx={{ color: 'text.secondary' }}>
@@ -204,50 +347,69 @@ export default function Contact() {
                   </Box>
                 </Box>
 
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                  <PhoneIcon
-                    sx={{
-                      color: 'text.secondary',
-                      fontSize: '1.25rem',
-                    }}
-                  />
-                  <Typography
-                    variant="body2"
+                {/* Ability Enhancement - Action Buttons */}
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mt: 2 }}>
+                  <Button
                     component="a"
                     href={`tel:${contactInfo.company.phone.replace(/\s/g, '')}`}
-                    sx={{
-                      color: 'text.secondary',
-                      textDecoration: 'none',
+                    variant="contained"
+                    startIcon={<CallIcon />}
+                    fullWidth
+                    sx={(theme) => ({
+                      background: theme.palette.mode === 'dark'
+                        ? 'linear-gradient(135deg, #00E5A1, #00D184)'
+                        : 'linear-gradient(135deg, #00a86b, #00d184)',
+                      color: theme.palette.mode === 'dark' ? '#0D131B' : 'white',
+                      textTransform: 'none',
+                      py: 1.5,
+                      borderRadius: '12px',
+                      fontWeight: 600,
+                      fontSize: '0.95rem',
+                      boxShadow: theme.palette.mode === 'dark'
+                        ? '0 4px 12px rgba(0, 229, 161, 0.3)'
+                        : '0 4px 12px rgba(0, 168, 107, 0.3)',
                       '&:hover': {
-                        color: 'primary.main',
+                        background: theme.palette.mode === 'dark'
+                          ? 'linear-gradient(135deg, #00D184, #00C175)'
+                          : 'linear-gradient(135deg, #00d184, #00b870)',
+                        transform: 'translateY(-3px)',
+                        boxShadow: theme.palette.mode === 'dark'
+                          ? '0 8px 20px rgba(0, 229, 161, 0.4)'
+                          : '0 8px 20px rgba(0, 168, 107, 0.4)',
                       },
-                    }}
+                    })}
                   >
                     {contactInfo.company.phone}
-                  </Typography>
-                </Box>
-
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                  <EmailIcon
-                    sx={{
-                      color: 'text.secondary',
-                      fontSize: '1.25rem',
-                    }}
-                  />
-                  <Typography
-                    variant="body2"
+                  </Button>
+                  
+                  <Button
                     component="a"
                     href={`mailto:${contactInfo.company.email}`}
-                    sx={{
-                      color: 'text.secondary',
-                      textDecoration: 'none',
+                    variant="outlined"
+                    startIcon={<MailOutlineIcon />}
+                    fullWidth
+                    sx={(theme) => ({
+                      borderColor: theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.4)' : 'rgba(0, 168, 107, 0.4)',
+                      borderWidth: 2,
+                      color: 'text.primary',
+                      textTransform: 'none',
+                      py: 1.5,
+                      borderRadius: '12px',
+                      fontWeight: 600,
+                      fontSize: '0.95rem',
                       '&:hover': {
-                        color: 'primary.main',
+                        borderColor: theme.palette.mode === 'dark' ? '#00E5A1' : 'primary.main',
+                        borderWidth: 2,
+                        bgcolor: theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.1)' : 'rgba(0, 168, 107, 0.1)',
+                        transform: 'translateY(-3px)',
+                        boxShadow: theme.palette.mode === 'dark'
+                          ? '0 4px 12px rgba(0, 229, 161, 0.2)'
+                          : '0 4px 12px rgba(0, 168, 107, 0.15)',
                       },
-                    }}
+                    })}
                   >
-                    {contactInfo.company.email}
-                  </Typography>
+                    Saada e-kiri
+                  </Button>
                 </Box>
               </Stack>
             </Card>
@@ -259,13 +421,15 @@ export default function Contact() {
               <Card
                 sx={(theme) => ({
                   height: '100%',
-                  p: 3,
+                  p: 4,
                   bgcolor: 'background.paper',
-                  borderRadius: 3,
+                  borderRadius: 4,
                   border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.2)' : 'rgba(0, 168, 107, 0.2)'}`,
-                  transition: 'all 0.3s ease',
+                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                   position: 'relative',
                   overflow: 'hidden',
+                  display: 'flex',
+                  flexDirection: 'column',
                   ...theme.applyStyles('dark', {
                     bgcolor: '#1C2630',
                   }),
@@ -277,40 +441,63 @@ export default function Contact() {
                     right: 0,
                     bottom: 0,
                     background: theme.palette.mode === 'dark'
-                      ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.05) 0%, transparent 100%)'
-                      : 'linear-gradient(135deg, rgba(0, 168, 107, 0.05) 0%, transparent 100%)',
+                      ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.08) 0%, transparent 100%)'
+                      : 'linear-gradient(135deg, rgba(0, 168, 107, 0.08) 0%, transparent 100%)',
                     opacity: 0,
-                    transition: 'opacity 0.3s ease',
+                    transition: 'opacity 0.4s ease',
                   },
                   '&:hover': {
-                    transform: 'translateY(-8px)',
-                    borderColor: theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.4)' : 'rgba(0, 168, 107, 0.4)',
+                    transform: 'translateY(-12px) scale(1.02)',
+                    borderColor: theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.5)' : 'rgba(0, 168, 107, 0.5)',
                     boxShadow: theme.palette.mode === 'dark'
-                      ? '0 10px 30px rgba(0, 229, 161, 0.2)'
-                      : '0 10px 30px rgba(0, 168, 107, 0.15)',
+                      ? '0 20px 40px rgba(0, 229, 161, 0.25)'
+                      : '0 20px 40px rgba(0, 168, 107, 0.2)',
                     '&::before': {
                       opacity: 1,
                     },
                   },
                 })}
               >
-                <Stack spacing={2}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                    <PersonIcon
+                <Stack spacing={3} sx={{ flex: 1 }}>
+                  <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2, mb: 1 }}>
+                    <Box
                       sx={(theme) => ({
-                        color: 'primary.main',
-                        fontSize: '2rem',
-                        ...theme.applyStyles('dark', {
-                          color: '#00E5A1',
-                        }),
+                        p: 2.5,
+                        borderRadius: '20px',
+                        background: theme.palette.mode === 'dark'
+                          ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.25), rgba(0, 229, 161, 0.15))'
+                          : 'linear-gradient(135deg, rgba(0, 168, 107, 0.2), rgba(0, 168, 107, 0.1))',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        border: `2px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.4)' : 'rgba(0, 168, 107, 0.4)'}`,
+                        minWidth: '64px',
+                        minHeight: '64px',
+                        boxShadow: theme.palette.mode === 'dark'
+                          ? '0 4px 12px rgba(0, 229, 161, 0.2)'
+                          : '0 4px 12px rgba(0, 168, 107, 0.15)',
                       })}
-                    />
-                    <Box>
+                    >
+                      <PersonIcon
+                        sx={(theme) => ({
+                          color: 'primary.main',
+                          fontSize: '2.5rem',
+                          ...theme.applyStyles('dark', {
+                            color: '#00E5A1',
+                          }),
+                        })}
+                      />
+                    </Box>
+                    <Box sx={{ flex: 1 }}>
                       <Typography
                         variant="h6"
                         sx={{
                           color: 'text.primary',
                           fontWeight: 700,
+                          fontSize: { xs: '1.1rem', md: '1.25rem' },
+                          mb: 0.5,
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.5px',
                         }}
                       >
                         {contact.name}
@@ -320,6 +507,8 @@ export default function Contact() {
                         sx={{
                           color: 'text.secondary',
                           fontSize: '0.875rem',
+                          lineHeight: 1.5,
+                          fontWeight: 500,
                         }}
                       >
                         {contact.role}
@@ -327,50 +516,69 @@ export default function Contact() {
                     </Box>
                   </Box>
 
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                    <PhoneIcon
-                      sx={{
-                        color: 'text.secondary',
-                        fontSize: '1.25rem',
-                      }}
-                    />
-                    <Typography
-                      variant="body2"
+                  {/* Ability Enhancement - Action Buttons */}
+                  <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mt: 2 }}>
+                    <Button
                       component="a"
                       href={`tel:${contact.phone.replace(/\s/g, '')}`}
-                      sx={{
-                        color: 'text.secondary',
-                        textDecoration: 'none',
+                      variant="contained"
+                      startIcon={<CallIcon />}
+                      fullWidth
+                      sx={(theme) => ({
+                        background: theme.palette.mode === 'dark'
+                          ? 'linear-gradient(135deg, #00E5A1, #00D184)'
+                          : 'linear-gradient(135deg, #00a86b, #00d184)',
+                        color: theme.palette.mode === 'dark' ? '#0D131B' : 'white',
+                        textTransform: 'none',
+                        py: 1.5,
+                        borderRadius: '12px',
+                        fontWeight: 600,
+                        fontSize: '0.95rem',
+                        boxShadow: theme.palette.mode === 'dark'
+                          ? '0 4px 12px rgba(0, 229, 161, 0.3)'
+                          : '0 4px 12px rgba(0, 168, 107, 0.3)',
                         '&:hover': {
-                          color: 'primary.main',
+                          background: theme.palette.mode === 'dark'
+                            ? 'linear-gradient(135deg, #00D184, #00C175)'
+                            : 'linear-gradient(135deg, #00d184, #00b870)',
+                          transform: 'translateY(-3px)',
+                          boxShadow: theme.palette.mode === 'dark'
+                            ? '0 8px 20px rgba(0, 229, 161, 0.4)'
+                            : '0 8px 20px rgba(0, 168, 107, 0.4)',
                         },
-                      }}
+                      })}
                     >
-                      {contact.phone}
-                    </Typography>
-                  </Box>
-
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                    <EmailIcon
-                      sx={{
-                        color: 'text.secondary',
-                        fontSize: '1.25rem',
-                      }}
-                    />
-                    <Typography
-                      variant="body2"
+                      Helista
+                    </Button>
+                    
+                    <Button
                       component="a"
                       href={`mailto:${contact.email}`}
-                      sx={{
-                        color: 'text.secondary',
-                        textDecoration: 'none',
+                      variant="outlined"
+                      startIcon={<MailOutlineIcon />}
+                      fullWidth
+                      sx={(theme) => ({
+                        borderColor: theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.4)' : 'rgba(0, 168, 107, 0.4)',
+                        borderWidth: 2,
+                        color: 'text.primary',
+                        textTransform: 'none',
+                        py: 1.5,
+                        borderRadius: '12px',
+                        fontWeight: 600,
+                        fontSize: '0.95rem',
                         '&:hover': {
-                          color: 'primary.main',
+                          borderColor: theme.palette.mode === 'dark' ? '#00E5A1' : 'primary.main',
+                          borderWidth: 2,
+                          bgcolor: theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.1)' : 'rgba(0, 168, 107, 0.1)',
+                          transform: 'translateY(-3px)',
+                          boxShadow: theme.palette.mode === 'dark'
+                            ? '0 4px 12px rgba(0, 229, 161, 0.2)'
+                            : '0 4px 12px rgba(0, 168, 107, 0.15)',
                         },
-                      }}
+                      })}
                     >
-                      {contact.email}
-                    </Typography>
+                      Saada e-kiri
+                    </Button>
                   </Box>
                 </Stack>
               </Card>

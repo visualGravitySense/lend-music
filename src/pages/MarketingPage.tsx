@@ -34,8 +34,8 @@ export default function MarketingPage(props: { disableCustomTheme?: boolean }) {
         <Divider />
         <Pricing />
         <Divider />
-        <FAQ />
-        <Divider />
+        {/* <FAQ /> */}
+        {/* <Divider /> */}
         <Contact />
         <Divider />
         <Footer />

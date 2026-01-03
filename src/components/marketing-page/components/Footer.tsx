@@ -3,12 +3,13 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import IconButton from '@mui/material/IconButton';
-import InputLabel from '@mui/material/InputLabel';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import GitHubIcon from '@mui/icons-material/GitHub';
+import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
+import EmailIcon from '@mui/icons-material/Email';
+import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/X';
 import SitemarkIcon from './SitemarkIcon';
@@ -16,26 +17,36 @@ import SitemarkIcon from './SitemarkIcon';
 function Copyright() {
   return (
     <Typography variant="body2" sx={{ color: 'text.secondary', mt: 1 }}>
-      {'Copyright © '}
-      <Link color="text.secondary" href="https://mui.com/">
-        Sitemark
-      </Link>
-      &nbsp;
+      {'Copyright © LendMuusik OÜ '}
       {new Date().getFullYear()}
     </Typography>
   );
 }
 
 export default function Footer() {
+  const [email, setEmail] = React.useState('');
+  const [subscribed, setSubscribed] = React.useState(false);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      // Here you would typically send the email to a server
+      console.log('Subscribed:', email);
+      setSubscribed(true);
+      setEmail('');
+      setTimeout(() => setSubscribed(false), 3000);
+    }
+  };
+
   return (
     <Container
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         gap: { xs: 4, sm: 8 },
         py: { xs: 8, sm: 10 },
-        textAlign: { sm: 'center', md: 'left' },
+        textAlign: 'left',
       }}
     >
       <Box
@@ -56,39 +67,133 @@ export default function Footer() {
         >
           <Box sx={{ width: { xs: '100%', sm: '60%' } }}>
             <SitemarkIcon />
-            <Typography variant="body2" gutterBottom sx={{ fontWeight: 600, mt: 2 }}>
-              Join the newsletter
+            {/* Motivation Enhancement - Clear Value Proposition */}
+            <Typography 
+              variant="h6" 
+              gutterBottom 
+              sx={(theme) => ({
+                fontWeight: 700, 
+                mt: 3,
+                mb: 1,
+                color: 'text.primary',
+                ...theme.applyStyles('dark', {
+                  color: '#00E5A1',
+                }),
+              })}
+            >
+              Liitu uudiskirjaga
             </Typography>
-            <Typography variant="body2" sx={{ color: 'text.secondary', mb: 2 }}>
-              Subscribe for weekly updates. No spams ever!
+            <Typography variant="body2" sx={{ color: 'text.secondary', mb: 3 }}>
+              Telli uudiskiri ja saa värskeid uudiseid, eripakkumisi ja ürituste teavitusi. 
+              {/* <Box component="span" sx={{ display: 'block', mt: 1, fontWeight: 600 }}>
+                Spamme ei saadeta kunagi!
+              </Box> */}
             </Typography>
-            <InputLabel htmlFor="email-newsletter">Email</InputLabel>
-            <Stack direction="row" spacing={1} useFlexGap>
-              <TextField
-                id="email-newsletter"
-                hiddenLabel
-                size="small"
-                variant="outlined"
-                fullWidth
-                aria-label="Enter your email address"
-                placeholder="Your email address"
-                slotProps={{
-                  htmlInput: {
-                    autoComplete: 'off',
-                    'aria-label': 'Enter your email address',
-                  },
+            
+            {/* Social Proof - Ability Enhancement */}
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1,
+                mb: 2,
+                px: 2,
+                py: 1,
+                borderRadius: '12px',
+                bgcolor: 'action.hover',
+              }}
+            >
+              <CheckCircleRoundedIcon
+                sx={{
+                  fontSize: '1.1rem',
+                  color: 'primary.main',
                 }}
-                sx={{ width: '250px' }}
               />
-              <Button
-                variant="contained"
-                color="primary"
-                size="small"
-                sx={{ flexShrink: 0 }}
-              >
-                Subscribe
-              </Button>
-            </Stack>
+              <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+                Spamme ei saadeta kunagi!
+              </Typography>
+            </Box>
+
+            {/* Ability Enhancement - Simplified Form */}
+            <Box component="form" onSubmit={handleSubscribe}>
+              <Stack direction="row" spacing={1} useFlexGap sx={{ flexWrap: { xs: 'wrap', sm: 'nowrap' } }}>
+                <TextField
+                  type="email"
+                  size="small"
+                  variant="outlined"
+                  fullWidth
+                  placeholder="Teie e-posti aadress"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  slotProps={{
+                    htmlInput: {
+                      autoComplete: 'email',
+                      'aria-label': 'Sisestage oma e-posti aadress',
+                    },
+                  }}
+                  sx={{
+                    flexGrow: 1,
+                    minWidth: { xs: '100%', sm: '250px' },
+                    '& .MuiOutlinedInput-root': {
+                      bgcolor: 'background.paper',
+                    },
+                  }}
+                  InputProps={{
+                    startAdornment: (
+                      <EmailIcon
+                        sx={{
+                          color: 'text.secondary',
+                          mr: 1,
+                          fontSize: '1.25rem',
+                        }}
+                      />
+                    ),
+                  }}
+                />
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  size="small"
+                  disabled={subscribed}
+                  sx={(theme) => ({
+                    flexShrink: 0,
+                    px: 4,
+                    fontWeight: 700,
+                    background: theme.palette.mode === 'dark'
+                      ? 'linear-gradient(135deg, #00E5A1, #00D184)'
+                      : 'linear-gradient(135deg, #00a86b, #00d184)',
+                    boxShadow: theme.palette.mode === 'dark'
+                      ? '0 4px 12px rgba(0, 229, 161, 0.3)'
+                      : '0 4px 12px rgba(0, 168, 107, 0.3)',
+                    '&:hover': {
+                      transform: 'translateY(-2px)',
+                      boxShadow: theme.palette.mode === 'dark'
+                        ? '0 6px 16px rgba(0, 229, 161, 0.4)'
+                        : '0 6px 16px rgba(0, 168, 107, 0.4)',
+                    },
+                  })}
+                >
+                  {subscribed ? 'Täname!' : 'Telli'}
+                </Button>
+              </Stack>
+              {subscribed && (
+                <Typography
+                  variant="caption"
+                  sx={{
+                    color: 'success.main',
+                    mt: 1,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 0.5,
+                  }}
+                >
+                  <CheckCircleRoundedIcon sx={{ fontSize: '1rem' }} />
+                  Edukalt tellitud!
+                </Typography>
+              )}
+            </Box>
           </Box>
         </Box>
         <Box
@@ -98,23 +203,23 @@ export default function Footer() {
             gap: 1,
           }}
         >
-          <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
-            Product
+          <Typography variant="body2" sx={{ fontWeight: 700, mb: 0.5 }}>
+            Teenused
           </Typography>
-          <Link color="text.secondary" variant="body2" href="#">
-            Features
+          <Link color="text.secondary" variant="body2" href="#ourArtists" sx={{ '&:hover': { color: 'primary.main' } }}>
+            Artistid
           </Link>
-          <Link color="text.secondary" variant="body2" href="#">
-            Testimonials
+          <Link color="text.secondary" variant="body2" href="#musicCarriers" sx={{ '&:hover': { color: 'primary.main' } }}>
+            Helikandijad
           </Link>
-          <Link color="text.secondary" variant="body2" href="#">
-            Highlights
+          <Link color="text.secondary" variant="body2" href="#highlights" sx={{ '&:hover': { color: 'primary.main' } }}>
+            Teenused
           </Link>
-          <Link color="text.secondary" variant="body2" href="#">
-            Pricing
+          <Link color="text.secondary" variant="body2" href="#pricing" sx={{ '&:hover': { color: 'primary.main' } }}>
+            Hinnad
           </Link>
-          <Link color="text.secondary" variant="body2" href="#">
-            FAQs
+          <Link color="text.secondary" variant="body2" href="#testimonials" sx={{ '&:hover': { color: 'primary.main' } }}>
+            Kliendid Räägivad
           </Link>
         </Box>
         <Box
@@ -124,17 +229,17 @@ export default function Footer() {
             gap: 1,
           }}
         >
-          <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
-            Company
+          <Typography variant="body2" sx={{ fontWeight: 700, mb: 0.5 }}>
+            Ettevõte
           </Typography>
-          <Link color="text.secondary" variant="body2" href="#">
-            About us
+          <Link color="text.secondary" variant="body2" href="#contact" sx={{ '&:hover': { color: 'primary.main' } }}>
+            Kontakt
           </Link>
-          <Link color="text.secondary" variant="body2" href="#">
-            Careers
+          <Link color="text.secondary" variant="body2" href="#logoCollection" sx={{ '&:hover': { color: 'primary.main' } }}>
+            Partnerid
           </Link>
-          <Link color="text.secondary" variant="body2" href="#">
-            Press
+          <Link color="text.secondary" variant="body2" href="#faq" sx={{ '&:hover': { color: 'primary.main' } }}>
+            KKK
           </Link>
         </Box>
         <Box
@@ -144,17 +249,17 @@ export default function Footer() {
             gap: 1,
           }}
         >
-          <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
-            Legal
+          <Typography variant="body2" sx={{ fontWeight: 700, mb: 0.5 }}>
+            Juriidiline
           </Typography>
-          <Link color="text.secondary" variant="body2" href="#">
-            Terms
+          <Link color="text.secondary" variant="body2" href="#" sx={{ '&:hover': { color: 'primary.main' } }}>
+            Tingimused
           </Link>
-          <Link color="text.secondary" variant="body2" href="#">
-            Privacy
+          <Link color="text.secondary" variant="body2" href="#" sx={{ '&:hover': { color: 'primary.main' } }}>
+            Privaatsus
           </Link>
-          <Link color="text.secondary" variant="body2" href="#">
-            Contact
+          <Link color="text.secondary" variant="body2" href="#contact" sx={{ '&:hover': { color: 'primary.main' } }}>
+            Kontakt
           </Link>
         </Box>
       </Box>
@@ -168,18 +273,34 @@ export default function Footer() {
           borderColor: 'divider',
         }}
       >
-        <div>
-          <Link color="text.secondary" variant="body2" href="#">
-            Privacy Policy
+        <Box>
+          <Link 
+            color="text.secondary" 
+            variant="body2" 
+            href="#"
+            sx={{ 
+              '&:hover': { color: 'primary.main' },
+              textDecoration: 'none',
+            }}
+          >
+            Privaatsuspoliitika
           </Link>
           <Typography sx={{ display: 'inline', mx: 0.5, opacity: 0.5 }}>
             &nbsp;•&nbsp;
           </Typography>
-          <Link color="text.secondary" variant="body2" href="#">
-            Terms of Service
+          <Link 
+            color="text.secondary" 
+            variant="body2" 
+            href="#"
+            sx={{ 
+              '&:hover': { color: 'primary.main' },
+              textDecoration: 'none',
+            }}
+          >
+            Kasutustingimused
           </Link>
           <Copyright />
-        </div>
+        </Box>
         <Stack
           direction="row"
           spacing={1}
@@ -189,16 +310,20 @@ export default function Footer() {
           <IconButton
             color="inherit"
             size="small"
-            href="https://github.com/mui"
-            aria-label="GitHub"
+            href="https://www.facebook.com/profile.php?id=100044109416927"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
             sx={{ alignSelf: 'center' }}
           >
-            <GitHubIcon />
+            <FacebookIcon />
           </IconButton>
           <IconButton
             color="inherit"
             size="small"
-            href="https://x.com/MaterialUI"
+            href="/"
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="X"
             sx={{ alignSelf: 'center' }}
           >
@@ -207,7 +332,9 @@ export default function Footer() {
           <IconButton
             color="inherit"
             size="small"
-            href="https://www.linkedin.com/company/mui/"
+            href="https://www.linkedin.com/in/toivo-lend-2b51632b?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAAZAd-kBxIH50S1GEBZozlKrVVdSXWTtZN8&lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_all%3BYqzL5yf3QjONtx8W60XAAg%3D%3D"
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="LinkedIn"
             sx={{ alignSelf: 'center' }}
           >
