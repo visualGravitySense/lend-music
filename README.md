@@ -80,6 +80,39 @@ The theme can be customized in `src/components/shared-theme/`:
 
 Update the `VITE_TEMPLATE_IMAGE_URL` in `.env` to use your own image URLs.
 
+## Deployment
+
+### GitHub Pages
+
+This project includes a GitHub Actions workflow for automatic deployment to GitHub Pages.
+
+#### Setup Instructions:
+
+1. **Enable GitHub Pages in your repository:**
+   - Go to your repository Settings → Pages
+   - Under "Source", select "GitHub Actions"
+
+2. **Push to main/master branch:**
+   - The workflow will automatically trigger on push to `main` or `master` branch
+   - You can also manually trigger it from the Actions tab → "Deploy to GitHub Pages" → "Run workflow"
+
+3. **Access your site:**
+   - After deployment, your site will be available at:
+     `https://[your-username].github.io/[repository-name]/`
+
+#### Manual Deployment:
+
+If you prefer to deploy manually:
+
+```bash
+npm run build
+# Then upload the 'dist' folder to GitHub Pages
+```
+
+#### Custom Domain:
+
+If you're using a custom domain for GitHub Pages, you may need to set `VITE_BASE_PATH` to `/` in your build process or update `vite.config.ts`.
+
 ## Built With
 
 - [React](https://reactjs.org/)
