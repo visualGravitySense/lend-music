@@ -421,8 +421,8 @@ export const inputsCustomizations: Components<Theme> = {
         padding: '8px 12px',
         color: theme.vars?.palette?.text?.primary ?? theme.palette.text.primary,
         borderRadius: theme.vars?.shape?.borderRadius ?? theme.shape.borderRadius,
-        border: `1px solid ${(theme.vars || theme).palette.divider}`,
-        backgroundColor: (theme.vars || theme).palette.background.default,
+        border: `1px solid ${theme.vars?.palette?.divider ?? theme.palette.divider}`,
+        backgroundColor: theme.vars?.palette?.background?.default ?? theme.palette.background.default,
         transition: 'border 120ms ease-in',
         '&:hover': {
           borderColor: gray[400],

@@ -64,10 +64,10 @@ export const navigationCustomizations: Components<Theme> = {
     },
     styleOverrides: {
       root: ({ theme }) => ({
-        borderRadius: (theme.vars || theme).shape.borderRadius,
+        borderRadius: theme.vars?.shape?.borderRadius ?? theme.shape.borderRadius,
         border: '1px solid',
         borderColor: gray[200],
-        backgroundColor: (theme.vars || theme).palette.background.paper,
+        backgroundColor: theme.vars?.palette?.background?.paper ?? theme.palette.background.paper,
         boxShadow: `inset 0 1px 0 1px hsla(220, 0%, 100%, 0.6), inset 0 -1px 0 1px hsla(220, 35%, 90%, 0.5)`,
         '&:hover': {
           borderColor: gray[300],
@@ -178,9 +178,9 @@ export const navigationCustomizations: Components<Theme> = {
     styleOverrides: {
       root: { minHeight: 'fit-content' },
       indicator: ({ theme }) => ({
-        backgroundColor: (theme.vars || theme).palette.grey[800],
+        backgroundColor: theme.vars?.palette?.grey?.[800] ?? theme.palette.grey[800],
         ...theme.applyStyles('dark', {
-          backgroundColor: (theme.vars || theme).palette.grey[200],
+          backgroundColor: theme.vars?.palette?.grey?.[200] ?? theme.palette.grey[200],
         }),
       }),
     },
@@ -198,7 +198,7 @@ export const navigationCustomizations: Components<Theme> = {
         border: '1px solid',
         borderColor: 'transparent',
         ':hover': {
-          color: (theme.vars || theme).palette.text.primary,
+          color: theme.vars?.palette?.text?.primary ?? theme.palette.text.primary,
           backgroundColor: gray[100],
           borderColor: gray[200],
         },
@@ -207,7 +207,7 @@ export const navigationCustomizations: Components<Theme> = {
         },
         ...theme.applyStyles('dark', {
           ':hover': {
-            color: (theme.vars || theme).palette.text.primary,
+            color: theme.vars?.palette?.text?.primary ?? theme.palette.text.primary,
             backgroundColor: gray[800],
             borderColor: gray[700],
           },
