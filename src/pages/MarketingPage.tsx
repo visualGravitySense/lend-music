@@ -12,6 +12,7 @@ import Pricing from '../components/marketing-page/components/Pricing.tsx';
 import Features from '../components/marketing-page/components/Features.tsx';
 import Testimonials from '../components/marketing-page/components/Testimonials.tsx';
 import FAQ from '../components/marketing-page/components/FAQ.tsx';
+import Contact from '../components/marketing-page/components/Contact.tsx';
 import Footer from '../components/marketing-page/components/Footer.tsx';
 
 export default function MarketingPage(props: { disableCustomTheme?: boolean }) {
@@ -34,6 +35,8 @@ export default function MarketingPage(props: { disableCustomTheme?: boolean }) {
         <Pricing />
         <Divider />
         <FAQ />
+        <Divider />
+        <Contact />
         <Divider />
         <Footer />
       </div>
