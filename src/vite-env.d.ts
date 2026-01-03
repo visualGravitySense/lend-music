@@ -7,20 +7,11 @@ declare module '@mui/material/styles' {
     vars?: {
       palette?: {
         mode?: string;
+        divider?: string;
         [key: string]: any;
       };
-      [key: string]: any;
-    };
-  }
-}
-
-import '@mui/material/styles';
-
-declare module '@mui/material/styles' {
-  interface Theme {
-    vars?: {
-      palette?: {
-        mode?: string;
+      shape?: {
+        borderRadius?: number | string;
         [key: string]: any;
       };
       [key: string]: any;
