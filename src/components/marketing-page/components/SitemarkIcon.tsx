@@ -1,6 +1,6 @@
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
 import { styled } from '@mui/material/styles';
 
 const LogoContainer = styled(Box)({
@@ -20,13 +20,22 @@ const LogoImage = styled('img')({
 
 export default function SitemarkIcon() {
   return (
-    <LogoContainer 
-      component="a" 
-      href="#" 
+    <Link
+      href="#"
       sx={{ 
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
         textDecoration: 'none', 
         mr: 2,
         justifyContent: 'flex-start',
+        gap: '0.75rem',
+        '&::before': {
+          display: 'none', // Убираем подчеркивание для логотипа
+        },
+        '&:hover::before': {
+          display: 'none', // Убираем подчеркивание при hover
+        },
       }}
     >
       <LogoImage src="/lend-logo.svg" alt="LendMusic Logo" />
@@ -41,6 +50,6 @@ export default function SitemarkIcon() {
       >
         LendMusic
       </Typography>
-    </LogoContainer>
+    </Link>
   );
 }
