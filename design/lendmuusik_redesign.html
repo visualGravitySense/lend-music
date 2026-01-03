@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LendMuusik - Artistide Agentuur</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00a86b;
+            --primary-dark: #008555;
+            --primary-light: #00d184;
+            --dark: #0a1628;
+            --dark-2: #1a2942;
+            --text: #ffffff;
+            --text-secondary: #b0c4de;
+            --accent: #ff6b6b;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .wave {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--primary) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: wave 20s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(10, 22, 40, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 168, 107, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        nav:hover {
+            background: rgba(10, 22, 40, 0.95);
+            border-bottom-color: rgba(0, 168, 107, 0.5);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0, 168, 107, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-light);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            margin-top: 80px;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 10;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem;
+            background: rgba(0, 168, 107, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 168, 107, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(0, 168, 107, 0.2);
+            border-color: rgba(0, 168, 107, 0.5);
+            transform: translateX(5px);
+        }
+
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--text);
+            box-shadow: 0 10px 30px rgba(0, 168, 107, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0, 168, 107, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 168, 107, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%;
+            z-index: 5;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 20px 60px rgba(0, 168, 107, 0.3));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Artists Section */
+        .artists-section {
+            padding: 8rem 5%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        .artists-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .category-card {
+            background: linear-gradient(135deg, var(--dark-2), rgba(0, 168, 107, 0.1));
+            border: 1px solid rgba(0, 168, 107, 0.3);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-light);
+            box-shadow: 0 20px 60px rgba(0, 168, 107, 0.3);
+        }
+
+        .category-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .category-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-light);
+            position: relative;
+            z-index: 1;
+        }
+
+        .category-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .artist-list {
+            list-style: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .artist-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(0, 168, 107, 0.2);
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .artist-list li:hover {
+            color: var(--primary-light);
+            padding-left: 10px;
+        }
+
+        /* Music Store Section */
+        .music-store {
+            background: linear-gradient(135deg, var(--dark-2), rgba(0, 168, 107, 0.05));
+            padding: 8rem 5%;
+            position: relative;
+        }
+
+        .albums-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .album-card {
+            background: var(--dark);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0, 168, 107, 0.2);
+            position: relative;
+        }
+
+        .album-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent, rgba(0, 168, 107, 0.2));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .album-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 168, 107, 0.4);
+            border-color: var(--primary-light);
+        }
+
+        .album-card:hover::before {
+            opacity: 1;
+        }
+
+        .album-cover {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--dark-2), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .album-cover::after {
+            content: '♪';
+            position: absolute;
+            font-size: 6rem;
+            opacity: 0.1;
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .album-info {
+            padding: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .album-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .album-info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .album-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-light);
+        }
+
+        .btn-small {
+            padding: 0.6rem 1.5rem;
+            background: var(--primary);
+            color: var(--text);
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-small:hover {
+            background: var(--primary-light);
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 8rem 5%;
+            position: relative;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, var(--dark-2), rgba(0, 168, 107, 0.1));
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 168, 107, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateX(10px);
+            border-color: var(--primary-light);
+        }
+
+        .info-card h3 {
+            color: var(--primary-light);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-form {
+            background: linear-gradient(135deg, var(--dark-2), rgba(0, 168, 107, 0.1));
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 168, 107, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 168, 107, 0.3);
+            border-radius: 10px;
+            color: var(--text);
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            background: rgba(0, 168, 107, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-2);
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid rgba(0, 168, 107, 0.3);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 168, 107, 0.2);
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-image {
+                position: relative;
+                width: 100%;
+                margin-top: 3rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="wave"></div>
+    </div>
+
+    <nav>
+        <a href="#" class="logo">
+            <div class="logo-icon">🎵</div>
+            <span>LendMuusik</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#artistid">Artistid</a></li>
+            <li><a href="#muusika">Helikandijate müük</a></li>
+            <li><a href="#firmast">Firmast</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Artistide<br>Agentuur</h1>
+            <p class="hero-subtitle">Artistide tellimine, ürituste korraldamine, helitehnika rent, valgustehnika rent.</p>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="check-icon">✓</div>
+                    <span>Teenused Artistidega</span>
+                </div>
+                <div class="feature-item">
+                    <div class="check-icon">✓</div>
+                    <span>Nõustamine Artistidega</span>
+                </div>
+                <div class="feature-item">
+                    <div class="check-icon">✓</div>
+                    <span>Peokavade Koostamine</span>
+                </div>
+                <div class="feature-item">
+                    <div class="check-icon">✓</div>
+                    <span>Artisti Esindamine</span>
+                </div>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="#kontakt" class="btn btn-primary">Saada Päring</a>
+                <a href="#artistid" class="btn btn-secondary">Vaata Artistid</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="data:image/svg+xml,%3Csvg width='500' height='500' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='250' cy='250' r='200' fill='%2300a86b' opacity='0.1'/%3E%3Ctext x='250' y='280' font-size='200' text-anchor='middle' fill='%2300d184' opacity='0.3'%3E🎤%3C/text%3E%3C/svg%3E" alt="Music">
+        </div>
+    </section>
+
+    <section id="artistid" class="artists-section">
+        <div class="section-header">
+            <h2 class="section-title">Meelelahutust Igale Maitsele</h2>
+            <p class="section-subtitle">Professionaalsed artistid ja muusikud teie üritusele</p>
+        </div>
+
+        <div class="artists-categories">
+            <div class="category-card">
+<h3>TANTSUMUUSIKA</h3>
+                <p>Energiline muusika, mis paneb kõik tantsima</p>
+                <ul class="artist-list">
+                    <li>Airi & Party</li>
+                    <li>Alma</li>
+                    <li>Bad Orrange</li>
+                    <li>Karavan</li>
+                    <li>Mait ja Mikko Maltis</li>
+                    <li>Sade</li>
+                    <li>The SKYLINE</li>
+                </ul>
+            </div>
+
+            <div class="category-card">
+                <h3>SALONGIMUUSIKA</h3>
+                <p>Elegantne muusika eriliseks õhkkonnaks</p>
+                <ul class="artist-list">
+                    <li>Alen Veziko</li>
+                    <li>Beati Mandolini</li>
+                    <li>Helin-Mari Arderi Trio</li>
+                    <li>I-Jam</li>
+                    <li>Noorkuu</li>
+                    <li>Trio Naturale</li>
+                </ul>
+            </div>
+
+            <div class="category-card">
+                <h3>KLASSIKALINE MUUSIKA</h3>
+                <p>Ajatu muusika kõrgeimale tasemele</p>
+                <ul class="artist-list">
+                    <li>Eesti heliloojad</li>
+                    <li>Eesti muusika esitajad</li>
+                    <li>Klassikalised ansamblid</li>
+                    <li>Kammermuusika</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="#kontakt" class="btn btn-primary">Tutvu Artistidega</a>
+        </div>
+    </section>
+
+    <section id="muusika" class="music-store">
+        <div class="section-header">
+            <h2 class="section-title">Helikandijate Müük</h2>
+            <p class="section-subtitle">Klassikalise muusika CD- ja DVD-de tellimine ja hulgimüük</p>
+        </div>
+
+        <div class="albums-grid">
+            <div class="album-card">
+                <div class="album-cover">💿</div>
+                <div class="album-info">
+                    <h4>Arvo Pärt / Alfred Schnittke</h4>
+                    <p>Choral Works</p>
+                    <p>Estonian Philharmonic Chamber Choir</p>
+                    <div class="album-price">
+                        <span class="price">10 EUR</span>
+                        <button class="btn-small">Telli</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="album-card">
+                <div class="album-cover">💿</div>
+                <div class="album-info">
+                    <h4>THE ESTONIAN CELLO</h4>
+                    <p>Eller, Känd, Oja, Reimann, Tubina</p>
+                    <p>Valle-Rasmus Roots - cello</p>
+                    <div class="album-price">
+                        <span class="price">16 EUR</span>
+                        <button class="btn-small">Telli</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="album-card">
+                <div class="album-cover">💿</div>
+                <div class="album-info">
+                    <h4>Neeme Järvi</h4>
+                    <p>In Concert</p>
+                    <p>Mozart, Wagner, Brahms, Reger</p>
+                    <div class="album-price">
+                        <span class="price">18 EUR</span>
+                        <button class="btn-small">Telli</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="album-card">
+                <div class="album-cover">💿</div>
+                <div class="album-info">
+                    <h4>Tchaikovsky</h4>
+                    <p>The Nutcracker (complete)</p>
+                    <p>Bergen Philharmonic Orchestra</p>
+                    <div class="album-price">
+                        <span class="price">17 EUR</span>
+                        <button class="btn-small">Telli</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="album-card">
+                <div class="album-cover">💿</div>
+                <div class="album-info">
+                    <h4>Anna-Liisa Eller</h4>
+                    <p>Strings attached, the voice of Kannel</p>
+                    <p>Harmonia Mundi</p>
+                    <div class="album-price">
+                        <span class="price">16 EUR</span>
+                        <button class="btn-small">Telli</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="album-card">
+                <div class="album-cover">💿</div>
+                <div class="album-info">
+                    <h4>Arvo Pärt</h4>
+                    <p>Essential Choral Works</p>
+                    <p>Harmonia Mundi</p>
+                    <div class="album-price">
+                        <span class="price">18.50 EUR</span>
+                        <button class="btn-small">Telli</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontakt" class="contact-section">
+        <div class="section-header">
+            <h2 class="section-title">Võtke Ühendust</h2>
+            <p class="section-subtitle">Loome koos elamusi</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-info">
+                <div class="info-card">
+                    <h3>LendMuusik OÜ</h3>
+                    <p>Kõõmne 33, Haabersti linnaosa<br>10617 Tallinn, Eesti</p>
+                    <p><strong>Tel:</strong> +372 50 10 820</p>
+                    <p><strong>Email:</strong> info@lendmusic.ee</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>TOIVO LEND</h3>
+                    <p>Juhataja | Meelelahutus</p>
+                    <p><strong>Tel:</strong> +372 50 10 820</p>
+                    <p><strong>Email:</strong> toivo@lendmusic.ee</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>IMBI LEND</h3>
+                    <p>Helikandijate müük | Raamatupidaja</p>
+                    <p><strong>Tel:</strong> +372 56 66 7950</p>
+                    <p><strong>Email:</strong> imbi@lendmusic.ee</p>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3 style="color: var(--primary-light); margin-bottom: 2rem;">Saatke Päring</h3>
+                <form>
+                    <div class="form-group">
+                        <label>Telefoni Number *</label>
+                        <input type="tel" required>
+                    </div>
+                    <div class="form-group">
+                        <label>E-posti Aadress *</label>
+                        <input type="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Pealkiri *</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Kirja Sisu *</label>
+                        <textarea required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Saada</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 6rem 5%; background: linear-gradient(135deg, var(--dark-2), rgba(0, 168, 107, 0.05));">
+        <div class="section-header">
+            <h2 class="section-title">Koostööpartnerid</h2>
+            <p class="section-subtitle">Teeme koostööd Eesti kultuuriasutustega, erinevate firmade ja ettevõtetega ning ka paljude ürituste korraldajatega</p>
+        </div>
+    </section>
+
+    <section style="padding: 8rem 5%; background: linear-gradient(135deg, var(--primary), var(--primary-light)); text-align: center;">
+        <h2 style="font-size: 3rem; margin-bottom: 1.5rem; color: white;">Loome Koos Elamusi</h2>
+        <p style="font-size: 1.3rem; margin-bottom: 2rem; color: rgba(255,255,255,0.9); max-width: 800px; margin-left: auto; margin-right: auto;">Esindame professionaalseid artiste ja garanteerime esimese või ürituse korraldamise. Koostöö ja esinemine saab teoks läbi rääkimiste kompromissilahendusel ja vormistatakse lepinguga.</p>
+        <a href="#kontakt" class="btn" style="background: white; color: var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.3);">Võtke Ühendust</a>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>LendMuusik OÜ</h3>
+                <p>Kõõmne 33, 10617 Tallinn, Eesti</p>
+                <p>Registrikood: 10168077</p>
+                <p>KMKR: EE100183911</p>
+            </div>
+            <div class="footer-section">
+                <h3>Kontakt</h3>
+                <p>Tel: +372 50 10 820</p>
+                <p>Email: info@lendmusic.ee</p>
+                <a href="#">Facebook</a>
+            </div>
+            <div class="footer-section">
+                <h3>Teenused</h3>
+                <a href="#artistid">Artistide Agentuur</a>
+                <a href="#muusika">Helikandijate Müük</a>
+                <a href="#kontakt">Ürituste Korraldamine</a>
+            </div>
+            <div class="footer-section">
+                <h3>Informatsioon</h3>
+                <a href="#">Privaatsus</a>
+                <a href="#">Tingimused</a>
+                <a href="#kontakt">Kontakt</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 LendMuusik - Lend Music Ltd. Powered by LendMuusik OÜ</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 22, 40, 0.98)';
+            } else {
+                nav.style.background = 'rgba(10, 22, 40, 0.85)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.category-card, .album-card, .info-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Täname! Teie päring on saadetud. Võtame teiega peagi ühendust.');
+        });
+    </script>
+</body>
+</html>>Tellija Nimi *</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label
