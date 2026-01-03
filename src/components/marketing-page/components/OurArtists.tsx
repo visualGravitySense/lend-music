@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -7,6 +6,12 @@ import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
+import Link from '@mui/material/Link';
+import StarRoundedIcon from '@mui/icons-material/StarRounded';
+import PeopleIcon from '@mui/icons-material/People';
+import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 
 const artistCategories = [
   {
@@ -101,6 +106,8 @@ export default function OurArtists() {
           >
             Meelelahutust Igale Maitsele
           </Typography>
+          
+          {/* Motivation Enhancement - Value Proposition */}
           <Typography
             component="p"
             variant="body1"
@@ -109,10 +116,104 @@ export default function OurArtists() {
               fontSize: { xs: '1rem', md: '1.125rem' },
               maxWidth: '800px',
               mx: 'auto',
+              mb: 3,
+              lineHeight: 1.7,
             }}
           >
-            Professionaalsed artistid ja muusikud teie üritusele
+            Professionaalsed artistid ja muusikud teie üritusele.
+            <Box component="span" sx={{ display: 'block', mt: 1, fontWeight: 600, color: 'text.primary' }}>
+              Loome unustamatu kogemuse teie sündmusele!
+            </Box>
           </Typography>
+          
+          {/* Social Proof & Trust Indicators - Motivation Enhancement */}
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: 2,
+              flexWrap: 'wrap',
+              mb: 2,
+            }}
+          >
+            <Box
+              sx={(theme) => ({
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1,
+                px: 2.5,
+                py: 1.5,
+                borderRadius: '16px',
+                background: theme.palette.mode === 'dark'
+                  ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.15), rgba(0, 229, 161, 0.05))'
+                  : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
+                border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.2)' : 'rgba(0, 168, 107, 0.2)'}`,
+              })}
+            >
+              <StarRoundedIcon
+                sx={{
+                  fontSize: '1.25rem',
+                  color: 'primary.main',
+                }}
+              />
+              <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 600 }}>
+                5.0
+              </Typography>
+              <Typography variant="body2" sx={{ color: 'text.secondary', ml: 0.5 }}>
+                (500+ rahulolevat klienti)
+              </Typography>
+            </Box>
+            
+            <Box
+              sx={(theme) => ({
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1,
+                px: 2.5,
+                py: 1.5,
+                borderRadius: '16px',
+                background: theme.palette.mode === 'dark'
+                  ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.15), rgba(0, 229, 161, 0.05))'
+                  : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
+                border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.2)' : 'rgba(0, 168, 107, 0.2)'}`,
+              })}
+            >
+              <PeopleIcon
+                sx={{
+                  fontSize: '1.25rem',
+                  color: 'primary.main',
+                }}
+              />
+              <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 600 }}>
+                30+ aastat kogemust
+              </Typography>
+            </Box>
+            
+            <Box
+              sx={(theme) => ({
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1,
+                px: 2.5,
+                py: 1.5,
+                borderRadius: '16px',
+                background: theme.palette.mode === 'dark'
+                  ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.15), rgba(0, 229, 161, 0.05))'
+                  : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
+                border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.2)' : 'rgba(0, 168, 107, 0.2)'}`,
+              })}
+            >
+              <CheckCircleRoundedIcon
+                sx={{
+                  fontSize: '1.25rem',
+                  color: 'primary.main',
+                }}
+              />
+              <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 600 }}>
+                Professionaalsed artistid
+              </Typography>
+            </Box>
+          </Box>
         </Box>
 
         {/* Artist Category Cards */}
@@ -158,20 +259,53 @@ export default function OurArtists() {
                 })}
               >
                 <Stack spacing={2}>
-                  <Typography
-                    variant="h5"
-                    sx={(theme) => ({
-                      color: 'primary.main',
-                      fontWeight: 700,
-                      fontSize: { xs: '1.25rem', md: '1.5rem' },
-                      textTransform: 'uppercase',
-                      ...theme.applyStyles('dark', {
-                        color: '#00E5A1',
-                      }),
-                    })}
+                  {/* Ability Enhancement - Visual Icon */}
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 2,
+                    }}
                   >
-                    {category.title}
-                  </Typography>
+                    <Box
+                      className="category-icon"
+                      sx={(theme) => ({
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: 48,
+                        height: 48,
+                        borderRadius: '12px',
+                        background: theme.palette.mode === 'dark'
+                          ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.2), rgba(0, 229, 161, 0.1))'
+                          : 'linear-gradient(135deg, rgba(0, 168, 107, 0.2), rgba(0, 168, 107, 0.1))',
+                        border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.3)' : 'rgba(0, 168, 107, 0.3)'}`,
+                        transition: 'transform 0.4s ease',
+                      })}
+                    >
+                      <MusicNoteIcon
+                        sx={{
+                          fontSize: '1.75rem',
+                          color: 'primary.main',
+                        }}
+                      />
+                    </Box>
+                    <Typography
+                      variant="h5"
+                      sx={(theme) => ({
+                        color: 'primary.main',
+                        fontWeight: 700,
+                        fontSize: { xs: '1.25rem', md: '1.5rem' },
+                        textTransform: 'uppercase',
+                        flex: 1,
+                        ...theme.applyStyles('dark', {
+                          color: '#00E5A1',
+                        }),
+                      })}
+                    >
+                      {category.title}
+                    </Typography>
+                  </Box>
                   <Typography
                     variant="body2"
                     sx={{
@@ -191,16 +325,50 @@ export default function OurArtists() {
                   <Stack spacing={1.5}>
                     {category.artists.map((artist, artistIndex) => (
                       <Box key={artistIndex}>
-                        <Typography
-                          variant="body2"
-                          sx={{
+                        {/* Ability Enhancement - Clickable Artist Links */}
+                        <Link
+                          href={`#artist-${artist.toLowerCase().replace(/\s+/g, '-')}`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            // Future: Navigate to artist profile
+                          }}
+                          sx={(theme) => ({
                             color: 'text.secondary',
                             fontSize: '0.95rem',
-                            py: 0.5,
-                          }}
+                            py: 0.75,
+                            px: 1,
+                            borderRadius: '8px',
+                            display: 'block',
+                            textDecoration: 'none',
+                            transition: 'all 0.3s ease',
+                            position: 'relative',
+                            '&:hover': {
+                              color: 'primary.main',
+                              bgcolor: theme.palette.mode === 'dark'
+                                ? 'rgba(0, 229, 161, 0.1)'
+                                : 'rgba(0, 168, 107, 0.08)',
+                              transform: 'translateX(4px)',
+                              '&::after': {
+                                content: '""',
+                                position: 'absolute',
+                                left: 0,
+                                top: '50%',
+                                transform: 'translateY(-50%)',
+                                width: '3px',
+                                height: '60%',
+                                borderRadius: '0 2px 2px 0',
+                                bgcolor: 'primary.main',
+                              },
+                            },
+                            ...theme.applyStyles('dark', {
+                              '&:hover': {
+                                color: '#00E5A1',
+                              },
+                            }),
+                          })}
                         >
                           {artist}
-                        </Typography>
+                        </Link>
                         {artistIndex < category.artists.length - 1 && (
                           <Divider
                             sx={(theme) => ({
@@ -229,11 +397,14 @@ export default function OurArtists() {
           <Button
             variant="contained"
             size="large"
+            endIcon={<ArrowForwardIcon />}
             sx={(theme) => ({
-              bgcolor: 'primary.main',
+              background: theme.palette.mode === 'dark'
+                ? 'linear-gradient(135deg, #00E5A1, #00D184)'
+                : 'linear-gradient(135deg, #00a86b, #00d184)',
               color: theme.palette.mode === 'dark' ? '#0D131B' : 'white',
-              px: 5,
-              py: 1.5,
+              px: 6,
+              py: 1.75,
               borderRadius: '50px',
               fontWeight: 700,
               fontSize: { xs: '1rem', md: '1.125rem' },
@@ -241,16 +412,36 @@ export default function OurArtists() {
               boxShadow: theme.palette.mode === 'dark'
                 ? '0 8px 24px rgba(0, 229, 161, 0.3)'
                 : '0 8px 24px rgba(0, 168, 107, 0.3)',
-              transition: 'all 0.3s ease',
-              ...theme.applyStyles('dark', {
-                bgcolor: '#00E5A1',
-              }),
+              transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+              position: 'relative',
+              overflow: 'hidden',
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: 0,
+                left: '-100%',
+                width: '100%',
+                height: '100%',
+                background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent)',
+                transition: 'left 0.5s ease',
+              },
               '&:hover': {
-                bgcolor: theme.palette.mode === 'dark' ? '#00D184' : 'primary.dark',
-                transform: 'translateY(-3px)',
+                background: theme.palette.mode === 'dark'
+                  ? 'linear-gradient(135deg, #00D184, #00C175)'
+                  : 'linear-gradient(135deg, #00d184, #00b870)',
+                transform: 'translateY(-4px) scale(1.05)',
                 boxShadow: theme.palette.mode === 'dark'
-                  ? '0 12px 32px rgba(0, 229, 161, 0.4)'
-                  : '0 12px 32px rgba(0, 168, 107, 0.4)',
+                  ? '0 16px 40px rgba(0, 229, 161, 0.4)'
+                  : '0 16px 40px rgba(0, 168, 107, 0.4)',
+                '&::before': {
+                  left: '100%',
+                },
+                '& .MuiButton-endIcon': {
+                  transform: 'translateX(4px)',
+                },
+              },
+              '& .MuiButton-endIcon': {
+                transition: 'transform 0.3s ease',
               },
             })}
           >

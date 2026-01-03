@@ -30,10 +30,10 @@ export default function MarketingPage(props: { disableCustomTheme?: boolean }) {
         <Divider />
         <Testimonials />
         <Divider />
-        <Highlights />
-        <Divider />
-        <Pricing />
-        <Divider />
+        {/* <Highlights /> */}
+        {/* <Divider /> */}
+        {/* <Pricing /> */}
+        {/* <Divider /> */}
         {/* <FAQ /> */}
         {/* <Divider /> */}
         <Contact />

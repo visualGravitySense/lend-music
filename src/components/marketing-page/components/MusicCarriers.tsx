@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -6,6 +5,10 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import SecurityIcon from '@mui/icons-material/Security';
 
 const musicCarriers = [
   {
@@ -83,6 +86,8 @@ export default function MusicCarriers() {
           >
             Helikandijate Müük
           </Typography>
+          
+          {/* Motivation Enhancement - Value Proposition */}
           <Typography
             component="p"
             variant="body1"
@@ -91,10 +96,101 @@ export default function MusicCarriers() {
               fontSize: { xs: '1rem', md: '1.125rem' },
               maxWidth: '800px',
               mx: 'auto',
+              mb: 3,
+              lineHeight: 1.7,
             }}
           >
-            Klassikalise muusika CD- ja DVD-de tellimine ja hulgimüük
+            Klassikalise muusika CD- ja DVD-de tellimine ja hulgimüük. 
+            <Box component="span" sx={{ display: 'block', mt: 1, fontWeight: 600, color: 'text.primary' }}>
+              Kvaliteetsed helikandijad otse Eestist!
+            </Box>
           </Typography>
+          
+          {/* Social Proof & Trust Indicators - Motivation Enhancement */}
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: 2,
+              flexWrap: 'wrap',
+              mb: 2,
+            }}
+          >
+            <Box
+              sx={(theme) => ({
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1,
+                px: 2.5,
+                py: 1.5,
+                borderRadius: '16px',
+                background: theme.palette.mode === 'dark'
+                  ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.15), rgba(0, 229, 161, 0.05))'
+                  : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
+                border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.2)' : 'rgba(0, 168, 107, 0.2)'}`,
+              })}
+            >
+              <LocalShippingIcon
+                sx={{
+                  fontSize: '1.25rem',
+                  color: 'primary.main',
+                }}
+              />
+              <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 600 }}>
+                Tasuta saatmine
+              </Typography>
+            </Box>
+            
+            <Box
+              sx={(theme) => ({
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1,
+                px: 2.5,
+                py: 1.5,
+                borderRadius: '16px',
+                background: theme.palette.mode === 'dark'
+                  ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.15), rgba(0, 229, 161, 0.05))'
+                  : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
+                border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.2)' : 'rgba(0, 168, 107, 0.2)'}`,
+              })}
+            >
+              <SecurityIcon
+                sx={{
+                  fontSize: '1.25rem',
+                  color: 'primary.main',
+                }}
+              />
+              <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 600 }}>
+                Turvaline ost
+              </Typography>
+            </Box>
+            
+            <Box
+              sx={(theme) => ({
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1,
+                px: 2.5,
+                py: 1.5,
+                borderRadius: '16px',
+                background: theme.palette.mode === 'dark'
+                  ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.15), rgba(0, 229, 161, 0.05))'
+                  : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
+                border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.2)' : 'rgba(0, 168, 107, 0.2)'}`,
+              })}
+            >
+              <CheckCircleRoundedIcon
+                sx={{
+                  fontSize: '1.25rem',
+                  color: 'primary.main',
+                }}
+              />
+              <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 600 }}>
+                Originaal tooted
+              </Typography>
+            </Box>
+          </Box>
         </Box>
 
         {/* Product Cards */}
@@ -106,13 +202,12 @@ export default function MusicCarriers() {
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
-                  borderRadius: 3,
+                  borderRadius: 4,
                   overflow: 'hidden',
                   bgcolor: 'background.paper',
                   border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.2)' : 'rgba(0, 168, 107, 0.2)'}`,
-                  transition: 'all 0.3s ease',
+                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                   position: 'relative',
-                  overflow: 'hidden',
                   ...theme.applyStyles('dark', {
                     bgcolor: '#1C2630',
                   }),
@@ -130,13 +225,19 @@ export default function MusicCarriers() {
                     transition: 'opacity 0.3s ease',
                   },
                   '&:hover': {
-                    transform: 'translateY(-8px)',
+                    transform: 'translateY(-12px) scale(1.02)',
                     borderColor: theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.4)' : 'rgba(0, 168, 107, 0.4)',
                     boxShadow: theme.palette.mode === 'dark'
-                      ? '0 10px 30px rgba(0, 229, 161, 0.2)'
-                      : '0 10px 30px rgba(0, 168, 107, 0.15)',
+                      ? '0 20px 40px rgba(0, 229, 161, 0.25)'
+                      : '0 20px 40px rgba(0, 168, 107, 0.2)',
                     '&::before': {
                       opacity: 1,
+                    },
+                    '& .product-overlay': {
+                      opacity: 1,
+                    },
+                    '& img': {
+                      transform: 'scale(1.1)',
                     },
                   },
                 })}
@@ -161,6 +262,7 @@ export default function MusicCarriers() {
                         height: '100%',
                         objectFit: 'cover',
                         display: 'block',
+                        transition: 'transform 0.4s ease',
                       }}
                       onError={(e) => {
                         // Fallback if image fails to load
@@ -169,6 +271,38 @@ export default function MusicCarriers() {
                       }}
                     />
                   ) : null}
+                  
+                  {/* Prompt Enhancement - Quick View Overlay */}
+                  <Box
+                    className="product-overlay"
+                    sx={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      bgcolor: 'rgba(0, 0, 0, 0.5)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      opacity: 0,
+                      transition: 'opacity 0.3s ease',
+                      pointerEvents: 'none',
+                    }}
+                  >
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: 'white',
+                        fontWeight: 700,
+                        textTransform: 'uppercase',
+                        letterSpacing: 1,
+                        fontSize: '0.875rem',
+                      }}
+                    >
+                      Vaata lähemalt
+                    </Typography>
+                  </Box>
                 </Box>
 
                 {/* Content Section */}
@@ -237,25 +371,31 @@ export default function MusicCarriers() {
                     <Button
                       variant="contained"
                       size="small"
+                      startIcon={<ShoppingCartIcon />}
                       sx={(theme) => ({
-                        bgcolor: 'primary.main',
+                        background: theme.palette.mode === 'dark'
+                          ? 'linear-gradient(135deg, #00E5A1, #00D184)'
+                          : 'linear-gradient(135deg, #00a86b, #00d184)',
                         color: theme.palette.mode === 'dark' ? '#0D131B' : 'white',
-                        px: 3,
-                        py: 0.75,
+                        px: 3.5,
+                        py: 1,
                         borderRadius: '20px',
-                        fontWeight: 600,
+                        fontWeight: 700,
                         fontSize: '0.875rem',
                         textTransform: 'none',
-                        minWidth: '80px',
-                        ...theme.applyStyles('dark', {
-                          bgcolor: '#00E5A1',
-                        }),
+                        minWidth: '100px',
+                        boxShadow: theme.palette.mode === 'dark'
+                          ? '0 4px 12px rgba(0, 229, 161, 0.3)'
+                          : '0 4px 12px rgba(0, 168, 107, 0.3)',
+                        transition: 'all 0.3s ease',
                         '&:hover': {
-                          bgcolor: theme.palette.mode === 'dark' ? '#00D184' : 'primary.dark',
-                          transform: 'translateY(-2px)',
+                          background: theme.palette.mode === 'dark'
+                            ? 'linear-gradient(135deg, #00D184, #00C175)'
+                            : 'linear-gradient(135deg, #00d184, #00b870)',
+                          transform: 'translateY(-3px) scale(1.05)',
                           boxShadow: theme.palette.mode === 'dark'
-                            ? '0 4px 12px rgba(0, 229, 161, 0.3)'
-                            : '0 4px 12px rgba(0, 168, 107, 0.3)',
+                            ? '0 6px 16px rgba(0, 229, 161, 0.4)'
+                            : '0 6px 16px rgba(0, 168, 107, 0.4)',
                         },
                       })}
                     >
