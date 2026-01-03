@@ -5,6 +5,8 @@ import AppTheme from '../components/shared-theme/AppTheme.tsx';
 import AppAppBar from '../components/marketing-page/components/AppAppBar.tsx';
 import Hero from '../components/marketing-page/components/Hero.tsx';
 import LogoCollection from '../components/marketing-page/components/LogoCollection.tsx';
+import OurArtists from '../components/marketing-page/components/OurArtists.tsx';
+import MusicCarriers from '../components/marketing-page/components/MusicCarriers.tsx';
 import Highlights from '../components/marketing-page/components/Highlights.tsx';
 import Pricing from '../components/marketing-page/components/Pricing.tsx';
 import Features from '../components/marketing-page/components/Features.tsx';
@@ -21,6 +23,8 @@ export default function MarketingPage(props: { disableCustomTheme?: boolean }) {
       <Hero />
       <div>
         <LogoCollection />
+        <OurArtists />
+        <MusicCarriers />
         {/* <Features /> */}
         <Divider />
         <Testimonials />

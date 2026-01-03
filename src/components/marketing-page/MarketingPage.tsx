@@ -5,6 +5,7 @@ import AppTheme from '../shared-theme/AppTheme';
 import AppAppBar from './components/AppAppBar';
 import Hero from './components/Hero';
 import LogoCollection from './components/LogoCollection';
+import OurArtists from './components/OurArtists';
 import Highlights from './components/Highlights';
 import Pricing from './components/Pricing';
 import Features from './components/Features';
@@ -21,6 +22,7 @@ export default function MarketingPage(props: { disableCustomTheme?: boolean }) {
       <Hero />
       <div>
         <LogoCollection />
+        <OurArtists />
         {/* <Features /> */}
         <Divider />
         {/* <Testimonials /> */}
