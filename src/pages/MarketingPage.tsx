@@ -1,4 +1,3 @@
-import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import AppTheme from '../components/shared-theme/AppTheme.tsx';
@@ -7,11 +6,7 @@ import Hero from '../components/marketing-page/components/Hero.tsx';
 import LogoCollection from '../components/marketing-page/components/LogoCollection.tsx';
 import OurArtists from '../components/marketing-page/components/OurArtists.tsx';
 import MusicCarriers from '../components/marketing-page/components/MusicCarriers.tsx';
-import Highlights from '../components/marketing-page/components/Highlights.tsx';
-import Pricing from '../components/marketing-page/components/Pricing.tsx';
-import Features from '../components/marketing-page/components/Features.tsx';
 import Testimonials from '../components/marketing-page/components/Testimonials.tsx';
-import FAQ from '../components/marketing-page/components/FAQ.tsx';
 import Contact from '../components/marketing-page/components/Contact.tsx';
 import Footer from '../components/marketing-page/components/Footer.tsx';
 
