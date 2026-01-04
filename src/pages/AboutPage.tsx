@@ -509,7 +509,6 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                             window.scrollTo({ top: 0, behavior: 'instant' });
                           }, 100);
                         } else {
-                          onNavigate?.('home');
                           setTimeout(() => {
                             const artistsSection = document.getElementById('our-artists');
                             artistsSection?.scrollIntoView({ behavior: 'smooth' });
@@ -891,7 +890,6 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                   component="img"
                   src={getImagePath('about-story-image.png')}
                   alt="LendMuusik OÜ ajalugu ja meeskond - 40+ aastat kogemust artistide vahendamisel"
-                  alt="Lend Music story"
                   sx={{
                     position: 'relative',
                     width: '100%',

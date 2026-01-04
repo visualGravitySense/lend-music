@@ -52,6 +52,9 @@ const musicProducts = [
     genre: 'Klassikaline',
     price: 10,
     image: 'album-part-schnittke.png',
+    isNew: false,
+    isPopular: true,
+    hasDiscount: false,
   },
   {
     id: 2,
@@ -65,6 +68,9 @@ const musicProducts = [
     genre: 'Klassikaline',
     price: 16,
     image: 'album-estonian-cello.png',
+    isNew: false,
+    isPopular: false,
+    hasDiscount: false,
   },
   {
     id: 3,
@@ -78,6 +84,9 @@ const musicProducts = [
     genre: 'Klassikaline',
     price: 18,
     image: '/album-neeme-jarvi.png',
+    isNew: true,
+    isPopular: true,
+    hasDiscount: false,
   },
   {
     id: 4,
@@ -91,6 +100,9 @@ const musicProducts = [
     genre: 'Klassikaline',
     price: 17,
     image: 'cd-tchaikovsky-nutcracker.png',
+    isNew: false,
+    isPopular: true,
+    hasDiscount: false,
   },
   {
     id: 5,
@@ -104,6 +116,9 @@ const musicProducts = [
     genre: 'Eesti Muusika',
     price: 16,
     image: '/cd-anna-liisa-eller-strings-attached.png',
+    isNew: true,
+    isPopular: false,
+    hasDiscount: false,
   },
   {
     id: 7,
@@ -117,6 +132,9 @@ const musicProducts = [
     genre: 'Klassikaline',
     price: 18.5,
     image: 'cd-arvo-part-essential-choral.png',
+    isNew: true,
+    isPopular: true,
+    hasDiscount: false,
   },
   // {
   //   id: 6,
