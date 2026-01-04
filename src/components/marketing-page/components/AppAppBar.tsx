@@ -37,7 +37,12 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   },
 }));
 
-export default function AppAppBar() {
+interface AppAppBarProps {
+  onNavigate?: (page: 'home' | 'about') => void;
+  currentPage?: 'home' | 'about';
+}
+
+export default function AppAppBar({ onNavigate, currentPage = 'home' }: AppAppBarProps) {
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
@@ -58,41 +63,76 @@ export default function AppAppBar() {
       <Container maxWidth="lg">
         <StyledToolbar variant="dense" disableGutters>
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
-            <Sitemark />
+            <Sitemark onNavigate={onNavigate} />
             <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 0.5 }}>
-              {['Features', 'Testimonials', 'Highlights', 'Pricing', 'FAQ', 'Blog'].map((item) => (
-                <Button
-                  key={item}
-                  variant="text"
-                  size="small"
-                  sx={{
-                    color: 'text.secondary',
-                    fontWeight: 500,
-                    position: 'relative',
-                    transition: 'all 0.3s ease',
+              <Button
+                variant="text"
+                size="small"
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'instant' })
+                  onNavigate?.('home')
+                }}
+                sx={{
+                  color: currentPage === 'home' ? 'primary.light' : 'text.secondary',
+                  fontWeight: 500,
+                  position: 'relative',
+                  transition: 'all 0.3s ease',
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    bottom: -2,
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    width: currentPage === 'home' ? '80%' : 0,
+                    height: 2,
+                    background: 'primary.main',
+                    transition: 'width 0.3s ease',
+                  },
+                  '&:hover': {
+                    color: 'primary.light',
+                    backgroundColor: 'rgba(0, 168, 107, 0.08)',
                     '&::after': {
-                      content: '""',
-                      position: 'absolute',
-                      bottom: -2,
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      width: 0,
-                      height: 2,
-                      background: 'primary.main',
-                      transition: 'width 0.3s ease',
+                      width: '80%',
                     },
-                    '&:hover': {
-                      color: 'primary.light',
-                      backgroundColor: 'rgba(0, 168, 107, 0.08)',
-                      '&::after': {
-                        width: '80%',
-                      },
+                  },
+                }}
+              >
+                Avaleht
+              </Button>
+              <Button
+                variant="text"
+                size="small"
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'instant' })
+                  onNavigate?.('about')
+                }}
+                sx={{
+                  color: currentPage === 'about' ? 'primary.light' : 'text.secondary',
+                  fontWeight: 500,
+                  position: 'relative',
+                  transition: 'all 0.3s ease',
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    bottom: -2,
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    width: currentPage === 'about' ? '80%' : 0,
+                    height: 2,
+                    background: 'primary.main',
+                    transition: 'width 0.3s ease',
+                  },
+                  '&:hover': {
+                    color: 'primary.light',
+                    backgroundColor: 'rgba(0, 168, 107, 0.08)',
+                    '&::after': {
+                      width: '80%',
                     },
-                  }}
-                >
-                  {item}
-                </Button>
-              ))}
+                  },
+                }}
+              >
+                Firmast
+              </Button>
             </Box>
           </Box>
           <Box

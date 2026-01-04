@@ -18,10 +18,19 @@ const LogoImage = styled('img')({
   objectFit: 'contain',
 });
 
-export default function SitemarkIcon() {
+interface SitemarkIconProps {
+  onNavigate?: (page: 'home' | 'about') => void;
+}
+
+export default function SitemarkIcon({ onNavigate }: SitemarkIconProps) {
   return (
     <Link
       href="#"
+      onClick={(e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        onNavigate?.('home');
+      }}
       sx={{ 
         display: 'flex',
         flexDirection: 'row',
