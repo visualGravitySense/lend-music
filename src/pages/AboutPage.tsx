@@ -22,10 +22,19 @@ import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import StarRoundedIcon from '@mui/icons-material/StarRounded';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import Chip from '@mui/material/Chip';
+import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import { useEffect, useRef, useState } from 'react';
 import AppAppBar from '../components/marketing-page/components/AppAppBar.tsx';
 import Footer from '../components/marketing-page/components/Footer.tsx';
+import SEO from '../components/SEO.tsx';
+import { getImagePath } from '../utils/imagePath';
 
 const stats = [
   { number: 30, label: 'Aastat Kogemust', suffix: '+' },
@@ -96,13 +105,15 @@ const values = [
 ];
 
 interface AboutPageProps {
-  onNavigate?: (page: 'home' | 'about') => void;
+  onNavigate?: (page: 'home' | 'about' | 'music-carriers' | 'artists') => void;
 }
 
 export default function AboutPage({ onNavigate }: AboutPageProps) {
   const theme = useTheme();
   const [animatedStats, setAnimatedStats] = useState<Record<number, boolean>>({});
   const statsRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -131,8 +142,24 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
     };
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+    // Initial scroll position
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <AppTheme>
+      <SEO
+        title="Firmast | LendMuusik OÜ - 40+ Aastat Kogemust Artistide Vahendamisel"
+        description="LendMuusik OÜ on Eesti juhtiv artistide agentuur, mis on tegutsenud üle 40 aasta. Tutvuge meie ajalooga, meeskonna ja teenustega."
+        keywords="LendMuusik ajalugu, artistide agentuur Eestis, ürituste korraldamine, meeskond, teenused, kontakt"
+        url="https://lendmusic.ee/about"
+      />
       <CssBaseline enableColorScheme />
       <AppAppBar onNavigate={onNavigate} currentPage="about" />
       <Box
@@ -157,10 +184,10 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
             width: '100%',
             backgroundRepeat: 'no-repeat',
             backgroundImage:
-              'radial-gradient(ellipse 80% 50% at 50% -20%, hsl(210, 100%, 90%), transparent)',
+              'radial-gradient(ellipse 120% 80% at 50% -10%, hsl(210, 100%, 90%), transparent)',
             ...theme.applyStyles('dark', {
               backgroundImage:
-                'radial-gradient(ellipse 80% 50% at 50% -20%, hsl(210, 100%, 16%), transparent)',
+                'radial-gradient(ellipse 120% 80% at 50% -10%, hsl(210, 100%, 16%), transparent)',
             }),
           })}
         >
@@ -190,7 +217,65 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                     Firmast
                   </Typography>
                   
-                  {/* Value Proposition - Motivation Enhancement */}
+                  {/* CUE - Visual Cue Enhancement */}
+                  {scrollPosition < 100 && (
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 1,
+                        mb: 2,
+                        justifyContent: { xs: 'center', md: 'flex-start' },
+                        animation: 'pulse 2s ease-in-out infinite',
+                        '@keyframes pulse': {
+                          '0%, 100%': {
+                            opacity: 1,
+                          },
+                          '50%': {
+                            opacity: 0.7,
+                          },
+                        },
+                      }}
+                    >
+                      <NotificationsActiveIcon 
+                        sx={{ 
+                          color: 'primary.main',
+                          fontSize: '1.5rem',
+                          animation: 'bounce 2s ease-in-out infinite',
+                          '@keyframes bounce': {
+                            '0%, 100%': {
+                              transform: 'translateY(0)',
+                            },
+                            '50%': {
+                              transform: 'translateY(-5px)',
+                            },
+                          },
+                        }} 
+                      />
+                      <Chip
+                        label="40+ aastat kogemust!"
+                        color="primary"
+                        icon={<StarRoundedIcon />}
+                        sx={{
+                          fontWeight: 700,
+                          fontSize: '0.875rem',
+                          animation: 'slideIn 0.5s ease-out',
+                          '@keyframes slideIn': {
+                            from: {
+                              transform: 'translateX(-20px)',
+                              opacity: 0,
+                            },
+                            to: {
+                              transform: 'translateX(0)',
+                              opacity: 1,
+                            },
+                          },
+                        }}
+                      />
+                    </Box>
+                  )}
+                  
+                  {/* Value Proposition - REACTION Enhancement */}
                   <Typography
                     variant="h6"
                     sx={(theme) => ({
@@ -266,7 +351,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                       }}
                     >
                       <Typography variant="h6" sx={{ color: 'primary.main', fontWeight: 700 }}>
-                        30+
+                        40+
                       </Typography>
                       <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                         Aastat
@@ -365,13 +450,17 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                       variant="contained"
                       color="primary"
                       size="large"
-                      onClick={() => {
-                        onNavigate?.('home');
-                        setTimeout(() => {
-                          const contactSection = document.getElementById('contact');
-                          contactSection?.scrollIntoView({ behavior: 'smooth' });
-                        }, 100);
-                      }}
+                  onClick={() => {
+                    onNavigate?.('home');
+                    setTimeout(() => {
+                      const contactSection = document.getElementById('contact');
+                      contactSection?.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                    setShowSuccessMessage(true);
+                    setTimeout(() => {
+                      setShowSuccessMessage(false);
+                    }, 5000);
+                  }}
                       sx={{
                         padding: '1rem 2.5rem',
                         borderRadius: '50px',
@@ -414,11 +503,18 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                       color="primary"
                       size="large"
                       onClick={() => {
-                        onNavigate?.('home');
-                        setTimeout(() => {
-                          const artistsSection = document.getElementById('our-artists');
-                          artistsSection?.scrollIntoView({ behavior: 'smooth' });
-                        }, 100);
+                        if (onNavigate) {
+                          onNavigate('artists');
+                          setTimeout(() => {
+                            window.scrollTo({ top: 0, behavior: 'instant' });
+                          }, 100);
+                        } else {
+                          onNavigate?.('home');
+                          setTimeout(() => {
+                            const artistsSection = document.getElementById('our-artists');
+                            artistsSection?.scrollIntoView({ behavior: 'smooth' });
+                          }, 100);
+                        }
                       }}
                       sx={{
                         padding: '1rem 2.5rem',
@@ -452,7 +548,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                 >
                   <Box
                     component="img"
-                    src="/karavan-live-2.jpg"
+                    src={getImagePath('karavan-live-2.jpg')}
                     alt="Live music performance"
                     sx={{
                       width: '100%',
@@ -563,7 +659,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                     >
                       <StarRoundedIcon sx={{ color: 'primary.main', fontSize: '1.25rem' }} />
                       <Typography variant="body2" sx={{ color: 'primary.main', fontWeight: 700 }}>
-                        30+ Aastat
+                        40+ Aastat
                       </Typography>
                     </Box>
                     <Box
@@ -739,13 +835,17 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                     variant="contained"
                     color="primary"
                     size="large"
-                    onClick={() => {
-                      onNavigate?.('home');
-                      setTimeout(() => {
-                        const contactSection = document.getElementById('contact');
-                        contactSection?.scrollIntoView({ behavior: 'smooth' });
-                      }, 100);
-                    }}
+                  onClick={() => {
+                    onNavigate?.('home');
+                    setTimeout(() => {
+                      const contactSection = document.getElementById('contact');
+                      contactSection?.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                    setShowSuccessMessage(true);
+                    setTimeout(() => {
+                      setShowSuccessMessage(false);
+                    }, 5000);
+                  }}
                     sx={{
                       padding: '1rem 2.5rem',
                       borderRadius: '50px',
@@ -789,7 +889,8 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
               <Grid size={{ xs: 12, md: 6 }}>
                 <Box
                   component="img"
-                  src="/about-story-image.png"
+                  src={getImagePath('about-story-image.png')}
+                  alt="LendMuusik OÜ ajalugu ja meeskond - 40+ aastat kogemust artistide vahendamisel"
                   alt="Lend Music story"
                   sx={{
                     position: 'relative',
@@ -916,6 +1017,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
 
         {/* Services Section */}
         <Box
+          id="services"
           sx={{
             py: { xs: 6, md: 8 },
             px: { xs: 2, sm: 3 },
@@ -973,7 +1075,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
                   <CheckCircleRoundedIcon sx={{ color: 'primary.main', fontSize: '1.5rem' }} />
                   <Typography variant="body2" sx={{ color: 'text.secondary', fontWeight: 500 }}>
-                    30+ Aastat Kogemust
+                    40+ Aastat Kogemust
                   </Typography>
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
@@ -1092,13 +1194,17 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                       variant="outlined"
                       color="primary"
                       size="medium"
-                      onClick={() => {
-                        onNavigate?.('home');
-                        setTimeout(() => {
-                          const contactSection = document.getElementById('contact');
-                          contactSection?.scrollIntoView({ behavior: 'smooth' });
-                        }, 100);
-                      }}
+                  onClick={() => {
+                    onNavigate?.('home');
+                    setTimeout(() => {
+                      const contactSection = document.getElementById('contact');
+                      contactSection?.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                    setShowSuccessMessage(true);
+                    setTimeout(() => {
+                      setShowSuccessMessage(false);
+                    }, 5000);
+                  }}
                       sx={{
                         alignSelf: 'flex-start',
                         position: 'relative',
@@ -1326,13 +1432,17 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                         variant="text"
                         color="primary"
                         size="small"
-                        onClick={() => {
-                          onNavigate?.('home');
-                          setTimeout(() => {
-                            const contactSection = document.getElementById('contact');
-                            contactSection?.scrollIntoView({ behavior: 'smooth' });
-                          }, 100);
-                        }}
+                  onClick={() => {
+                    onNavigate?.('home');
+                    setTimeout(() => {
+                      const contactSection = document.getElementById('contact');
+                      contactSection?.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                    setShowSuccessMessage(true);
+                    setTimeout(() => {
+                      setShowSuccessMessage(false);
+                    }, 5000);
+                  }}
                         sx={{
                           px: 2,
                           py: 0.5,
@@ -1437,7 +1547,193 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
             </Button>
           </Container>
         </Box> */}
-        <Footer />
+
+        {/* EVALUATION Section - Benefits Summary */}
+        <Box
+          sx={{
+            py: { xs: 6, md: 10 },
+            px: { xs: 2, sm: 3 },
+            bgcolor: 'background.default',
+            ...theme.applyStyles('dark', {
+              bgcolor: '#0a1628',
+            }),
+          }}
+        >
+          <Container maxWidth="lg">
+            <Typography
+              variant="h2"
+              sx={{
+                fontSize: { xs: '2rem', md: '3rem' },
+                fontWeight: 800,
+                textAlign: 'center',
+                mb: 6,
+                color: 'text.primary',
+              }}
+            >
+              Meie Eelised
+            </Typography>
+            <Grid container spacing={4}>
+              <Grid size={{ xs: 12, md: 4 }}>
+                <Card
+                  sx={(theme) => ({
+                    p: 4,
+                    height: '100%',
+                    textAlign: 'center',
+                    background: theme.palette.mode === 'dark'
+                      ? 'linear-gradient(135deg, rgba(0, 209, 132, 0.1), rgba(0, 168, 107, 0.05))'
+                      : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
+                    border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 209, 132, 0.3)' : 'rgba(0, 168, 107, 0.3)'}`,
+                    borderRadius: 3,
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      transform: 'translateY(-5px)',
+                      boxShadow: theme.palette.mode === 'dark'
+                        ? '0 12px 40px rgba(0, 209, 132, 0.2)'
+                        : '0 12px 40px rgba(0, 168, 107, 0.2)',
+                    },
+                  })}
+                >
+                  <ThumbUpIcon sx={{ fontSize: '3.5rem', color: 'primary.main', mb: 2 }} />
+                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>
+                    Usaldusväärsus
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8 }}>
+                    40+ aastat kogemust garanteerib professionaalse teenuse ja kvaliteetsed tulemused.
+                  </Typography>
+                </Card>
+              </Grid>
+              <Grid size={{ xs: 12, md: 4 }}>
+                <Card
+                  sx={(theme) => ({
+                    p: 4,
+                    height: '100%',
+                    textAlign: 'center',
+                    background: theme.palette.mode === 'dark'
+                      ? 'linear-gradient(135deg, rgba(0, 209, 132, 0.1), rgba(0, 168, 107, 0.05))'
+                      : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
+                    border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 209, 132, 0.3)' : 'rgba(0, 168, 107, 0.3)'}`,
+                    borderRadius: 3,
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      transform: 'translateY(-5px)',
+                      boxShadow: theme.palette.mode === 'dark'
+                        ? '0 12px 40px rgba(0, 209, 132, 0.2)'
+                        : '0 12px 40px rgba(0, 168, 107, 0.2)',
+                    },
+                  })}
+                >
+                  <CompareArrowsIcon sx={{ fontSize: '3.5rem', color: 'primary.main', mb: 2 }} />
+                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>
+                    Lai Valik
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8 }}>
+                    Üle 200 artisti erinevatest žanritest. Leiame täpselt õige lahenduse teie ürituse jaoks.
+                  </Typography>
+                </Card>
+              </Grid>
+              <Grid size={{ xs: 12, md: 4 }}>
+                <Card
+                  sx={(theme) => ({
+                    p: 4,
+                    height: '100%',
+                    textAlign: 'center',
+                    background: theme.palette.mode === 'dark'
+                      ? 'linear-gradient(135deg, rgba(0, 209, 132, 0.1), rgba(0, 168, 107, 0.05))'
+                      : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
+                    border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 209, 132, 0.3)' : 'rgba(0, 168, 107, 0.3)'}`,
+                    borderRadius: 3,
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      transform: 'translateY(-5px)',
+                      boxShadow: theme.palette.mode === 'dark'
+                        ? '0 12px 40px rgba(0, 209, 132, 0.2)'
+                        : '0 12px 40px rgba(0, 168, 107, 0.2)',
+                    },
+                  })}
+                >
+                  <AccessTimeIcon sx={{ fontSize: '3.5rem', color: 'primary.main', mb: 2 }} />
+                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>
+                    Kiire Reageerimine
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8 }}>
+                    Reageerime teie päringutele 24 tunni jooksul. Täielik toetus ürituse planeerimisel.
+                  </Typography>
+                </Card>
+              </Grid>
+            </Grid>
+          </Container>
+        </Box>
+
+        {/* TIMING - Contextual Cue */}
+        {scrollPosition > 400 && scrollPosition < 1200 && (
+          <Box
+            sx={{
+              position: 'fixed',
+              bottom: 24,
+              left: 24,
+              zIndex: 1000,
+              animation: 'fadeIn 0.3s ease-out',
+              '@keyframes fadeIn': {
+                from: { opacity: 0 },
+                to: { opacity: 1 },
+              },
+            }}
+          >
+            <Chip
+              label="Vaata meie teenuseid"
+              color="primary"
+              onClick={() => {
+                const servicesSection = document.getElementById('services');
+                servicesSection?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              sx={{
+                fontWeight: 600,
+                cursor: 'pointer',
+                boxShadow: '0 4px 12px rgba(0, 168, 107, 0.3)',
+                '&:hover': {
+                  boxShadow: '0 6px 16px rgba(0, 168, 107, 0.4)',
+                },
+              }}
+            />
+          </Box>
+        )}
+
+        <Footer onNavigate={onNavigate} />
+
+        {/* EXECUTION - Success Message */}
+        {showSuccessMessage && (
+          <Box
+            sx={{
+              position: 'fixed',
+              bottom: 24,
+              right: 24,
+              zIndex: 9999,
+              animation: 'slideUp 0.3s ease-out',
+              '@keyframes slideUp': {
+                from: {
+                  transform: 'translateY(100px)',
+                  opacity: 0,
+                },
+                to: {
+                  transform: 'translateY(0)',
+                  opacity: 1,
+                },
+              },
+            }}
+          >
+            <Alert
+              severity="success"
+              icon={<CheckCircleIcon />}
+              onClose={() => setShowSuccessMessage(false)}
+              sx={{
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2)',
+                minWidth: 300,
+              }}
+            >
+              Päring edukalt saadetud! Võtame teiega ühendust varsti.
+            </Alert>
+          </Box>
+        )}
       </Box>
     </AppTheme>
   );

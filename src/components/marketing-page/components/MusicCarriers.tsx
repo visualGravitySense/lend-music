@@ -9,25 +9,26 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import SecurityIcon from '@mui/icons-material/Security';
+import { getImagePath } from '../../../utils/imagePath';
 
 const musicCarriers = [
   {
     title: 'Arvo Pärt / Alfred Schnittke',
     description: ['Choral Works', 'Estonian Philharmonic Chamber Choir'],
     price: '10 EUR',
-    image: '/album-part-schnittke.png',
+    image: 'album-part-schnittke.png',
   },
   {
     title: 'THE ESTONIAN CELLO',
     description: ['Eller, Känd, Oja, Reimann, Tubina', 'Valle-Rasmus Roots - cello'],
     price: '16 EUR',
-    image: '/album-estonian-cello.png',
+    image: 'album-estonian-cello.png',
   },
   {
     title: 'Neeme Järvi',
     description: ['In Concert', 'Mozart, Wagner, Brahms, Reger'],
     price: '18 EUR',
-    image: '/album-neeme-jarvi.png',
+    image: 'album-neeme-jarvi.png',
   },
 ];
 
@@ -255,8 +256,8 @@ export default function MusicCarriers() {
                   {product.image ? (
                     <Box
                       component="img"
-                      src={product.image}
-                      alt={product.title}
+                      src={getImagePath(product.image)}
+                      alt={`${product.artist} - ${product.title} | Klassikaline muusika CD/DVD müük`}
                       sx={{
                         width: '100%',
                         height: '100%',

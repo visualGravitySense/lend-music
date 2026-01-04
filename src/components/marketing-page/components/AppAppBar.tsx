@@ -38,8 +38,8 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 }));
 
 interface AppAppBarProps {
-  onNavigate?: (page: 'home' | 'about') => void;
-  currentPage?: 'home' | 'about';
+  onNavigate?: (page: 'home' | 'about' | 'music-carriers' | 'artists') => void;
+  currentPage?: 'home' | 'about' | 'music-carriers' | 'artists';
 }
 
 export default function AppAppBar({ onNavigate, currentPage = 'home' }: AppAppBarProps) {
@@ -98,6 +98,74 @@ export default function AppAppBar({ onNavigate, currentPage = 'home' }: AppAppBa
                 }}
               >
                 Avaleht
+              </Button>
+              <Button
+                variant="text"
+                size="small"
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'instant' })
+                  onNavigate?.('artists')
+                }}
+                sx={{
+                  color: currentPage === 'artists' ? 'primary.light' : 'text.secondary',
+                  fontWeight: 500,
+                  position: 'relative',
+                  transition: 'all 0.3s ease',
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    bottom: -2,
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    width: currentPage === 'artists' ? '80%' : 0,
+                    height: 2,
+                    background: 'primary.main',
+                    transition: 'width 0.3s ease',
+                  },
+                  '&:hover': {
+                    color: 'primary.light',
+                    backgroundColor: 'rgba(0, 168, 107, 0.08)',
+                    '&::after': {
+                      width: '80%',
+                    },
+                  },
+                }}
+              >
+                Artistid
+              </Button>
+              <Button
+                variant="text"
+                size="small"
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'instant' })
+                  onNavigate?.('music-carriers')
+                }}
+                sx={{
+                  color: currentPage === 'music-carriers' ? 'primary.light' : 'text.secondary',
+                  fontWeight: 500,
+                  position: 'relative',
+                  transition: 'all 0.3s ease',
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    bottom: -2,
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    width: currentPage === 'music-carriers' ? '80%' : 0,
+                    height: 2,
+                    background: 'primary.main',
+                    transition: 'width 0.3s ease',
+                  },
+                  '&:hover': {
+                    color: 'primary.light',
+                    backgroundColor: 'rgba(0, 168, 107, 0.08)',
+                    '&::after': {
+                      width: '80%',
+                    },
+                  },
+                }}
+              >
+                Helikandijate Müük
               </Button>
               <Button
                 variant="text"
@@ -206,12 +274,42 @@ export default function AppAppBar({ onNavigate, currentPage = 'home' }: AppAppBa
                   </IconButton>
                 </Box>
 
-                <MenuItem>Features</MenuItem>
-                <MenuItem>Testimonials</MenuItem>
-                <MenuItem>Highlights</MenuItem>
-                <MenuItem>Pricing</MenuItem>
-                <MenuItem>FAQ</MenuItem>
-                <MenuItem>Blog</MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    window.scrollTo({ top: 0, behavior: 'instant' });
+                    onNavigate?.('home');
+                    toggleDrawer(false)();
+                  }}
+                >
+                  Avaleht
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    window.scrollTo({ top: 0, behavior: 'instant' });
+                    onNavigate?.('artists');
+                    toggleDrawer(false)();
+                  }}
+                >
+                  Artistid
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    window.scrollTo({ top: 0, behavior: 'instant' });
+                    onNavigate?.('music-carriers');
+                    toggleDrawer(false)();
+                  }}
+                >
+                  Helikandijate Müük
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    window.scrollTo({ top: 0, behavior: 'instant' });
+                    onNavigate?.('about');
+                    toggleDrawer(false)();
+                  }}
+                >
+                  Firmast
+                </MenuItem>
                 <Divider sx={{ my: 3 }} />
                 <MenuItem>
                   <Button color="primary" variant="contained" fullWidth>

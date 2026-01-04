@@ -4,6 +4,8 @@ import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
+import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { getImagePath } from '../../../utils/imagePath';
 
 const HeroImage = styled('img')(({ theme }) => ({
@@ -14,11 +16,11 @@ const HeroImage = styled('img')(({ theme }) => ({
   objectFit: 'contain',
 }));
 
-interface HeroProps {
+interface ArtistsHeroProps {
   onNavigate?: (page: 'home' | 'about' | 'music-carriers' | 'artists') => void;
 }
 
-export default function Hero({ onNavigate }: HeroProps) {
+export default function ArtistsHero({ onNavigate }: ArtistsHeroProps) {
   return (
     <Box
       id="hero"
@@ -67,20 +69,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                 lineHeight: 1.2,
               }}
             >
-              Artistide&nbsp;
-              <Typography
-                component="span"
-                variant="h1"
-                sx={(theme) => ({
-                  fontSize: 'inherit',
-                  color: 'primary.main',
-                  ...theme.applyStyles('dark', {
-                    color: 'primary.light',
-                  }),
-                })}
-              >
-                Agentuur
-              </Typography>
+              Artistid
             </Typography>
             <Typography
               sx={{
@@ -90,7 +79,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                 mb: 1,
               }}
             >
-              Artistide tellimine, ürituste korraldamine, helitehnika rent, valgustehnika rent.
+              Avastage meie mitmekülgset artiste valikut - tantsumuusikast klassikalise muusikani. Igale üritusele sobiv meelelahutus.
             </Typography>
 
             {/* Social Proof - Motivation Enhancement */}
@@ -105,18 +94,18 @@ export default function Hero({ onNavigate }: HeroProps) {
             >
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
                 <Typography variant="h4" sx={{ color: 'primary.main', fontWeight: 700 }}>
-                  500+
+                  20+
                 </Typography>
                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                  Üritust
+                  Artistid
                 </Typography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
                 <Typography variant="h4" sx={{ color: 'primary.main', fontWeight: 700 }}>
-                  200+
+                  500+
                 </Typography>
                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                  Artistid
+                  Üritust
                 </Typography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
@@ -140,10 +129,10 @@ export default function Hero({ onNavigate }: HeroProps) {
               }}
             >
               {[
-                'Teenused Artistidega',
-                'Nõustamine Artistidega',
-                'Peokavade Koostamine',
-                'Artisti Esindamine',
+                'Tantsumuusika',
+                'Salongimuusika',
+                'Klassikaline Muusika',
+                'Eriüritused',
               ].map((service, index) => (
                 <Box
                   key={index}
@@ -163,24 +152,13 @@ export default function Hero({ onNavigate }: HeroProps) {
                     },
                   }}
                 >
-                  <Box
+                  <CheckCircleRoundedIcon
                     sx={{
-                      width: 24,
-                      height: 24,
-                      background: 'white',
-                      borderRadius: '50%',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
+                      color: 'primary.main',
+                      fontSize: '1.5rem',
                       flexShrink: 0,
-                      border: '2px solid black',
-                      color: 'black',
-                      fontSize: '0.875rem',
-                      fontWeight: 700,
                     }}
-                  >
-                    ✓
-                  </Box>
+                  />
                   <Typography variant="body2" sx={{ color: 'text.primary' }}>
                     {service}
                   </Typography>
@@ -200,10 +178,8 @@ export default function Hero({ onNavigate }: HeroProps) {
                 color="primary"
                 size="large"
                 onClick={() => {
-                  const contactSection = document.getElementById('contact');
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' });
-                  }
+                  const artistsSection = document.getElementById('artists-grid');
+                  artistsSection?.scrollIntoView({ behavior: 'smooth' });
                 }}
                 sx={{
                   padding: '1.25rem 3rem',
@@ -239,19 +215,16 @@ export default function Hero({ onNavigate }: HeroProps) {
                   },
                 }}
               >
-                Saada Päring
+                Sirvi Artistid
                 <Box
                   component="span"
                   sx={{
                     ml: 1,
                     display: 'inline-block',
                     transition: 'transform 0.3s ease',
-                    '&:hover': {
-                      transform: 'translateX(5px)',
-                    },
                   }}
                 >
-                  →
+                  <ArrowForwardIcon />
                 </Box>
               </Button>
               
@@ -260,19 +233,11 @@ export default function Hero({ onNavigate }: HeroProps) {
                 variant="outlined"
                 size="large"
                 onClick={() => {
-                  if (onNavigate) {
-                    onNavigate('artists');
-                    // Scroll to top after navigation
-                    setTimeout(() => {
-                      window.scrollTo({ top: 0, behavior: 'instant' });
-                    }, 100);
-                  } else {
-                    // Fallback: scroll to section if onNavigate is not available
-                    const artistsSection = document.getElementById('ourArtists');
-                    if (artistsSection) {
-                      artistsSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }
+                  onNavigate?.('home');
+                  setTimeout(() => {
+                    const contactSection = document.getElementById('contact');
+                    contactSection?.scrollIntoView({ behavior: 'smooth' });
+                  }, 100);
                 }}
                 sx={{
                   padding: '1.25rem 3rem',
@@ -290,7 +255,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                   },
                 }}
               >
-                Vaata Artistid
+                Võta Ühendust
               </Button>
             </Stack>
 
@@ -385,11 +350,15 @@ export default function Hero({ onNavigate }: HeroProps) {
           }}
         >
           <HeroImage
-            src={getImagePath('hero-live-music.png')}
-            alt="LendMuusik OÜ - professionaalsed artistid ja muusikud üritustele Eestis"
+            src={getImagePath('noorkuu-1.jpg')}
+            alt="LendMuusik OÜ artistid - professionaalsed muusikud erinevatest žanritest"
             sx={{
               maxWidth: '100%',
               height: 'auto',
+            }}
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.style.display = 'none';
             }}
           />
         </Box>

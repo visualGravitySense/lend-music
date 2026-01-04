@@ -14,6 +14,30 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/X';
 import SitemarkIcon from './SitemarkIcon';
 
+interface FooterProps {
+  onNavigate?: (page: 'home' | 'about' | 'music-carriers' | 'artists') => void;
+}
+
+const scrollToSection = (id: string, onNavigate?: (page: 'home' | 'about' | 'music-carriers' | 'artists') => void) => {
+  // First try to find on current page
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+    return;
+  }
+  
+  // If not found, navigate to home page and then scroll
+  if (onNavigate) {
+    onNavigate('home');
+    setTimeout(() => {
+      const elementAfterNav = document.getElementById(id);
+      if (elementAfterNav) {
+        elementAfterNav.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  }
+};
+
 function Copyright() {
   return (
     <Typography variant="body2" sx={{ color: 'text.secondary', mt: 1 }}>
@@ -23,7 +47,7 @@ function Copyright() {
   );
 }
 
-export default function Footer() {
+export default function Footer({ onNavigate }: FooterProps = {}) {
   const [email, setEmail] = React.useState('');
   const [subscribed, setSubscribed] = React.useState(false);
 
@@ -232,13 +256,37 @@ export default function Footer() {
           <Typography variant="body2" sx={{ fontWeight: 700, mb: 0.5 }}>
             Ettevõte
           </Typography>
-          <Link color="text.secondary" variant="body2" href="#contact" sx={{ '&:hover': { color: 'primary.main' } }}>
+          <Link 
+            color="text.secondary" 
+            variant="body2" 
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('contact', onNavigate);
+            }}
+            sx={{ '&:hover': { color: 'primary.main' }, cursor: 'pointer' }}
+          >
             Kontakt
           </Link>
-          <Link color="text.secondary" variant="body2" href="#logoCollection" sx={{ '&:hover': { color: 'primary.main' } }}>
+          <Link 
+            color="text.secondary" 
+            variant="body2" 
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('logoCollection', onNavigate);
+            }}
+            sx={{ '&:hover': { color: 'primary.main' }, cursor: 'pointer' }}
+          >
             Partnerid
           </Link>
-          <Link color="text.secondary" variant="body2" href="#faq" sx={{ '&:hover': { color: 'primary.main' } }}>
+          <Link 
+            color="text.secondary" 
+            variant="body2" 
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('faq', onNavigate);
+            }}
+            sx={{ '&:hover': { color: 'primary.main' }, cursor: 'pointer' }}
+          >
             KKK
           </Link>
         </Box>

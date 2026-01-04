@@ -2,19 +2,20 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
+import { getImagePath } from '../../../utils/imagePath';
 
 const partnerLogos = [
   {
     name: 'Alexela',
-    src: '/Alexela_logo-1.png',
+    src: 'Alexela_logo-1.png',
   },
   {
     name: 'EK',
-    src: '/EK__logo 1.png',
+    src: 'EK__logo 1.png',
   },
   {
     name: 'Vane-Muine',
-    src: '/vane-muine-logo-1.png',
+    src: 'vane-muine-logo-1.png',
   },
 ];
 
@@ -97,8 +98,8 @@ export default function LogoCollection() {
           <Box
             key={index}
             component="img"
-            src={logo.src}
-            alt={logo.name}
+            src={getImagePath(logo.src)}
+            alt={`${logo.name} - LendMuusik OÜ partner`}
             sx={{
               width: { xs: '80px', sm: '100px', md: '120px' },
               height: { xs: '60px', sm: '80px', md: '100px' },
