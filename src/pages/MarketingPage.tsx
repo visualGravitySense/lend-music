@@ -10,12 +10,17 @@ import Testimonials from '../components/marketing-page/components/Testimonials.t
 import Contact from '../components/marketing-page/components/Contact.tsx';
 import Footer from '../components/marketing-page/components/Footer.tsx';
 
-export default function MarketingPage(props: { disableCustomTheme?: boolean }) {
+interface MarketingPageProps {
+  disableCustomTheme?: boolean;
+  onNavigate?: (page: 'home' | 'about') => void;
+}
+
+export default function MarketingPage({ disableCustomTheme, onNavigate }: MarketingPageProps) {
   return (
-    <AppTheme {...props}>
+    <AppTheme disableCustomTheme={disableCustomTheme}>
       <CssBaseline enableColorScheme />
 
-      <AppAppBar />
+      <AppAppBar onNavigate={onNavigate} currentPage="home" />
       <Hero />
       <div>
         <LogoCollection />

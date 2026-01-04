@@ -1,130 +1,179 @@
-# Marketing Website Template
+# LendMusic - Официальный сайт LendMuusik OÜ
 
-A modern, responsive marketing website template built with React, TypeScript, and Material UI.
+Современный маркетинговый веб-сайт для LendMuusik OÜ - компании, предоставляющей профессиональные музыкальные услуги и продающей классическую музыку на CD и DVD.
 
-## Overview
+## О проекте
 
-This project is a starter template for creating marketing websites, based on the [Material UI Marketing Template](https://mui.com/material-ui/getting-started/templates/). It includes:
+LendMusic - это адаптивный веб-сайт, построенный с использованием React, TypeScript и Material UI. Сайт представляет услуги компании, включая:
 
-- Responsive design with mobile-first approach
-- Dark and light mode support
-- Modern UI components from Material UI
-- TypeScript for type safety
-- Vite for fast development and building
+- **Профессиональные артисты и музыканты** для мероприятий
+- **Продажа музыкальных носителей** (CD и DVD) классической музыки
+- **Контактная информация** и форма обратной связи
+- **Отзывы клиентов** и социальные доказательства
 
-## Features
+## Основные возможности
 
-- 🎨 Customizable theme with light/dark mode
-- 📱 Fully responsive layout
-- ⚡ Fast development with Vite
-- 🔒 Type-safe with TypeScript
-- 🎯 SEO-friendly structure
-- 🎭 Modern UI components
-- 📦 Easy to customize and extend
+- 🎨 **Адаптивная тема** с поддержкой светлого и темного режимов
+- 📱 **Полностью адаптивный дизайн** для всех устройств
+- ⚡ **Быстрая разработка** с Vite
+- 🔒 **Типобезопасность** с TypeScript
+- 🎯 **SEO-оптимизация**
+- 🎭 **Современные UI компоненты** Material UI
+- 🎵 **Секции для артистов** по категориям (Танцевальная, Салонная, Классическая музыка)
+- 💿 **Каталог музыкальных носителей** с возможностью заказа
+- 📧 **Контактная форма** с валидацией
+- ⭐ **Отзывы клиентов** и социальные доказательства
 
-## Getting Started
+## Технологии
 
-### Prerequisites
+- **React 19** - UI библиотека
+- **TypeScript** - типизированный JavaScript
+- **Material UI v7** - компонентная библиотека
+- **Vite** - инструмент сборки
+- **Emotion** - CSS-in-JS решение
 
-- Node.js (v14 or later)
-- npm or yarn
+## Начало работы
 
-### Installation
+### Требования
 
-1. Clone the repository:
+- Node.js (v20 или выше)
+- npm или yarn
+
+### Установка
+
+1. Клонируйте репозиторий:
 ```bash
 git clone [your-repo-url]
+cd lend-music
 ```
 
-2. Install dependencies:
+2. Установите зависимости:
 ```bash
 npm install
-# or
-yarn
 ```
 
-3. Create a `.env` file in the root directory:
-```env
-VITE_TEMPLATE_IMAGE_URL=https://mui.com
-```
-
-4. Start the development server:
+3. Запустите сервер разработки:
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
-The application will be available at `http://localhost:5173`
+Приложение будет доступно по адресу `http://localhost:5173`
 
-## Project Structure
+### Сборка для продакшена
+
+```bash
+npm run build
+```
+
+Собранные файлы будут в папке `dist/`
+
+## Структура проекта
 
 ```
 src/
 ├── components/
-│   ├── marketing-page/     # Marketing page components
-│   └── shared-theme/       # Theme customization
-├── pages/                  # Page components
-└── App.tsx                 # Main application component
+│   ├── marketing-page/     # Компоненты маркетинговой страницы
+│   │   ├── AppAppBar.tsx   # Навигационная панель
+│   │   ├── Hero.tsx        # Главный баннер
+│   │   ├── OurArtists.tsx  # Секция артистов
+│   │   ├── MusicCarriers.tsx # Секция продажи CD/DVD
+│   │   ├── Contact.tsx     # Контактная информация и форма
+│   │   ├── Testimonials.tsx # Отзывы клиентов
+│   │   └── Footer.tsx       # Футер
+│   └── shared-theme/       # Кастомизация темы
+│       ├── AppTheme.tsx    # Провайдер темы
+│       └── customizations/ # Кастомизации компонентов
+├── pages/
+│   └── MarketingPage.tsx   # Главная страница
+└── App.tsx                 # Корневой компонент
 ```
 
-## Customization
+## Основные компоненты
 
-### Theme
+### Meelelahutust Igale Maitsele (Развлечения на любой вкус)
+Секция с категориями артистов:
+- **Tantsumuusika** (Танцевальная музыка)
+- **Salongimuusika** (Салонная музыка)
+- **Klassikaline Muusika** (Классическая музыка)
 
-The theme can be customized in `src/components/shared-theme/`:
-- `themePrimitives.ts` - Base theme configuration
-- `AppTheme.tsx` - Theme provider component
+### Helikandijate Müük (Продажа музыкальных носителей)
+Каталог CD и DVD с классической музыкой, включая:
+- Альбомы эстонских композиторов
+- Классические произведения
+- Возможность заказа
 
-### Images
+### Võtke Ühendust (Свяжитесь с нами)
+Контактная информация и форма обратной связи для:
+- LendMuusik OÜ (компания)
+- TOIVO LEND (Руководитель)
+- IMBI LEND (Продажа носителей, Бухгалтер)
 
-Update the `VITE_TEMPLATE_IMAGE_URL` in `.env` to use your own image URLs.
+## Кастомизация
 
-## Deployment
+### Тема
+
+Тема настраивается в `src/components/shared-theme/`:
+- `themePrimitives.ts` - базовая конфигурация темы
+- `AppTheme.tsx` - провайдер темы
+- `customizations/` - кастомизации отдельных компонентов
+
+### Цветовая схема
+
+Проект использует зеленую цветовую схему:
+- Основной цвет: `#00E5A1` (темный режим) / `#00a86b` (светлый режим)
+- Фон: `#0D131B` (темный) / стандартный (светлый)
+- Карточки: `#1C2630` (темный) / стандартный (светлый)
+
+## Деплой
 
 ### GitHub Pages
 
-This project includes a GitHub Actions workflow for automatic deployment to GitHub Pages.
+Проект включает GitHub Actions workflow для автоматического деплоя на GitHub Pages.
 
-#### Setup Instructions:
+#### Инструкции по настройке:
 
-1. **Enable GitHub Pages in your repository:**
-   - Go to your repository Settings → Pages
-   - Under "Source", select "GitHub Actions"
+1. **Включите GitHub Pages в репозитории:**
+   - Перейдите в Settings → Pages
+   - В разделе "Source" выберите "GitHub Actions"
 
-2. **Push to main/master branch:**
-   - The workflow will automatically trigger on push to `main` or `master` branch
-   - You can also manually trigger it from the Actions tab → "Deploy to GitHub Pages" → "Run workflow"
+2. **Запушьте в ветку main/master:**
+   - Workflow автоматически запустится при push в `main` или `master`
+   - Или запустите вручную: Actions → "Deploy to GitHub Pages" → "Run workflow"
 
-3. **Access your site:**
-   - After deployment, your site will be available at:
+3. **Доступ к сайту:**
+   - После деплоя сайт будет доступен по адресу:
      `https://[your-username].github.io/[repository-name]/`
 
-#### Manual Deployment:
-
-If you prefer to deploy manually:
+#### Ручной деплой:
 
 ```bash
 npm run build
-# Then upload the 'dist' folder to GitHub Pages
+# Затем загрузите папку 'dist' на GitHub Pages
 ```
 
-#### Custom Domain:
+#### Кастомный домен:
 
-If you're using a custom domain for GitHub Pages, you may need to set `VITE_BASE_PATH` to `/` in your build process or update `vite.config.ts`.
+Если используете кастомный домен для GitHub Pages, установите `VITE_BASE_PATH` в `/` в процессе сборки или обновите `vite.config.ts`.
 
-## Built With
+## Скрипты
 
-- [React](https://reactjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Material UI](https://mui.com/)
-- [Vite](https://vitejs.dev/)
+- `npm run dev` - запуск сервера разработки
+- `npm run build` - сборка для продакшена
+- `npm run lint` - проверка кода линтером
+- `npm run preview` - предпросмотр собранного приложения
 
-## License
+## Лицензия
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+Этот проект является частным и принадлежит LendMuusik OÜ.
 
-## Acknowledgments
+## Контакты
 
-- Based on the [Material UI Marketing Template](https://mui.com/material-ui/getting-started/templates/)
-- Uses Material UI components and styling system
+**LendMuusik OÜ**
+- Адрес: Kõõmne 33, Haabersti linnaosa, 10617 Tallinn, Eesti
+- Телефон: +372 50 10 820
+- Email: info@lendmusic.ee
+
+## Благодарности
+
+- Основано на [Material UI Marketing Template](https://mui.com/material-ui/getting-started/templates/)
+- Использует компоненты и систему стилей Material UI
