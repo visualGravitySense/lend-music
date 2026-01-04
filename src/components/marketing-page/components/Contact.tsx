@@ -39,7 +39,11 @@ const contactInfo = {
   ],
 };
 
-export default function Contact() {
+interface ContactProps {
+  onFormSubmit?: () => void;
+}
+
+export default function Contact({ onFormSubmit }: ContactProps = {}) {
   const [formData, setFormData] = React.useState({
     phone: '',
     email: '',
@@ -66,7 +70,12 @@ export default function Contact() {
       subject: '',
       message: '',
     });
-    alert('Täname! Teie päring on saadetud.');
+    // Call the callback if provided
+    if (onFormSubmit) {
+      onFormSubmit();
+    } else {
+      alert('Täname! Teie päring on saadetud.');
+    }
   };
 
   return (
@@ -187,7 +196,7 @@ export default function Contact() {
                 />
               </Box>
               <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 600 }}>
-                30+ aastat kogemust
+                40+ aastat kogemust
               </Typography>
             </Box>
             <Box

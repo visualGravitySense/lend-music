@@ -185,7 +185,7 @@ export default function OurArtists() {
                 }}
               />
               <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 600 }}>
-                30+ aastat kogemust
+                40+ aastat kogemust
               </Typography>
             </Box>
             

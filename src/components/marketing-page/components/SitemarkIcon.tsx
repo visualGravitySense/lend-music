@@ -2,6 +2,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import { styled } from '@mui/material/styles';
+import { getImagePath } from '../../../utils/imagePath';
 
 const LogoContainer = styled(Box)({
   display: 'flex',
@@ -47,7 +48,7 @@ export default function SitemarkIcon({ onNavigate }: SitemarkIconProps) {
         },
       }}
     >
-      <LogoImage src="/lend-logo.svg" alt="LendMusic Logo" />
+      <LogoImage src={getImagePath('lend-logo.svg')} alt="LendMusic Logo" />
       <Typography
         variant="body2"
         sx={{
