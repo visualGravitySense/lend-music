@@ -257,7 +257,7 @@ export default function MusicCarriers() {
                     <Box
                       component="img"
                       src={getImagePath(product.image)}
-                      alt={`${product.artist} - ${product.title} | Klassikaline muusika CD/DVD müük`}
+                      alt={`${product.title} | Klassikaline muusika CD/DVD müük`}
                       sx={{
                         width: '100%',
                         height: '100%',
