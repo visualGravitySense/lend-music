@@ -39,7 +39,10 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          VITE_BASE_PATH: ${{ steps.repo.outputs.name }}
+          # For custom domain, leave VITE_BASE_PATH empty to use '/' as base
+          # For GitHub Pages subpath, use repository name
+          # Set VITE_BASE_PATH to empty string for custom domain (lendmusic.ee)
+          VITE_BASE_PATH: ''
           NODE_ENV: production
 
       - name: Setup Pages
