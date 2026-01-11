@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import Divider from '@mui/material/Divider';
+import { alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
@@ -201,7 +202,7 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
           minHeight: '100vh',
           bgcolor: 'background.default',
           ...theme.applyStyles('dark', {
-            bgcolor: '#0a1628',
+            bgcolor: theme.palette.grey[900],
           }),
         }}
       >
@@ -233,12 +234,30 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
                   fontSize: { xs: '2.5rem', md: '4rem' },
                   fontWeight: 900,
                   mb: 2,
+                  position: 'relative',
+                  display: 'inline-block',
                   background: theme.palette.mode === 'dark'
-                    ? 'linear-gradient(135deg, #ffffff, #00d184)'
-                    : 'linear-gradient(135deg, #0a1628, #00a86b)',
+                    ? `linear-gradient(135deg, ${theme.palette.grey[50]}, #00d184)`
+                    : `linear-gradient(135deg, ${theme.palette.grey[900]}, #00a86b)`,
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    bottom: '-8px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    width: '100px',
+                    height: '4px',
+                    borderRadius: '8px',
+                    background: theme.palette.mode === 'dark'
+                      ? 'linear-gradient(90deg, transparent, #FF6B6B, transparent)'
+                      : 'linear-gradient(90deg, transparent, #FF6B6B, transparent)',
+                    boxShadow: theme.palette.mode === 'dark'
+                      ? '0 0 20px rgba(255, 107, 107, 0.6)'
+                      : '0 0 20px rgba(255, 107, 107, 0.5)',
+                  },
                 })}
               >
                 Helikandijate Müük
@@ -247,13 +266,13 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
               <Typography
                 variant="h6"
                 sx={(theme) => ({
-                  color: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.95)' : 'text.primary',
+                  color: theme.palette.mode === 'dark' ? alpha(theme.palette.grey[50], 0.95) : 'text.primary',
                   fontSize: { xs: '1rem', md: '1.25rem' },
                   fontWeight: 600,
                   maxWidth: '800px',
                   mx: 'auto',
                   mb: 2,
-                  lineHeight: 1.6,
+                  lineHeight: 1.5,
                 })}
               >
                 Kvaliteetsed helikandijad otse Eestist!
@@ -261,7 +280,7 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
               <Typography
                 variant="body1"
                 sx={(theme) => ({
-                  color: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.8)' : 'text.secondary',
+                  color: theme.palette.mode === 'dark' ? alpha(theme.palette.grey[50], 0.8) : 'text.secondary',
                   fontSize: { xs: '0.95rem', md: '1.1rem' },
                   fontWeight: 400,
                   maxWidth: '800px',
@@ -291,13 +310,14 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
                     gap: 0.5,
                     px: 2,
                     py: 1,
-                    borderRadius: 2,
+                    borderRadius: '8px',
                     bgcolor: (theme) => theme.palette.mode === 'dark'
                       ? 'rgba(0, 209, 132, 0.15)'
                       : 'rgba(0, 168, 107, 0.1)',
-                    border: (theme) => `1px solid ${theme.palette.mode === 'dark'
-                      ? 'rgba(0, 209, 132, 0.3)'
-                      : 'rgba(0, 168, 107, 0.2)'}`,
+                    border: 'none',
+                    boxShadow: (theme) => theme.palette.mode === 'dark'
+                      ? '0 2px 12px rgba(0, 229, 161, 0.15), 0 4px 20px rgba(0, 0, 0, 0.2)'
+                      : '0 2px 12px rgba(0, 168, 107, 0.12), 0 4px 20px rgba(0, 0, 0, 0.04)',
                   }}
                 >
                   <LocalShippingIcon sx={{ color: 'primary.main', fontSize: '1.25rem' }} />
@@ -312,13 +332,14 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
                     gap: 0.5,
                     px: 2,
                     py: 1,
-                    borderRadius: 2,
+                    borderRadius: '8px',
                     bgcolor: (theme) => theme.palette.mode === 'dark'
                       ? 'rgba(0, 209, 132, 0.15)'
                       : 'rgba(0, 168, 107, 0.1)',
-                    border: (theme) => `1px solid ${theme.palette.mode === 'dark'
-                      ? 'rgba(0, 209, 132, 0.3)'
-                      : 'rgba(0, 168, 107, 0.2)'}`,
+                    border: 'none',
+                    boxShadow: (theme) => theme.palette.mode === 'dark'
+                      ? '0 2px 12px rgba(0, 229, 161, 0.15), 0 4px 20px rgba(0, 0, 0, 0.2)'
+                      : '0 2px 12px rgba(0, 168, 107, 0.12), 0 4px 20px rgba(0, 0, 0, 0.04)',
                   }}
                 >
                   <SecurityIcon sx={{ color: 'primary.main', fontSize: '1.25rem' }} />
@@ -333,13 +354,14 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
                     gap: 0.5,
                     px: 2,
                     py: 1,
-                    borderRadius: 2,
+                    borderRadius: '8px',
                     bgcolor: (theme) => theme.palette.mode === 'dark'
                       ? 'rgba(0, 209, 132, 0.15)'
                       : 'rgba(0, 168, 107, 0.1)',
-                    border: (theme) => `1px solid ${theme.palette.mode === 'dark'
-                      ? 'rgba(0, 209, 132, 0.3)'
-                      : 'rgba(0, 168, 107, 0.2)'}`,
+                    border: 'none',
+                    boxShadow: (theme) => theme.palette.mode === 'dark'
+                      ? '0 2px 12px rgba(0, 229, 161, 0.15), 0 4px 20px rgba(0, 0, 0, 0.2)'
+                      : '0 2px 12px rgba(0, 168, 107, 0.12), 0 4px 20px rgba(0, 0, 0, 0.04)',
                   }}
                 >
                   <CheckCircleRoundedIcon sx={{ color: 'primary.main', fontSize: '1.25rem' }} />
@@ -472,7 +494,7 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
                       width: 0,
                       height: 0,
                       borderRadius: '50%',
-                      background: 'rgba(255, 255, 255, 0.3)',
+                      background: (theme) => alpha(theme.palette.grey[50], 0.3),
                       transform: 'translate(-50%, -50%)',
                       transition: 'width 0.6s, height 0.6s',
                     },
@@ -533,12 +555,12 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
             px: { xs: 2, sm: 3 },
             bgcolor: 'background.default',
             ...theme.applyStyles('dark', {
-              bgcolor: '#0a1628',
+              bgcolor: theme.palette.grey[900],
             }),
           }}
         >
           <Container maxWidth="lg">
-            <Grid container spacing={3} alignItems="center">
+            <Grid container spacing={4} alignItems="center">
               {/* Search Input - ABILITY Enhancement */}
               <Grid size={{ xs: 12, md: 8 }}>
                 <Box sx={{ position: 'relative' }}>
@@ -559,7 +581,7 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
                             ...theme.applyStyles('dark', {
                               color: searchQuery 
                                 ? '#00d184' 
-                                : 'rgba(255, 255, 255, 0.6) !important',
+                                : (theme) => `${alpha(theme.palette.grey[50], 0.6)} !important`,
                             }),
                           })} 
                         />
@@ -570,7 +592,8 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
                     '& .MuiOutlinedInput-root': {
                       borderRadius: '50px',
                       bgcolor: '#f0f2f5',
-                      border: '2px solid rgba(0, 0, 0, 0.1)',
+                      border: 'none',
+                      boxShadow: (theme) => `0 2px 8px ${alpha(theme.palette.grey[900], 0.08)}, 0 4px 16px ${alpha(theme.palette.grey[900], 0.04)}`,
                       transition: 'all 0.3s ease',
                       fontSize: '1rem',
                       color: 'text.primary',
@@ -579,26 +602,27 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
                       },
                       '&:hover': {
                         borderColor: 'rgba(0, 168, 107, 0.3)',
-                        bgcolor: '#ffffff',
+                        bgcolor: theme.palette.grey[50],
                         boxShadow: '0 4px 12px rgba(0, 168, 107, 0.1)',
                       },
                       '&.Mui-focused': {
                         borderColor: 'primary.main',
-                        bgcolor: '#ffffff',
+                        bgcolor: theme.palette.grey[50],
                         boxShadow: '0 0 0 3px rgba(0, 168, 107, 0.2)',
                       },
                       ...theme.applyStyles('dark', {
-                        bgcolor: 'rgba(255, 255, 255, 0.05) !important',
-                        border: '2px solid rgba(255, 255, 255, 0.1) !important',
-                        color: 'rgba(255, 255, 255, 0.9) !important',
+                        bgcolor: (theme) => `${alpha(theme.palette.grey[50], 0.05)} !important`,
+                        border: 'none !important',
+                        boxShadow: (theme) => `0 2px 8px ${alpha(theme.palette.grey[50], 0.08)} !important, 0 4px 16px ${alpha(theme.palette.grey[50], 0.04)} !important`,
+                        color: (theme) => `${alpha(theme.palette.grey[50], 0.9)} !important`,
                         '&:hover': {
                           borderColor: 'rgba(0, 209, 132, 0.4) !important',
-                          bgcolor: 'rgba(255, 255, 255, 0.08) !important',
+                          bgcolor: (theme) => `${alpha(theme.palette.grey[50], 0.08)} !important`,
                           boxShadow: '0 4px 12px rgba(0, 209, 132, 0.15) !important',
                         },
                         '&.Mui-focused': {
                           borderColor: '#00d184 !important',
-                          bgcolor: 'rgba(255, 255, 255, 0.1) !important',
+                          bgcolor: (theme) => `${alpha(theme.palette.grey[50], 0.1)} !important`,
                           boxShadow: '0 0 0 3px rgba(0, 209, 132, 0.25) !important',
                         },
                       }),
@@ -608,13 +632,13 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
                       fontSize: '1rem',
                       color: 'text.primary',
                       '&::placeholder': {
-                        color: 'rgba(0, 0, 0, 0.5)',
+                        color: (theme) => alpha(theme.palette.grey[900], 0.5),
                         opacity: 1,
                       },
                       ...theme.applyStyles('dark', {
-                        color: 'rgba(255, 255, 255, 0.9) !important',
+                        color: (theme) => `${alpha(theme.palette.grey[50], 0.9)} !important`,
                         '&::placeholder': {
-                          color: 'rgba(255, 255, 255, 0.5) !important',
+                          color: (theme) => `${alpha(theme.palette.grey[50], 0.5)} !important`,
                           opacity: 1,
                         },
                       }),
@@ -664,7 +688,7 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
                       size="small"
                       onClick={() => setActiveFilter(filter.key as any)}
                       sx={{
-                        borderRadius: '20px',
+                        borderRadius: '12px',
                         fontWeight: 600,
                         minWidth: 'auto',
                         px: 2.5,
@@ -684,10 +708,10 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
                         ...(activeFilter !== filter.key && {
                           borderWidth: 1.5,
                           borderColor: theme.palette.mode === 'dark'
-                            ? 'rgba(255, 255, 255, 0.2)'
+                            ? (theme) => alpha(theme.palette.grey[50], 0.2)
                             : 'rgba(0, 168, 107, 0.3)',
                           color: theme.palette.mode === 'dark'
-                            ? 'rgba(255, 255, 255, 0.9)'
+                            ? (theme) => alpha(theme.palette.grey[50], 0.9)
                             : 'primary.main',
                           '&:hover': {
                             borderColor: 'primary.main',
@@ -716,30 +740,59 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
             px: { xs: 2, sm: 3 },
             bgcolor: 'background.default',
             ...theme.applyStyles('dark', {
-              bgcolor: '#0a1628',
+              bgcolor: theme.palette.grey[900],
             }),
           }}
         >
           <Container maxWidth="lg">
-            <Grid container spacing={3} sx={{ mb: 6 }}>
+            <Grid container spacing={4} sx={{ mb: 8 }}>
               <Grid size={{ xs: 12, md: 4 }}>
                 <Card
                   sx={(theme) => ({
-                    p: 3,
+                    p: { xs: 3, sm: 3.5, md: 4 },
                     height: '100%',
                     textAlign: 'center',
                     background: theme.palette.mode === 'dark'
                       ? 'linear-gradient(135deg, rgba(0, 209, 132, 0.1), rgba(0, 168, 107, 0.05))'
                       : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
-                    border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 209, 132, 0.3)' : 'rgba(0, 168, 107, 0.3)'}`,
-                    borderRadius: 3,
+                    border: 'none',
+                    boxShadow: theme.palette.mode === 'dark'
+                      ? '0 2px 12px rgba(0, 229, 161, 0.15), 0 4px 20px rgba(0, 0, 0, 0.2)'
+                      : '0 2px 12px rgba(0, 168, 107, 0.12), 0 4px 20px rgba(0, 0, 0, 0.04)',
+                    borderRadius: '10px',
+                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    cursor: 'pointer',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    '&::before': {
+                      content: '""',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      background: theme.palette.mode === 'dark'
+                        ? 'radial-gradient(circle at 50% 0%, rgba(0, 229, 161, 0.1) 0%, transparent 60%)'
+                        : 'radial-gradient(circle at 50% 0%, rgba(0, 168, 107, 0.08) 0%, transparent 60%)',
+                      opacity: 0,
+                      transition: 'opacity 0.4s ease',
+                    },
+                    '&:hover': {
+                      transform: 'translateY(-8px) scale(1.02)',
+                      boxShadow: theme.palette.mode === 'dark'
+                        ? '0 8px 32px rgba(0, 229, 161, 0.2), 0 16px 48px rgba(0, 209, 132, 0.15), 0 24px 64px rgba(0, 0, 0, 0.3)'
+                        : '0 8px 32px rgba(0, 168, 107, 0.15), 0 16px 48px rgba(0, 168, 107, 0.1), 0 24px 64px rgba(0, 0, 0, 0.08)',
+                      '&::before': {
+                        opacity: 1,
+                      },
+                    },
                   })}
                 >
-                  <ThumbUpIcon sx={{ fontSize: '3rem', color: 'primary.main', mb: 2 }} />
-                  <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
+                  <ThumbUpIcon sx={{ fontSize: '3rem', color: 'primary.main', mb: 2.5 }} />
+                  <Typography variant="h6" sx={{ fontWeight: 700, mb: 1.5 }}>
                     Kõrge Kvaliteet
                   </Typography>
-                  <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                  <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
                     Originaaltooted otse tootjatelt. Garanteeritud kvaliteet ja autentsus.
                   </Typography>
                 </Card>
@@ -747,21 +800,24 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
               <Grid size={{ xs: 12, md: 4 }}>
                 <Card
                   sx={(theme) => ({
-                    p: 3,
+                    p: { xs: 3, sm: 3.5, md: 4 },
                     height: '100%',
                     textAlign: 'center',
                     background: theme.palette.mode === 'dark'
                       ? 'linear-gradient(135deg, rgba(0, 209, 132, 0.1), rgba(0, 168, 107, 0.05))'
                       : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
-                    border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 209, 132, 0.3)' : 'rgba(0, 168, 107, 0.3)'}`,
-                    borderRadius: 3,
+                    border: 'none',
+                    boxShadow: theme.palette.mode === 'dark'
+                      ? '0 2px 12px rgba(0, 229, 161, 0.15), 0 4px 20px rgba(0, 0, 0, 0.2)'
+                      : '0 2px 12px rgba(0, 168, 107, 0.12), 0 4px 20px rgba(0, 0, 0, 0.04)',
+                    borderRadius: '10px',
                   })}
                 >
                   <CompareArrowsIcon sx={{ fontSize: '3rem', color: 'primary.main', mb: 2 }} />
-                  <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
+                  <Typography variant="h6" sx={{ fontWeight: 700, mb: 1.5 }}>
                     Parim Hind
                   </Typography>
-                  <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                  <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
                     Konkurentsivõimelised hinnad. Hulgimüügile eripakkumised.
                   </Typography>
                 </Card>
@@ -769,21 +825,24 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
               <Grid size={{ xs: 12, md: 4 }}>
                 <Card
                   sx={(theme) => ({
-                    p: 3,
+                    p: { xs: 3, sm: 3.5, md: 4 },
                     height: '100%',
                     textAlign: 'center',
                     background: theme.palette.mode === 'dark'
                       ? 'linear-gradient(135deg, rgba(0, 209, 132, 0.1), rgba(0, 168, 107, 0.05))'
                       : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
-                    border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 209, 132, 0.3)' : 'rgba(0, 168, 107, 0.3)'}`,
-                    borderRadius: 3,
+                    border: 'none',
+                    boxShadow: theme.palette.mode === 'dark'
+                      ? '0 2px 12px rgba(0, 229, 161, 0.15), 0 4px 20px rgba(0, 0, 0, 0.2)'
+                      : '0 2px 12px rgba(0, 168, 107, 0.12), 0 4px 20px rgba(0, 0, 0, 0.04)',
+                    borderRadius: '10px',
                   })}
                 >
-                  <AccessTimeIcon sx={{ fontSize: '3rem', color: 'primary.main', mb: 2 }} />
-                  <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
+                  <AccessTimeIcon sx={{ fontSize: '3rem', color: 'primary.main', mb: 2.5 }} />
+                  <Typography variant="h6" sx={{ fontWeight: 700, mb: 1.5 }}>
                     Kiire Kohaletoimetamine
                   </Typography>
-                  <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                  <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
                     Tellimused saadetakse 24 tunni jooksul. Eestis tasuta kohaletoimetamine.
                   </Typography>
                 </Card>
@@ -800,7 +859,7 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
             px: { xs: 2, sm: 3 },
             bgcolor: 'background.default',
             ...theme.applyStyles('dark', {
-              bgcolor: '#0a1628',
+              bgcolor: theme.palette.grey[900],
             }),
           }}
         >
@@ -824,6 +883,24 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
                     fontSize: { xs: '1.75rem', md: '2.5rem' },
                     fontWeight: 800,
                     color: theme.palette.mode === 'dark' ? '#00d184' : 'primary.main',
+                    position: 'relative',
+                    display: 'inline-block',
+                    '&::after': {
+                      content: '""',
+                      position: 'absolute',
+                      bottom: '-4px',
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      width: '60px',
+                      height: '4px',
+                      borderRadius: '8px',
+                      background: theme.palette.mode === 'dark'
+                        ? 'linear-gradient(90deg, transparent, #FF6B6B, transparent)'
+                        : 'linear-gradient(90deg, transparent, #FF6B6B, transparent)',
+                      boxShadow: theme.palette.mode === 'dark'
+                        ? '0 0 12px rgba(255, 107, 107, 0.6)'
+                        : '0 0 12px rgba(255, 107, 107, 0.5)',
+                    },
                   })}
                 >
                   Uusimad Väljalasked
@@ -836,7 +913,7 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
               </Box>
             )}
 
-            <Grid container spacing={3}>
+            <Grid container spacing={4}>
               {filteredProducts.map((product) => (
                 <Grid size={{ xs: 12, sm: 6, md: 4 }} key={product.id}>
                   <Card
@@ -845,9 +922,12 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
                       height: '100%',
                       display: 'flex',
                       flexDirection: 'column',
-                      background: theme.palette.mode === 'dark' ? '#1a1a1a' : '#ffffff',
-                      border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 209, 132, 0.2)' : 'rgba(0, 168, 107, 0.2)'}`,
-                      borderRadius: 4,
+                        background: theme.palette.mode === 'dark' ? theme.palette.grey[800] : theme.palette.grey[50],
+                      border: 'none',
+                      boxShadow: theme.palette.mode === 'dark'
+                        ? '0 2px 8px rgba(0, 229, 161, 0.1), 0 4px 16px rgba(0, 0, 0, 0.15)'
+                        : '0 2px 8px rgba(0, 168, 107, 0.08), 0 4px 16px rgba(0, 0, 0, 0.03)',
+                      borderRadius: '10px',
                       transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                       position: 'relative',
                       overflow: 'hidden',
@@ -935,9 +1015,9 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
                               gap: 0.5,
                               px: 1.5,
                               py: 0.5,
-                              borderRadius: '20px',
+                              borderRadius: '12px',
                               bgcolor: 'primary.main',
-                              color: '#ffffff',
+                              color: theme.palette.grey[50],
                               fontSize: '0.75rem',
                               fontWeight: 700,
                               boxShadow: '0 4px 12px rgba(0, 168, 107, 0.4)',
@@ -958,9 +1038,9 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
                               gap: 0.5,
                               px: 1.5,
                               py: 0.5,
-                              borderRadius: '20px',
+                              borderRadius: '12px',
                               bgcolor: 'warning.main',
-                              color: '#ffffff',
+                              color: theme.palette.grey[50],
                               fontSize: '0.75rem',
                               fontWeight: 700,
                               boxShadow: '0 4px 12px rgba(255, 152, 0, 0.4)',
@@ -981,9 +1061,9 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
                               gap: 0.5,
                               px: 1.5,
                               py: 0.5,
-                              borderRadius: '20px',
+                              borderRadius: '12px',
                               bgcolor: 'error.main',
-                              color: '#ffffff',
+                              color: theme.palette.grey[50],
                               fontSize: '0.75rem',
                               fontWeight: 700,
                               boxShadow: '0 4px 12px rgba(244, 67, 54, 0.4)',
@@ -1014,7 +1094,7 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
                     <Typography
                       variant="h6"
                       sx={(theme) => ({
-                        color: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.95)' : 'text.primary',
+                        color: theme.palette.mode === 'dark' ? alpha(theme.palette.grey[50], 0.95) : 'text.primary',
                         fontWeight: 700,
                         mb: 2,
                         fontSize: '1.1rem',
@@ -1031,7 +1111,7 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
                             color: 'text.secondary', 
                             mb: 1.5,
                             fontSize: '0.875rem',
-                            lineHeight: 1.6,
+                            lineHeight: 1.7,
                           }}
                         >
                           Avaldatud: {product.released}, {product.label}, {product.code}
@@ -1061,47 +1141,138 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
                         </Typography>
                         <Divider sx={{ mb: 1.5, borderColor: 'divider' }} />
                         
-                        {/* Price - Motivation Enhancement */}
+                        {/* Price - Enhanced Expressiveness */}
                         <Box
-                          sx={{
+                          sx={(theme) => ({
                             display: 'flex',
-                            alignItems: 'baseline',
-                            gap: 1,
-                            mb: 1.5,
-                          }}
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: 1.5,
+                            mb: 2.5,
+                            p: 2.5,
+                            borderRadius: '12px',
+                            background: theme.palette.mode === 'dark'
+                              ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.15), rgba(0, 209, 132, 0.1))'
+                              : 'linear-gradient(135deg, rgba(0, 168, 107, 0.12), rgba(0, 168, 107, 0.08))',
+                            border: theme.palette.mode === 'dark'
+                              ? '2px solid rgba(0, 229, 161, 0.3)'
+                              : '2px solid rgba(0, 168, 107, 0.25)',
+                            boxShadow: theme.palette.mode === 'dark'
+                              ? '0 4px 16px rgba(0, 229, 161, 0.2), 0 0 24px rgba(0, 229, 161, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                              : '0 4px 16px rgba(0, 168, 107, 0.15), 0 0 24px rgba(0, 168, 107, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.5)',
+                            position: 'relative',
+                            overflow: 'hidden',
+                            '&::before': {
+                              content: '""',
+                              position: 'absolute',
+                              top: 0,
+                              left: '-100%',
+                              width: '100%',
+                              height: '100%',
+                              background: theme.palette.mode === 'dark'
+                                ? 'linear-gradient(90deg, transparent, rgba(0, 229, 161, 0.2), transparent)'
+                                : 'linear-gradient(90deg, transparent, rgba(0, 168, 107, 0.2), transparent)',
+                              transition: 'left 2s ease',
+                            },
+                            '&:hover::before': {
+                              left: '100%',
+                            },
+                          })}
                         >
                           <Typography
-                            variant="h5"
-                            sx={{
-                              color: 'primary.main',
-                              fontWeight: 800,
-                              fontSize: '1.5rem',
-                            }}
+                            component="span"
+                            sx={(theme) => ({
+                              fontSize: '0.875rem',
+                              fontWeight: 600,
+                              color: 'text.secondary',
+                              textTransform: 'uppercase',
+                              letterSpacing: '0.5px',
+                            })}
                           >
-                            {product.price % 1 === 0 ? product.price : product.price.toFixed(2).replace('.', ',')} EUR
+                            Hind:
+                          </Typography>
+                          <Typography
+                            variant="h4"
+                            sx={(theme) => ({
+                              background: theme.palette.mode === 'dark'
+                                ? 'linear-gradient(135deg, #00E5A1, #00D184, #00C175)'
+                                : 'linear-gradient(135deg, #00a86b, #00d184, #00b870)',
+                              backgroundClip: 'text',
+                              WebkitBackgroundClip: 'text',
+                              WebkitTextFillColor: 'transparent',
+                              fontWeight: 900,
+                              fontSize: { xs: '2rem', sm: '2.25rem', md: '2.5rem' },
+                              lineHeight: 1.2,
+                              letterSpacing: '-0.5px',
+                              textShadow: theme.palette.mode === 'dark'
+                                ? '0 0 20px rgba(0, 229, 161, 0.3)'
+                                : '0 0 20px rgba(0, 168, 107, 0.2)',
+                              position: 'relative',
+                              '&::after': {
+                                content: '""',
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                right: 0,
+                                bottom: 0,
+                                background: theme.palette.mode === 'dark'
+                                  ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.4), rgba(0, 209, 132, 0.3))'
+                                  : 'linear-gradient(135deg, rgba(0, 168, 107, 0.3), rgba(0, 168, 107, 0.2))',
+                                backgroundClip: 'text',
+                                WebkitBackgroundClip: 'text',
+                                WebkitTextFillColor: 'transparent',
+                                filter: 'blur(8px)',
+                                opacity: 0.6,
+                                zIndex: -1,
+                              },
+                            })}
+                          >
+                            {product.price % 1 === 0 ? product.price : product.price.toFixed(2).replace('.', ',')}
+                          </Typography>
+                          <Typography
+                            component="span"
+                            sx={(theme) => ({
+                              fontSize: '1.25rem',
+                              fontWeight: 700,
+                              color: theme.palette.mode === 'dark' ? '#00E5A1' : '#00a86b',
+                              letterSpacing: '0.5px',
+                            })}
+                          >
+                            EUR
                           </Typography>
                         </Box>
                         <Divider sx={{ mb: 1.5, borderColor: 'divider' }} />
                       </Box>
                       
-                      {/* CTA Button - Enhanced Prompts */}
-                      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 'auto' }}>
+                      {/* CTA Button - Enhanced Expressiveness */}
+                      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 'auto', pt: 1 }}>
                         <Button
                           variant="contained"
                           color="primary"
                           size="large"
-                          startIcon={<ShoppingCartIcon />}
-                          sx={{
-                            borderRadius: '50px',
-                            fontWeight: 700,
-                            px: 4,
-                            py: 1.25,
-                            fontSize: '1rem',
-                            background: 'linear-gradient(135deg, #00a86b, #00d184)',
-                            boxShadow: '0 8px 20px rgba(0, 168, 107, 0.3)',
+                          startIcon={<ShoppingCartIcon sx={{ fontSize: '1.5rem' }} />}
+                          sx={(theme) => ({
+                            borderRadius: '16px',
+                            fontWeight: 800,
+                            px: 5,
+                            py: 2,
+                            fontSize: '1.125rem',
+                            textTransform: 'none',
+                            letterSpacing: '0.5px',
+                            background: theme.palette.mode === 'dark'
+                              ? 'linear-gradient(135deg, #00E5A1 0%, #00D184 50%, #00C175 100%)'
+                              : 'linear-gradient(135deg, #00a86b 0%, #00d184 50%, #00b870 100%)',
+                            color: theme.palette.mode === 'dark' ? '#0D131B' : '#ffffff',
+                            boxShadow: theme.palette.mode === 'dark'
+                              ? '0 8px 24px rgba(0, 229, 161, 0.4), 0 4px 12px rgba(0, 229, 161, 0.3), 0 0 32px rgba(0, 229, 161, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+                              : '0 8px 24px rgba(0, 168, 107, 0.4), 0 4px 12px rgba(0, 168, 107, 0.3), 0 0 32px rgba(0, 168, 107, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3)',
                             position: 'relative',
-                            overflow: 'hidden',
+                            overflow: 'visible',
                             width: '100%',
+                            minHeight: '56px',
+                            border: theme.palette.mode === 'dark'
+                              ? '2px solid rgba(0, 229, 161, 0.4)'
+                              : '2px solid rgba(0, 168, 107, 0.3)',
                             '&::before': {
                               content: '""',
                               position: 'absolute',
@@ -1110,25 +1281,67 @@ export default function HelikandijateMuykPage({ onNavigate }: HelikandijateMuykP
                               width: 0,
                               height: 0,
                               borderRadius: '50%',
-                              background: 'rgba(255, 255, 255, 0.3)',
+                              background: theme.palette.mode === 'dark'
+                                ? 'radial-gradient(circle, rgba(0, 229, 161, 0.4) 0%, transparent 70%)'
+                                : 'radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%)',
                               transform: 'translate(-50%, -50%)',
-                              transition: 'width 0.5s, height 0.5s',
+                              transition: 'width 0.6s ease, height 0.6s ease, opacity 0.6s ease',
+                              opacity: 0,
+                            },
+                            '&::after': {
+                              content: '""',
+                              position: 'absolute',
+                              top: '-2px',
+                              left: '-2px',
+                              right: '-2px',
+                              bottom: '-2px',
+                              borderRadius: '16px',
+                              background: theme.palette.mode === 'dark'
+                                ? 'linear-gradient(135deg, #00E5A1, #00D184, #00C175, #00E5A1)'
+                                : 'linear-gradient(135deg, #00a86b, #00d184, #00b870, #00a86b)',
+                              backgroundSize: '200% 200%',
+                              zIndex: -1,
+                              opacity: 0,
+                              animation: 'pulse 2s ease-in-out infinite',
+                              filter: 'blur(8px)',
+                            },
+                            '@keyframes pulse': {
+                              '0%, 100%': {
+                                opacity: 0.3,
+                                transform: 'scale(1)',
+                              },
+                              '50%': {
+                                opacity: 0.6,
+                                transform: 'scale(1.05)',
+                              },
                             },
                             '&:hover': {
-                              transform: 'translateY(-2px)',
-                              boxShadow: '0 12px 30px rgba(0, 168, 107, 0.5)',
-                              background: 'linear-gradient(135deg, #00b876, #00e194)',
+                              transform: 'translateY(-4px) scale(1.02)',
+                              background: theme.palette.mode === 'dark'
+                                ? 'linear-gradient(135deg, #00F5B1 0%, #00E194 50%, #00D184 100%)'
+                                : 'linear-gradient(135deg, #00b876 0%, #00e194 50%, #00c985 100%)',
+                              boxShadow: theme.palette.mode === 'dark'
+                                ? '0 12px 40px rgba(0, 229, 161, 0.6), 0 8px 20px rgba(0, 229, 161, 0.5), 0 0 48px rgba(0, 229, 161, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3)'
+                                : '0 12px 40px rgba(0, 168, 107, 0.6), 0 8px 20px rgba(0, 168, 107, 0.5), 0 0 48px rgba(0, 168, 107, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4)',
+                              border: theme.palette.mode === 'dark'
+                                ? '2px solid rgba(0, 229, 161, 0.6)'
+                                : '2px solid rgba(0, 168, 107, 0.5)',
                               '&::before': {
-                                width: '300px',
-                                height: '300px',
+                                width: '400px',
+                                height: '400px',
+                                opacity: 1,
+                              },
+                              '&::after': {
+                                opacity: 1,
+                                animation: 'pulse 1.5s ease-in-out infinite',
                               },
                             },
                             '&:active': {
-                              transform: 'translateY(0)',
+                              transform: 'translateY(-2px) scale(0.98)',
                             },
-                          }}
+                          })}
                         >
-                          Osta
+                          Osta Nüüd
                         </Button>
                       </Box>
                     </Box>

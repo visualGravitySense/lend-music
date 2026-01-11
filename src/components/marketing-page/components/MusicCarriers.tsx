@@ -37,13 +37,13 @@ export default function MusicCarriers() {
     <Box
       id="musicCarriers"
       sx={(theme) => ({
-        py: { xs: 6, md: 10 },
-        px: { xs: 2, sm: 3 },
+        py: { xs: 8, md: 12 },
+        px: { xs: 3, sm: 4 },
         bgcolor: 'background.default',
         position: 'relative',
-        ...theme.applyStyles('dark', {
-          bgcolor: '#0D131B',
-        }),
+        background: theme.palette.mode === 'dark'
+          ? 'linear-gradient(180deg, #0D131B 0%, #0A0F17 50%, #0D131B 100%)'
+          : 'linear-gradient(180deg, hsl(0, 0%, 99%) 0%, hsl(220, 35%, 98%) 50%, hsl(0, 0%, 99%) 100%)',
         '&::before': {
           content: '""',
           position: 'absolute',
@@ -55,6 +55,18 @@ export default function MusicCarriers() {
             ? 'radial-gradient(circle at 1px 1px, rgba(0, 229, 161, 0.05) 1px, transparent 0)'
             : 'radial-gradient(circle at 1px 1px, rgba(0, 168, 107, 0.03) 1px, transparent 0)',
           backgroundSize: '20px 20px',
+          pointerEvents: 'none',
+        },
+        '&::after': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: theme.palette.mode === 'dark'
+            ? 'radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0, 229, 161, 0.08) 0%, transparent 50%), radial-gradient(ellipse 60% 40% at 50% 100%, rgba(0, 209, 132, 0.06) 0%, transparent 50%)'
+            : 'radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0, 168, 107, 0.05) 0%, transparent 50%), radial-gradient(ellipse 60% 40% at 50% 100%, rgba(0, 168, 107, 0.03) 0%, transparent 50%)',
           pointerEvents: 'none',
         },
       })}
@@ -69,7 +81,7 @@ export default function MusicCarriers() {
         <Box
           sx={{
             textAlign: 'center',
-            mb: { xs: 4, md: 6 },
+            mb: { xs: 6, md: 8 },
           }}
         >
           <Typography
@@ -80,6 +92,24 @@ export default function MusicCarriers() {
               mb: 2,
               fontWeight: 700,
               fontSize: { xs: '2rem', md: '3rem' },
+              position: 'relative',
+              display: 'inline-block',
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                bottom: '-4px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '60px',
+                height: '4px',
+                borderRadius: '8px',
+                background: theme.palette.mode === 'dark'
+                  ? 'linear-gradient(90deg, transparent, #FF6B6B, transparent)'
+                  : 'linear-gradient(90deg, transparent, #FF6B6B, transparent)',
+                boxShadow: theme.palette.mode === 'dark'
+                  ? '0 0 12px rgba(255, 107, 107, 0.6)'
+                  : '0 0 12px rgba(255, 107, 107, 0.5)',
+              },
               ...theme.applyStyles('dark', {
                 color: '#00E5A1',
               }),
@@ -97,7 +127,7 @@ export default function MusicCarriers() {
               fontSize: { xs: '1rem', md: '1.125rem' },
               maxWidth: '800px',
               mx: 'auto',
-              mb: 3,
+              mb: 4,
               lineHeight: 1.7,
             }}
           >
@@ -124,7 +154,7 @@ export default function MusicCarriers() {
                 gap: 1,
                 px: 2.5,
                 py: 1.5,
-                borderRadius: '16px',
+                borderRadius: '12px',
                 background: theme.palette.mode === 'dark'
                   ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.15), rgba(0, 229, 161, 0.05))'
                   : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
@@ -149,7 +179,7 @@ export default function MusicCarriers() {
                 gap: 1,
                 px: 2.5,
                 py: 1.5,
-                borderRadius: '16px',
+                borderRadius: '12px',
                 background: theme.palette.mode === 'dark'
                   ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.15), rgba(0, 229, 161, 0.05))'
                   : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
@@ -174,7 +204,7 @@ export default function MusicCarriers() {
                 gap: 1,
                 px: 2.5,
                 py: 1.5,
-                borderRadius: '16px',
+                borderRadius: '12px',
                 background: theme.palette.mode === 'dark'
                   ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.15), rgba(0, 229, 161, 0.05))'
                   : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
@@ -195,7 +225,7 @@ export default function MusicCarriers() {
         </Box>
 
         {/* Product Cards */}
-        <Grid container spacing={3}>
+        <Grid container spacing={4}>
           {musicCarriers.map((product, index) => (
             <Grid size={{ xs: 12, md: 4 }} key={index}>
               <Card
@@ -203,15 +233,17 @@ export default function MusicCarriers() {
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
-                  borderRadius: 4,
+                  borderRadius: '10px',
                   overflow: 'hidden',
-                  bgcolor: 'background.paper',
-                  border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.2)' : 'rgba(0, 168, 107, 0.2)'}`,
+                  background: theme.palette.mode === 'dark'
+                    ? 'linear-gradient(135deg, #1C2630 0%, #1A2229 50%, #1C2630 100%)'
+                    : 'linear-gradient(135deg, hsl(220, 35%, 97%) 0%, hsl(220, 35%, 99%) 50%, hsl(220, 35%, 97%) 100%)',
+                  border: 'none',
+                  boxShadow: theme.palette.mode === 'dark'
+                    ? '0 2px 12px rgba(0, 229, 161, 0.08), 0 4px 24px rgba(0, 0, 0, 0.2)'
+                    : '0 2px 12px rgba(0, 168, 107, 0.06), 0 4px 24px rgba(0, 0, 0, 0.04)',
                   transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                   position: 'relative',
-                  ...theme.applyStyles('dark', {
-                    bgcolor: '#1C2630',
-                  }),
                   '&::before': {
                     content: '""',
                     position: 'absolute',
@@ -220,20 +252,32 @@ export default function MusicCarriers() {
                     right: 0,
                     bottom: 0,
                     background: theme.palette.mode === 'dark'
-                      ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.05) 0%, transparent 100%)'
-                      : 'linear-gradient(135deg, rgba(0, 168, 107, 0.05) 0%, transparent 100%)',
+                      ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.08) 0%, rgba(0, 209, 132, 0.04) 50%, transparent 100%)'
+                      : 'linear-gradient(135deg, rgba(0, 168, 107, 0.08) 0%, rgba(0, 168, 107, 0.04) 50%, transparent 100%)',
                     opacity: 0,
-                    transition: 'opacity 0.3s ease',
+                    transition: 'opacity 0.4s ease',
+                  },
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    background: theme.palette.mode === 'dark'
+                      ? 'radial-gradient(circle at 20% 20%, rgba(0, 229, 161, 0.06) 0%, transparent 50%)'
+                      : 'radial-gradient(circle at 20% 20%, rgba(0, 168, 107, 0.05) 0%, transparent 50%)',
+                    pointerEvents: 'none',
                   },
                   '&:hover': {
                     transform: 'translateY(-12px) scale(1.02)',
-                    borderColor: theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.4)' : 'rgba(0, 168, 107, 0.4)',
                     boxShadow: theme.palette.mode === 'dark'
-                      ? '0 20px 40px rgba(0, 229, 161, 0.25)'
-                      : '0 20px 40px rgba(0, 168, 107, 0.2)',
+                      ? '0 8px 32px rgba(0, 229, 161, 0.2), 0 16px 48px rgba(0, 209, 132, 0.15), 0 24px 64px rgba(0, 0, 0, 0.3)'
+                      : '0 8px 32px rgba(0, 168, 107, 0.15), 0 16px 48px rgba(0, 168, 107, 0.1), 0 24px 64px rgba(0, 0, 0, 0.08)',
                     '&::before': {
                       opacity: 1,
                     },
+                    cursor: 'pointer',
                     '& .product-overlay': {
                       opacity: 1,
                     },
@@ -308,9 +352,9 @@ export default function MusicCarriers() {
 
                 {/* Content Section */}
                 <Stack
-                  spacing={2}
+                  spacing={3.5}
                   sx={{
-                    p: 3,
+                    p: { xs: 3, sm: 4, md: 5 },
                     flex: 1,
                     display: 'flex',
                     flexDirection: 'column',
@@ -323,13 +367,13 @@ export default function MusicCarriers() {
                       sx={{
                         color: 'text.primary',
                         fontWeight: 700,
-                        mb: 1.5,
+                        mb: 2,
                         fontSize: { xs: '1.1rem', md: '1.25rem' },
                       }}
                     >
                       {product.title}
                     </Typography>
-                    <Stack spacing={0.5}>
+                    <Stack spacing={2}>
                       {product.description.map((line, lineIndex) => (
                         <Typography
                           key={lineIndex}
@@ -337,6 +381,7 @@ export default function MusicCarriers() {
                           sx={{
                             color: 'text.secondary',
                             fontSize: '0.9rem',
+                            lineHeight: 1.7,
                           }}
                         >
                           {line}
@@ -351,8 +396,8 @@ export default function MusicCarriers() {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
-                      mt: 2,
-                      pt: 2,
+                      mt: 3,
+                      pt: 3,
                       borderTop: (theme) => `1px solid ${theme.palette.divider}`,
                     }}
                   >

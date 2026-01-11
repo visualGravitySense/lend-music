@@ -167,7 +167,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
           minHeight: '100vh',
           bgcolor: 'background.default',
           ...theme.applyStyles('dark', {
-            bgcolor: '#0a1628',
+            bgcolor: theme.palette.grey[900],
           }),
         }}
       >
@@ -192,7 +192,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
           })}
         >
           <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 10 }}>
-            <Grid container spacing={4} alignItems="center">
+            <Grid container spacing={5} alignItems="center">
               {/* Left side - Text content */}
               <Grid size={{ xs: 12, md: 6 }}>
                 <Box
@@ -320,13 +320,14 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                         gap: 0.5,
                         px: 1.5,
                         py: 0.75,
-                        borderRadius: 2,
+                        borderRadius: '8px',
                         bgcolor: (theme) => theme.palette.mode === 'dark' 
                           ? 'rgba(0, 209, 132, 0.15)' 
                           : 'rgba(0, 168, 107, 0.1)',
-                        border: (theme) => `1px solid ${theme.palette.mode === 'dark' 
-                          ? 'rgba(0, 209, 132, 0.3)' 
-                          : 'rgba(0, 168, 107, 0.2)'}`,
+                        border: 'none',
+                        boxShadow: (theme) => theme.palette.mode === 'dark'
+                          ? '0 2px 12px rgba(0, 229, 161, 0.15), 0 4px 20px rgba(0, 0, 0, 0.2)'
+                          : '0 2px 12px rgba(0, 168, 107, 0.12), 0 4px 20px rgba(0, 0, 0, 0.04)',
                       }}
                     >
                       <StarRoundedIcon sx={{ color: 'primary.main', fontSize: '1.5rem' }} />
@@ -341,13 +342,14 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                         gap: 0.5,
                         px: 1.5,
                         py: 0.75,
-                        borderRadius: 2,
+                        borderRadius: '8px',
                         bgcolor: (theme) => theme.palette.mode === 'dark' 
                           ? 'rgba(0, 209, 132, 0.15)' 
                           : 'rgba(0, 168, 107, 0.1)',
-                        border: (theme) => `1px solid ${theme.palette.mode === 'dark' 
-                          ? 'rgba(0, 209, 132, 0.3)' 
-                          : 'rgba(0, 168, 107, 0.2)'}`,
+                        border: 'none',
+                        boxShadow: (theme) => theme.palette.mode === 'dark'
+                          ? '0 2px 12px rgba(0, 229, 161, 0.15), 0 4px 20px rgba(0, 0, 0, 0.2)'
+                          : '0 2px 12px rgba(0, 168, 107, 0.12), 0 4px 20px rgba(0, 0, 0, 0.04)',
                       }}
                     >
                       <Typography variant="h6" sx={{ color: 'primary.main', fontWeight: 700 }}>
@@ -364,13 +366,14 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                         gap: 0.5,
                         px: 1.5,
                         py: 0.75,
-                        borderRadius: 2,
+                        borderRadius: '8px',
                         bgcolor: (theme) => theme.palette.mode === 'dark' 
                           ? 'rgba(0, 209, 132, 0.15)' 
                           : 'rgba(0, 168, 107, 0.1)',
-                        border: (theme) => `1px solid ${theme.palette.mode === 'dark' 
-                          ? 'rgba(0, 209, 132, 0.3)' 
-                          : 'rgba(0, 168, 107, 0.2)'}`,
+                        border: 'none',
+                        boxShadow: (theme) => theme.palette.mode === 'dark'
+                          ? '0 2px 12px rgba(0, 229, 161, 0.15), 0 4px 20px rgba(0, 0, 0, 0.2)'
+                          : '0 2px 12px rgba(0, 168, 107, 0.12), 0 4px 20px rgba(0, 0, 0, 0.04)',
                       }}
                     >
                       <Typography variant="h6" sx={{ color: 'primary.main', fontWeight: 700 }}>
@@ -553,7 +556,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                       width: '100%',
                       height: '100%',
                       objectFit: 'cover',
-                      borderRadius: 4,
+                      borderRadius: '10px',
                       boxShadow: (theme) =>
                         theme.palette.mode === 'dark'
                           ? '0 20px 60px rgba(0, 168, 107, 0.3)'
@@ -581,12 +584,12 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
             px: { xs: 2, sm: 3 },
             bgcolor: 'background.default',
             ...theme.applyStyles('dark', {
-              bgcolor: '#0a1628',
+              bgcolor: theme.palette.grey[900],
             }),
           }}
         >
           <Container maxWidth="lg">
-            <Grid container spacing={4} alignItems="center">
+            <Grid container spacing={5} alignItems="center">
               <Grid size={{ xs: 12, md: 6 }}>
                 <Box
                   sx={{
@@ -600,9 +603,27 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                       mb: 2,
                       color: 'primary.main',
                       fontWeight: 800,
+                      position: 'relative',
+                      display: 'inline-block',
                       ...theme.applyStyles('dark', {
                         color: '#00d184',
                       }),
+                      '&::after': {
+                        content: '""',
+                        position: 'absolute',
+                        bottom: '-4px',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        width: '60px',
+                        height: '4px',
+                        borderRadius: '8px',
+                        background: theme.palette.mode === 'dark'
+                          ? 'linear-gradient(90deg, transparent, #FF6B6B, transparent)'
+                          : 'linear-gradient(90deg, transparent, #FF6B6B, transparent)',
+                        boxShadow: theme.palette.mode === 'dark'
+                          ? '0 0 12px rgba(255, 107, 107, 0.6)'
+                          : '0 0 12px rgba(255, 107, 107, 0.5)',
+                      },
                     })}
                   >
                     Meie Lugu
@@ -626,13 +647,14 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                         gap: 0.5,
                         px: 1.5,
                         py: 0.75,
-                        borderRadius: 2,
+                        borderRadius: '8px',
                         bgcolor: (theme) => theme.palette.mode === 'dark'
                           ? 'rgba(0, 209, 132, 0.15)'
                           : 'rgba(0, 168, 107, 0.1)',
-                        border: (theme) => `1px solid ${theme.palette.mode === 'dark'
-                          ? 'rgba(0, 209, 132, 0.3)'
-                          : 'rgba(0, 168, 107, 0.2)'}`,
+                          border: 'none',
+                          boxShadow: (theme) => theme.palette.mode === 'dark'
+                            ? '0 2px 12px rgba(0, 229, 161, 0.15), 0 4px 20px rgba(0, 0, 0, 0.2)'
+                            : '0 2px 12px rgba(0, 168, 107, 0.12), 0 4px 20px rgba(0, 0, 0, 0.04)',
                       }}
                     >
                       <EventIcon sx={{ color: 'primary.main', fontSize: '1.25rem' }} />
@@ -647,13 +669,14 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                         gap: 0.5,
                         px: 1.5,
                         py: 0.75,
-                        borderRadius: 2,
+                        borderRadius: '8px',
                         bgcolor: (theme) => theme.palette.mode === 'dark'
                           ? 'rgba(0, 209, 132, 0.15)'
                           : 'rgba(0, 168, 107, 0.1)',
-                        border: (theme) => `1px solid ${theme.palette.mode === 'dark'
-                          ? 'rgba(0, 209, 132, 0.3)'
-                          : 'rgba(0, 168, 107, 0.2)'}`,
+                          border: 'none',
+                          boxShadow: (theme) => theme.palette.mode === 'dark'
+                            ? '0 2px 12px rgba(0, 229, 161, 0.15), 0 4px 20px rgba(0, 0, 0, 0.2)'
+                            : '0 2px 12px rgba(0, 168, 107, 0.12), 0 4px 20px rgba(0, 0, 0, 0.04)',
                       }}
                     >
                       <StarRoundedIcon sx={{ color: 'primary.main', fontSize: '1.25rem' }} />
@@ -668,13 +691,14 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                         gap: 0.5,
                         px: 1.5,
                         py: 0.75,
-                        borderRadius: 2,
+                        borderRadius: '8px',
                         bgcolor: (theme) => theme.palette.mode === 'dark'
                           ? 'rgba(0, 209, 132, 0.15)'
                           : 'rgba(0, 168, 107, 0.1)',
-                        border: (theme) => `1px solid ${theme.palette.mode === 'dark'
-                          ? 'rgba(0, 209, 132, 0.3)'
-                          : 'rgba(0, 168, 107, 0.2)'}`,
+                          border: 'none',
+                          boxShadow: (theme) => theme.palette.mode === 'dark'
+                            ? '0 2px 12px rgba(0, 229, 161, 0.15), 0 4px 20px rgba(0, 0, 0, 0.2)'
+                            : '0 2px 12px rgba(0, 168, 107, 0.12), 0 4px 20px rgba(0, 0, 0, 0.04)',
                       }}
                     >
                       <HandshakeIcon sx={{ color: 'primary.main', fontSize: '1.25rem' }} />
@@ -707,7 +731,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                         gap: 1.5,
                         mb: 2.5,
                         p: 2,
-                        borderRadius: 2,
+                        borderRadius: '8px',
                         bgcolor: (theme) => theme.palette.mode === 'dark'
                           ? 'rgba(0, 209, 132, 0.05)'
                           : 'rgba(0, 168, 107, 0.05)',
@@ -750,7 +774,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                         gap: 1.5,
                         mb: 2.5,
                         p: 2,
-                        borderRadius: 2,
+                        borderRadius: '8px',
                         bgcolor: (theme) => theme.palette.mode === 'dark'
                           ? 'rgba(0, 209, 132, 0.05)'
                           : 'rgba(0, 168, 107, 0.05)',
@@ -792,7 +816,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                         alignItems: 'flex-start',
                         gap: 1.5,
                         p: 2,
-                        borderRadius: 2,
+                        borderRadius: '8px',
                         bgcolor: (theme) => theme.palette.mode === 'dark'
                           ? 'rgba(0, 209, 132, 0.05)'
                           : 'rgba(0, 168, 107, 0.05)',
@@ -895,7 +919,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                     width: '100%',
                     height: { xs: 300, md: 400 },
                     objectFit: 'cover',
-                    borderRadius: 4,
+                    borderRadius: '10px',
                     overflow: 'hidden',
                     boxShadow: (theme) =>
                       theme.palette.mode === 'dark'
@@ -922,8 +946,8 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
             py: { xs: 6, md: 8 },
             px: { xs: 2, sm: 3 },
             background: theme.palette.mode === 'dark'
-              ? 'linear-gradient(135deg, #0a1628, #0d131b, #0a1628)'
-              : 'linear-gradient(135deg, #f8f9fa, rgba(0, 168, 107, 0.05))',
+              ? `linear-gradient(135deg, ${theme.palette.grey[900]}, ${theme.palette.grey[800]}, ${theme.palette.grey[900]})`
+              : `linear-gradient(135deg, ${theme.palette.grey[50]}, rgba(0, 168, 107, 0.05))`,
             position: 'relative',
             '&::before': theme.palette.mode === 'dark' ? {
               content: '""',
@@ -938,7 +962,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
           })}
         >
           <Container maxWidth="lg">
-            <Grid container spacing={3}>
+            <Grid container spacing={5}>
               {stats.map((stat, index) => (
                 <Grid size={{ xs: 6, md: 3 }} key={index}>
                   <Card
@@ -954,7 +978,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                       border: theme.palette.mode === 'dark'
                         ? '1px solid rgba(0, 209, 132, 0.2)'
                         : '1px solid rgba(0, 168, 107, 0.2)',
-                      borderRadius: 4,
+                      borderRadius: '10px',
                       transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                       boxShadow: theme.palette.mode === 'dark'
                         ? '0 4px 20px rgba(0, 0, 0, 0.5)'
@@ -1021,7 +1045,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
             px: { xs: 2, sm: 3 },
             bgcolor: 'background.default',
             ...theme.applyStyles('dark', {
-              bgcolor: '#0a1628',
+              bgcolor: theme.palette.grey[900],
             }),
           }}
         >
@@ -1033,12 +1057,30 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                   fontSize: { xs: '2rem', md: '3rem' },
                   fontWeight: 900,
                   mb: 2,
+                  position: 'relative',
+                  display: 'inline-block',
                   background: theme.palette.mode === 'dark'
-                    ? 'linear-gradient(135deg, #ffffff, #00d184)'
-                    : 'linear-gradient(135deg, #0a1628, #00a86b)',
+                    ? `linear-gradient(135deg, ${theme.palette.grey[50]}, #00d184)`
+                    : `linear-gradient(135deg, ${theme.palette.grey[900]}, #00a86b)`,
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    bottom: '-8px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    width: '80px',
+                    height: '4px',
+                    borderRadius: '2px',
+                    background: theme.palette.mode === 'dark'
+                      ? 'linear-gradient(90deg, transparent, #FF6B6B, transparent)'
+                      : 'linear-gradient(90deg, transparent, #FF6B6B, transparent)',
+                    boxShadow: theme.palette.mode === 'dark'
+                      ? '0 0 16px rgba(255, 107, 107, 0.6)'
+                      : '0 0 16px rgba(255, 107, 107, 0.5)',
+                  },
                 })}
               >
                 Meelelahutus Jaguneb
@@ -1091,7 +1133,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
               </Box>
             </Box>
             
-            <Grid container spacing={3}>
+            <Grid container spacing={5}>
               {services.map((service, index) => (
                 <Grid size={{ xs: 12, md: 6 }} key={index}>
                   <Card
@@ -1101,10 +1143,13 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                       display: 'flex',
                       flexDirection: 'column',
                       background: theme.palette.mode === 'dark'
-                        ? '#1a1a1a'
-                        : '#ffffff',
-                      border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 209, 132, 0.2)' : 'rgba(0, 168, 107, 0.2)'}`,
-                      borderRadius: 4,
+                        ? theme.palette.grey[800]
+                        : theme.palette.grey[50],
+                      border: 'none',
+                      boxShadow: theme.palette.mode === 'dark'
+                        ? '0 2px 8px rgba(0, 229, 161, 0.1), 0 4px 16px rgba(0, 0, 0, 0.15)'
+                        : '0 2px 8px rgba(0, 168, 107, 0.08), 0 4px 16px rgba(0, 0, 0, 0.03)',
+                      borderRadius: '10px',
                       transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                       position: 'relative',
                       overflow: 'hidden',
@@ -1141,7 +1186,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                         width: { xs: 60, md: 70 },
                         height: { xs: 60, md: 70 },
                         background: 'linear-gradient(135deg, #00a86b, #00d184)',
-                        borderRadius: 3,
+                        borderRadius: '10px',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -1238,13 +1283,13 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
             py: { xs: 6, md: 8 },
             px: { xs: 2, sm: 3 },
             ...theme.applyStyles('dark', {
-              bgcolor: '#0a1628 !important',
-              background: '#0a1628 !important',
+              bgcolor: `${theme.palette.grey[900]} !important`,
+              background: `${theme.palette.grey[900]} !important`,
             }),
-            bgcolor: theme.palette.mode === 'dark' ? '#0a1628' : undefined,
+            bgcolor: theme.palette.mode === 'dark' ? theme.palette.grey[900] : undefined,
             background: theme.palette.mode === 'dark'
-              ? '#0a1628'
-              : 'linear-gradient(135deg, #f8f9fa, rgba(0, 168, 107, 0.05))',
+              ? theme.palette.grey[900]
+              : `linear-gradient(135deg, ${theme.palette.grey[50]}, rgba(0, 168, 107, 0.05))`,
             position: 'relative',
           })}
         >
@@ -1256,12 +1301,30 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                   fontSize: { xs: '2rem', md: '3rem' },
                   fontWeight: 900,
                   mb: 2,
+                  position: 'relative',
+                  display: 'inline-block',
                   background: theme.palette.mode === 'dark'
-                    ? 'linear-gradient(135deg, #ffffff, #00d184)'
-                    : 'linear-gradient(135deg, #0a1628, #00a86b)',
+                    ? `linear-gradient(135deg, ${theme.palette.grey[50]}, #00d184)`
+                    : `linear-gradient(135deg, ${theme.palette.grey[900]}, #00a86b)`,
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    bottom: '-8px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    width: '80px',
+                    height: '4px',
+                    borderRadius: '2px',
+                    background: theme.palette.mode === 'dark'
+                      ? 'linear-gradient(90deg, transparent, #FF6B6B, transparent)'
+                      : 'linear-gradient(90deg, transparent, #FF6B6B, transparent)',
+                    boxShadow: theme.palette.mode === 'dark'
+                      ? '0 0 16px rgba(255, 107, 107, 0.6)'
+                      : '0 0 16px rgba(255, 107, 107, 0.5)',
+                  },
                 })}
               >
                 Miks Kasutada Lend Muusik Teenuseid
@@ -1314,20 +1377,23 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
               </Box>
             </Box>
             
-            <Grid container spacing={3}>
+            <Grid container spacing={5}>
               {values.map((value, index) => (
                 <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
-                  <Card
-                    sx={(theme) => ({
-                      p: { xs: 2.5, md: 3.5 },
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      background: theme.palette.mode === 'dark'
-                        ? '#1a1a1a'
-                        : '#ffffff',
-                      border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 209, 132, 0.2)' : 'rgba(0, 168, 107, 0.2)'}`,
-                      borderRadius: 4,
+                    <Card
+                      sx={(theme) => ({
+                        p: { xs: 3, md: 4.5 },
+                        height: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        background: theme.palette.mode === 'dark'
+                          ? `linear-gradient(135deg, ${theme.palette.grey[800]} 0%, ${theme.palette.grey[700]} 50%, ${theme.palette.grey[800]} 100%)`
+                          : `linear-gradient(135deg, ${theme.palette.grey[50]} 0%, ${theme.palette.grey[50]} 50%, ${theme.palette.grey[50]} 100%)`,
+                      border: 'none',
+                      boxShadow: theme.palette.mode === 'dark'
+                        ? '0 2px 8px rgba(0, 229, 161, 0.1), 0 4px 16px rgba(0, 0, 0, 0.15)'
+                        : '0 2px 8px rgba(0, 168, 107, 0.08), 0 4px 16px rgba(0, 0, 0, 0.03)',
+                      borderRadius: '10px',
                       transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                       position: 'relative',
                       overflow: 'hidden',
@@ -1341,9 +1407,23 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                         left: 0,
                         width: '100%',
                         height: '100%',
-                        background: 'linear-gradient(135deg, rgba(0, 209, 132, 0.05), rgba(0, 168, 107, 0.05))',
+                        background: theme.palette.mode === 'dark'
+                          ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.08) 0%, rgba(0, 209, 132, 0.05) 50%, rgba(0, 168, 107, 0.03) 100%)'
+                          : 'linear-gradient(135deg, rgba(0, 168, 107, 0.08) 0%, rgba(0, 168, 107, 0.05) 50%, rgba(0, 168, 107, 0.03) 100%)',
                         opacity: 0,
                         transition: 'opacity 0.4s ease',
+                      },
+                      '&::after': {
+                        content: '""',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        background: theme.palette.mode === 'dark'
+                          ? 'radial-gradient(circle at 20% 20%, rgba(0, 229, 161, 0.06) 0%, transparent 50%)'
+                          : 'radial-gradient(circle at 20% 20%, rgba(0, 168, 107, 0.05) 0%, transparent 50%)',
+                        pointerEvents: 'none',
                       },
                       '&:hover': {
                         transform: 'translateY(-8px) scale(1.02)',
@@ -1372,7 +1452,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                           width: { xs: 50, md: 60 },
                           height: { xs: 50, md: 60 },
                           background: 'linear-gradient(135deg, #00a86b, #00d184)',
-                          borderRadius: 2,
+                          borderRadius: '8px',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
@@ -1409,7 +1489,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                           sx={(theme) => ({
                             color: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.8)' : 'text.secondary',
                             fontSize: { xs: '0.9rem', md: '0.95rem' },
-                            lineHeight: 1.6,
+                            lineHeight: 1.7,
                           })}
                         >
                           {value.description}
@@ -1553,7 +1633,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
             px: { xs: 2, sm: 3 },
             bgcolor: 'background.default',
             ...theme.applyStyles('dark', {
-              bgcolor: '#0a1628',
+              bgcolor: theme.palette.grey[900],
             }),
           }}
         >
@@ -1570,29 +1650,51 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
             >
               Meie Eelised
             </Typography>
-            <Grid container spacing={4}>
+            <Grid container spacing={5}>
               <Grid size={{ xs: 12, md: 4 }}>
                 <Card
                   sx={(theme) => ({
-                    p: 4,
+                    p: { xs: 3.5, sm: 4, md: 5 },
                     height: '100%',
                     textAlign: 'center',
                     background: theme.palette.mode === 'dark'
                       ? 'linear-gradient(135deg, rgba(0, 209, 132, 0.1), rgba(0, 168, 107, 0.05))'
                       : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
-                    border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 209, 132, 0.3)' : 'rgba(0, 168, 107, 0.3)'}`,
-                    borderRadius: 3,
-                    transition: 'all 0.3s ease',
+                    border: 'none',
+                    boxShadow: theme.palette.mode === 'dark'
+                      ? '0 2px 12px rgba(0, 229, 161, 0.15), 0 4px 20px rgba(0, 0, 0, 0.2)'
+                      : '0 2px 12px rgba(0, 168, 107, 0.12), 0 4px 20px rgba(0, 0, 0, 0.04)',
+                    borderRadius: '10px',
+                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    cursor: 'pointer',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    '&::before': {
+                      content: '""',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      background: theme.palette.mode === 'dark'
+                        ? 'radial-gradient(circle at 50% 0%, rgba(0, 229, 161, 0.1) 0%, transparent 60%)'
+                        : 'radial-gradient(circle at 50% 0%, rgba(0, 168, 107, 0.08) 0%, transparent 60%)',
+                      opacity: 0,
+                      transition: 'opacity 0.4s ease',
+                    },
                     '&:hover': {
-                      transform: 'translateY(-5px)',
+                      transform: 'translateY(-8px) scale(1.02)',
                       boxShadow: theme.palette.mode === 'dark'
-                        ? '0 12px 40px rgba(0, 209, 132, 0.2)'
-                        : '0 12px 40px rgba(0, 168, 107, 0.2)',
+                        ? '0 8px 32px rgba(0, 229, 161, 0.2), 0 16px 48px rgba(0, 209, 132, 0.15), 0 24px 64px rgba(0, 0, 0, 0.3)'
+                        : '0 8px 32px rgba(0, 168, 107, 0.15), 0 16px 48px rgba(0, 168, 107, 0.1), 0 24px 64px rgba(0, 0, 0, 0.08)',
+                      '&::before': {
+                        opacity: 1,
+                      },
                     },
                   })}
                 >
-                  <ThumbUpIcon sx={{ fontSize: '3.5rem', color: 'primary.main', mb: 2 }} />
-                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>
+                  <ThumbUpIcon sx={{ fontSize: '3.5rem', color: 'primary.main', mb: 3 }} />
+                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2.5 }}>
                     Usaldusväärsus
                   </Typography>
                   <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8 }}>
@@ -1603,25 +1705,47 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
               <Grid size={{ xs: 12, md: 4 }}>
                 <Card
                   sx={(theme) => ({
-                    p: 4,
+                    p: { xs: 3.5, sm: 4, md: 5 },
                     height: '100%',
                     textAlign: 'center',
                     background: theme.palette.mode === 'dark'
                       ? 'linear-gradient(135deg, rgba(0, 209, 132, 0.1), rgba(0, 168, 107, 0.05))'
                       : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
-                    border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 209, 132, 0.3)' : 'rgba(0, 168, 107, 0.3)'}`,
-                    borderRadius: 3,
-                    transition: 'all 0.3s ease',
+                    border: 'none',
+                    boxShadow: theme.palette.mode === 'dark'
+                      ? '0 2px 12px rgba(0, 229, 161, 0.15), 0 4px 20px rgba(0, 0, 0, 0.2)'
+                      : '0 2px 12px rgba(0, 168, 107, 0.12), 0 4px 20px rgba(0, 0, 0, 0.04)',
+                    borderRadius: '10px',
+                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    cursor: 'pointer',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    '&::before': {
+                      content: '""',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      background: theme.palette.mode === 'dark'
+                        ? 'radial-gradient(circle at 50% 0%, rgba(0, 229, 161, 0.1) 0%, transparent 60%)'
+                        : 'radial-gradient(circle at 50% 0%, rgba(0, 168, 107, 0.08) 0%, transparent 60%)',
+                      opacity: 0,
+                      transition: 'opacity 0.4s ease',
+                    },
                     '&:hover': {
-                      transform: 'translateY(-5px)',
+                      transform: 'translateY(-8px) scale(1.02)',
                       boxShadow: theme.palette.mode === 'dark'
-                        ? '0 12px 40px rgba(0, 209, 132, 0.2)'
-                        : '0 12px 40px rgba(0, 168, 107, 0.2)',
+                        ? '0 8px 32px rgba(0, 229, 161, 0.2), 0 16px 48px rgba(0, 209, 132, 0.15), 0 24px 64px rgba(0, 0, 0, 0.3)'
+                        : '0 8px 32px rgba(0, 168, 107, 0.15), 0 16px 48px rgba(0, 168, 107, 0.1), 0 24px 64px rgba(0, 0, 0, 0.08)',
+                      '&::before': {
+                        opacity: 1,
+                      },
                     },
                   })}
                 >
-                  <CompareArrowsIcon sx={{ fontSize: '3.5rem', color: 'primary.main', mb: 2 }} />
-                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>
+                  <CompareArrowsIcon sx={{ fontSize: '3.5rem', color: 'primary.main', mb: 3 }} />
+                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2.5 }}>
                     Lai Valik
                   </Typography>
                   <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8 }}>
@@ -1632,20 +1756,42 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
               <Grid size={{ xs: 12, md: 4 }}>
                 <Card
                   sx={(theme) => ({
-                    p: 4,
+                    p: { xs: 3.5, sm: 4, md: 5 },
                     height: '100%',
                     textAlign: 'center',
                     background: theme.palette.mode === 'dark'
                       ? 'linear-gradient(135deg, rgba(0, 209, 132, 0.1), rgba(0, 168, 107, 0.05))'
                       : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
-                    border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 209, 132, 0.3)' : 'rgba(0, 168, 107, 0.3)'}`,
-                    borderRadius: 3,
-                    transition: 'all 0.3s ease',
+                    border: 'none',
+                    boxShadow: theme.palette.mode === 'dark'
+                      ? '0 2px 12px rgba(0, 229, 161, 0.15), 0 4px 20px rgba(0, 0, 0, 0.2)'
+                      : '0 2px 12px rgba(0, 168, 107, 0.12), 0 4px 20px rgba(0, 0, 0, 0.04)',
+                    borderRadius: '10px',
+                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    cursor: 'pointer',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    '&::before': {
+                      content: '""',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      background: theme.palette.mode === 'dark'
+                        ? 'radial-gradient(circle at 50% 0%, rgba(0, 229, 161, 0.1) 0%, transparent 60%)'
+                        : 'radial-gradient(circle at 50% 0%, rgba(0, 168, 107, 0.08) 0%, transparent 60%)',
+                      opacity: 0,
+                      transition: 'opacity 0.4s ease',
+                    },
                     '&:hover': {
-                      transform: 'translateY(-5px)',
+                      transform: 'translateY(-8px) scale(1.02)',
                       boxShadow: theme.palette.mode === 'dark'
-                        ? '0 12px 40px rgba(0, 209, 132, 0.2)'
-                        : '0 12px 40px rgba(0, 168, 107, 0.2)',
+                        ? '0 8px 32px rgba(0, 229, 161, 0.2), 0 16px 48px rgba(0, 209, 132, 0.15), 0 24px 64px rgba(0, 0, 0, 0.3)'
+                        : '0 8px 32px rgba(0, 168, 107, 0.15), 0 16px 48px rgba(0, 168, 107, 0.1), 0 24px 64px rgba(0, 0, 0, 0.08)',
+                      '&::before': {
+                        opacity: 1,
+                      },
                     },
                   })}
                 >

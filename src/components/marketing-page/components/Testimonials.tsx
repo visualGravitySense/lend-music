@@ -115,7 +115,7 @@ export default function Testimonials() {
               gap: 1,
               px: 2.5,
               py: 1.5,
-              borderRadius: '16px',
+              borderRadius: '12px',
               background: theme.palette.mode === 'dark'
                 ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.15), rgba(0, 229, 161, 0.05))'
                 : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
@@ -150,7 +150,7 @@ export default function Testimonials() {
               gap: 1,
               px: 2.5,
               py: 1.5,
-              borderRadius: '16px',
+              borderRadius: '12px',
               background: theme.palette.mode === 'dark'
                 ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.15), rgba(0, 229, 161, 0.05))'
                 : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
@@ -179,8 +179,8 @@ export default function Testimonials() {
                 flexDirection: 'column',
                 justifyContent: 'space-between',
                 flexGrow: 1,
-                p: 3,
-                borderRadius: 3,
+                p: { xs: 3, sm: 4, md: 4.5 },
+                borderRadius: '10px',
                 border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.2)' : 'rgba(0, 168, 107, 0.2)'}`,
                 bgcolor: 'background.paper',
                 position: 'relative',
@@ -204,13 +204,13 @@ export default function Testimonials() {
                 },
                 '&:hover': {
                   transform: 'translateY(-8px) scale(1.02)',
-                  borderColor: theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.4)' : 'rgba(0, 168, 107, 0.4)',
                   boxShadow: theme.palette.mode === 'dark'
-                    ? '0 12px 32px rgba(0, 229, 161, 0.2)'
-                    : '0 12px 32px rgba(0, 168, 107, 0.15)',
+                    ? '0 8px 32px rgba(0, 229, 161, 0.2), 0 16px 48px rgba(0, 209, 132, 0.15), 0 24px 64px rgba(0, 0, 0, 0.3)'
+                    : '0 8px 32px rgba(0, 168, 107, 0.15), 0 16px 48px rgba(0, 168, 107, 0.1), 0 24px 64px rgba(0, 0, 0, 0.08)',
                   '&::before': {
                     opacity: 1,
                   },
+                  cursor: 'pointer',
                 },
               })}
             >
@@ -246,8 +246,8 @@ export default function Testimonials() {
                 sx={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: 2,
-                  pt: 2,
+                  gap: 2.5,
+                  pt: 3,
                   borderTop: (theme) => `1px solid ${theme.palette.divider}`,
                 }}
               >

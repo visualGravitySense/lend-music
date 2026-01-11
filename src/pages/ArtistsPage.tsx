@@ -250,8 +250,8 @@ export default function ArtistsPage({ onNavigate }: ArtistsPageProps) {
         {/* Motivation Section - Social Proof */}
         <Box
           sx={{
-            py: { xs: 4, md: 6 },
-            px: { xs: 2, sm: 3 },
+            py: { xs: 6, md: 8 },
+            px: { xs: 3, sm: 4 },
             bgcolor: 'background.default',
             ...theme.applyStyles('dark', {
               bgcolor: '#0a1628',
@@ -259,7 +259,7 @@ export default function ArtistsPage({ onNavigate }: ArtistsPageProps) {
           }}
         >
           <Container maxWidth="lg">
-            <Grid container spacing={3} alignItems="center">
+            <Grid container spacing={4} alignItems="center">
               <Grid size={{ xs: 12, md: 4 }}>
                 <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
                   <Typography
@@ -342,8 +342,8 @@ export default function ArtistsPage({ onNavigate }: ArtistsPageProps) {
         {/* Search and Filter Section */}
         <Box
           sx={{
-            py: 4,
-            px: { xs: 2, sm: 3 },
+            py: 6,
+            px: { xs: 3, sm: 4 },
             bgcolor: 'background.default',
             ...theme.applyStyles('dark', {
               bgcolor: '#0a1628',
@@ -351,7 +351,7 @@ export default function ArtistsPage({ onNavigate }: ArtistsPageProps) {
           }}
         >
           <Container maxWidth="lg">
-            <Grid container spacing={3} alignItems="center">
+            <Grid container spacing={4} alignItems="center">
               {/* Search Input */}
               <Grid size={{ xs: 12, md: 8 }}>
                 <Box sx={{ position: 'relative' }}>
@@ -583,13 +583,13 @@ export default function ArtistsPage({ onNavigate }: ArtistsPageProps) {
                     Päring edukalt saadetud! Võtame teiega ühendust varsti.
                   </Alert>
                 )}
-              <Grid container spacing={3}>
+              <Grid container spacing={4}>
                 {filteredArtists.map((artist) => (
                   <Grid size={{ xs: 12, sm: 6, md: 4 }} key={artist.id}>
                     <Card
                       sx={(theme) => ({
                         position: 'relative',
-                        borderRadius: 4,
+                        borderRadius: '10px',
                         overflow: 'hidden',
                         cursor: 'pointer',
                         transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -612,11 +612,8 @@ export default function ArtistsPage({ onNavigate }: ArtistsPageProps) {
                         '&:hover': {
                           transform: 'translateY(-10px) scale(1.02)',
                           boxShadow: theme.palette.mode === 'dark'
-                            ? '0 25px 60px rgba(0, 209, 132, 0.5)'
-                            : '0 25px 60px rgba(0, 168, 107, 0.4)',
-                          borderColor: theme.palette.mode === 'dark'
-                            ? 'rgba(0, 209, 132, 0.6)'
-                            : 'rgba(0, 168, 107, 0.5)',
+                            ? '0 8px 32px rgba(0, 229, 161, 0.2), 0 16px 48px rgba(0, 209, 132, 0.15), 0 24px 64px rgba(0, 0, 0, 0.3)'
+                            : '0 8px 32px rgba(0, 168, 107, 0.15), 0 16px 48px rgba(0, 168, 107, 0.1), 0 24px 64px rgba(0, 0, 0, 0.08)',
                           '&::before': {
                             background: theme.palette.mode === 'dark'
                               ? 'linear-gradient(180deg, rgba(0, 209, 132, 0.2) 0%, rgba(0, 0, 0, 0.75) 50%, rgba(0, 0, 0, 0.95) 100%)'
@@ -722,11 +719,11 @@ export default function ArtistsPage({ onNavigate }: ArtistsPageProps) {
                           bottom: 0,
                           left: 0,
                           right: 0,
-                          padding: 3,
+                          padding: { xs: 2.5, sm: 3, md: 3.5 },
                           zIndex: 3,
                         }}
                       >
-                        <Box sx={{ display: 'flex', gap: 1, mb: 1.5, flexWrap: 'wrap', alignItems: 'center' }}>
+                        <Box sx={{ display: 'flex', gap: 1.5, mb: 2, flexWrap: 'wrap', alignItems: 'center' }}>
                           <Chip
                             label={artist.genre.toUpperCase()}
                             sx={{

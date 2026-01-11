@@ -7,6 +7,7 @@ import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import { alpha } from '@mui/material/styles';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import BusinessIcon from '@mui/icons-material/Business';
 import PersonIcon from '@mui/icons-material/Person';
@@ -87,7 +88,7 @@ export default function Contact({ onFormSubmit }: ContactProps = {}) {
         bgcolor: 'background.default',
         position: 'relative',
         ...theme.applyStyles('dark', {
-          bgcolor: '#0D131B',
+          bgcolor: theme.palette.grey[900],
         }),
         '&::before': {
           content: '""',
@@ -120,6 +121,26 @@ export default function Contact({ onFormSubmit }: ContactProps = {}) {
           <Typography
             component="h2"
             variant="h3"
+            sx={(theme) => ({
+              position: 'relative',
+              display: 'inline-block',
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                bottom: '-4px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '60px',
+                height: '4px',
+                borderRadius: '8px',
+                background: theme.palette.mode === 'dark'
+                  ? 'linear-gradient(90deg, transparent, #FF6B6B, transparent)'
+                  : 'linear-gradient(90deg, transparent, #FF6B6B, transparent)',
+                boxShadow: theme.palette.mode === 'dark'
+                  ? '0 0 12px rgba(255, 107, 107, 0.6)'
+                  : '0 0 12px rgba(255, 107, 107, 0.5)',
+              },
+            })}
             sx={(theme) => ({
               color: 'primary.main',
               mb: 2,
@@ -164,11 +185,14 @@ export default function Contact({ onFormSubmit }: ContactProps = {}) {
                 gap: 1.5,
                 px: 3,
                 py: 1.5,
-                borderRadius: '16px',
+                borderRadius: '12px',
                 background: theme.palette.mode === 'dark'
                   ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.15), rgba(0, 229, 161, 0.05))'
                   : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
-                border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.2)' : 'rgba(0, 168, 107, 0.2)'}`,
+                border: 'none',
+                boxShadow: theme.palette.mode === 'dark'
+                  ? '0 2px 8px rgba(0, 229, 161, 0.1), 0 4px 16px rgba(0, 0, 0, 0.15)'
+                  : '0 2px 8px rgba(0, 168, 107, 0.08), 0 4px 16px rgba(0, 0, 0, 0.03)',
                 transition: 'all 0.3s ease',
                 '&:hover': {
                   transform: 'translateY(-2px)',
@@ -206,11 +230,14 @@ export default function Contact({ onFormSubmit }: ContactProps = {}) {
                 gap: 1.5,
                 px: 3,
                 py: 1.5,
-                borderRadius: '16px',
+                borderRadius: '12px',
                 background: theme.palette.mode === 'dark'
                   ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.15), rgba(0, 229, 161, 0.05))'
                   : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
-                border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.2)' : 'rgba(0, 168, 107, 0.2)'}`,
+                border: 'none',
+                boxShadow: theme.palette.mode === 'dark'
+                  ? '0 2px 8px rgba(0, 229, 161, 0.1), 0 4px 16px rgba(0, 0, 0, 0.15)'
+                  : '0 2px 8px rgba(0, 168, 107, 0.08), 0 4px 16px rgba(0, 0, 0, 0.03)',
                 transition: 'all 0.3s ease',
                 '&:hover': {
                   transform: 'translateY(-2px)',
@@ -244,22 +271,24 @@ export default function Contact({ onFormSubmit }: ContactProps = {}) {
           </Box>
         </Box>
 
-        <Grid container spacing={3}>
+        <Grid container spacing={4}>
           {/* Company Information Card */}
           <Grid size={{ xs: 12, md: 4 }}>
             <Card
               sx={(theme) => ({
                 height: '100%',
-                p: 4,
-                bgcolor: 'background.paper',
-                borderRadius: 4,
-                border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.2)' : 'rgba(0, 168, 107, 0.2)'}`,
+                p: { xs: 4, sm: 5, md: 6 },
+                background: theme.palette.mode === 'dark'
+                  ? `linear-gradient(135deg, ${theme.palette.grey[800]} 0%, ${theme.palette.grey[700]} 50%, ${theme.palette.grey[800]} 100%)`
+                  : `linear-gradient(135deg, ${theme.palette.grey[50]} 0%, ${theme.palette.grey[50]} 50%, ${theme.palette.grey[50]} 100%)`,
+                borderRadius: '10px',
+                border: 'none',
+                boxShadow: theme.palette.mode === 'dark'
+                  ? '0 2px 8px rgba(0, 229, 161, 0.1), 0 4px 16px rgba(0, 0, 0, 0.15)'
+                  : '0 2px 8px rgba(0, 168, 107, 0.08), 0 4px 16px rgba(0, 0, 0, 0.03)',
                 transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                 position: 'relative',
                 overflow: 'hidden',
-                ...theme.applyStyles('dark', {
-                  bgcolor: '#1C2630',
-                }),
                 '&::before': {
                   content: '""',
                   position: 'absolute',
@@ -268,36 +297,51 @@ export default function Contact({ onFormSubmit }: ContactProps = {}) {
                   right: 0,
                   bottom: 0,
                   background: theme.palette.mode === 'dark'
-                    ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.08) 0%, transparent 100%)'
-                    : 'linear-gradient(135deg, rgba(0, 168, 107, 0.08) 0%, transparent 100%)',
+                    ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.08) 0%, rgba(0, 209, 132, 0.04) 50%, transparent 100%)'
+                    : 'linear-gradient(135deg, rgba(0, 168, 107, 0.08) 0%, rgba(0, 168, 107, 0.04) 50%, transparent 100%)',
                   opacity: 0,
                   transition: 'opacity 0.4s ease',
                 },
+                '&::after': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  background: theme.palette.mode === 'dark'
+                    ? 'radial-gradient(circle at 20% 20%, rgba(0, 229, 161, 0.06) 0%, transparent 50%)'
+                    : 'radial-gradient(circle at 20% 20%, rgba(0, 168, 107, 0.05) 0%, transparent 50%)',
+                  pointerEvents: 'none',
+                },
                 '&:hover': {
                   transform: 'translateY(-12px) scale(1.02)',
-                  borderColor: theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.5)' : 'rgba(0, 168, 107, 0.5)',
                   boxShadow: theme.palette.mode === 'dark'
-                    ? '0 20px 40px rgba(0, 229, 161, 0.25)'
-                    : '0 20px 40px rgba(0, 168, 107, 0.2)',
+                    ? '0 8px 32px rgba(0, 229, 161, 0.2), 0 16px 48px rgba(0, 209, 132, 0.15), 0 24px 64px rgba(0, 0, 0, 0.3)'
+                    : '0 8px 32px rgba(0, 168, 107, 0.15), 0 16px 48px rgba(0, 168, 107, 0.1), 0 24px 64px rgba(0, 0, 0, 0.08)',
+                  cursor: 'pointer',
                   '&::before': {
                     opacity: 1,
                   },
                 },
               })}
             >
-              <Stack spacing={3}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
+              <Stack spacing={4}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2.5, mb: 2 }}>
                   <Box
                     sx={(theme) => ({
                       p: 2,
-                      borderRadius: '16px',
+                      borderRadius: '12px',
                       background: theme.palette.mode === 'dark'
                         ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.2), rgba(0, 229, 161, 0.1))'
                         : 'linear-gradient(135deg, rgba(0, 168, 107, 0.15), rgba(0, 168, 107, 0.08))',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.3)' : 'rgba(0, 168, 107, 0.3)'}`,
+                      border: 'none',
+                      boxShadow: theme.palette.mode === 'dark'
+                        ? '0 2px 12px rgba(0, 229, 161, 0.15), 0 4px 20px rgba(0, 0, 0, 0.2)'
+                        : '0 2px 12px rgba(0, 168, 107, 0.12), 0 4px 20px rgba(0, 0, 0, 0.04)',
                     })}
                   >
                     <BusinessIcon
@@ -326,8 +370,8 @@ export default function Contact({ onFormSubmit }: ContactProps = {}) {
                   sx={{
                     display: 'flex',
                     alignItems: 'flex-start',
-                    gap: 2,
-                    p: 2,
+                    gap: 2.5,
+                    p: { xs: 2, sm: 2.5, md: 3 },
                     borderRadius: '12px',
                     bgcolor: 'action.hover',
                     transition: 'all 0.3s ease',
@@ -355,7 +399,7 @@ export default function Contact({ onFormSubmit }: ContactProps = {}) {
                 </Box>
 
                 {/* Ability Enhancement - Action Buttons */}
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mt: 2 }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5, mt: 3 }}>
                   <Button
                     component="a"
                     href={`tel:${contactInfo.company.phone.replace(/\s/g, '')}`}
@@ -366,7 +410,7 @@ export default function Contact({ onFormSubmit }: ContactProps = {}) {
                       background: theme.palette.mode === 'dark'
                         ? 'linear-gradient(135deg, #00E5A1, #00D184)'
                         : 'linear-gradient(135deg, #00a86b, #00d184)',
-                      color: theme.palette.mode === 'dark' ? '#0D131B' : 'white',
+                      color: theme.palette.mode === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],
                       textTransform: 'none',
                       py: 1.5,
                       borderRadius: '12px',
@@ -428,17 +472,20 @@ export default function Contact({ onFormSubmit }: ContactProps = {}) {
               <Card
                 sx={(theme) => ({
                   height: '100%',
-                  p: 4,
+                  p: { xs: 4, sm: 5, md: 6 },
                   bgcolor: 'background.paper',
-                  borderRadius: 4,
-                  border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.2)' : 'rgba(0, 168, 107, 0.2)'}`,
+                  borderRadius: '10px',
+                  border: 'none',
+                boxShadow: theme.palette.mode === 'dark'
+                  ? '0 2px 8px rgba(0, 229, 161, 0.1), 0 4px 16px rgba(0, 0, 0, 0.15)'
+                  : '0 2px 8px rgba(0, 168, 107, 0.08), 0 4px 16px rgba(0, 0, 0, 0.03)',
                   transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                   position: 'relative',
                   overflow: 'hidden',
                   display: 'flex',
                   flexDirection: 'column',
                   ...theme.applyStyles('dark', {
-                    bgcolor: '#1C2630',
+                    bgcolor: theme.palette.grey[800],
                   }),
                   '&::before': {
                     content: '""',
@@ -455,13 +502,13 @@ export default function Contact({ onFormSubmit }: ContactProps = {}) {
                   },
                   '&:hover': {
                     transform: 'translateY(-12px) scale(1.02)',
-                    borderColor: theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.5)' : 'rgba(0, 168, 107, 0.5)',
                     boxShadow: theme.palette.mode === 'dark'
-                      ? '0 20px 40px rgba(0, 229, 161, 0.25)'
-                      : '0 20px 40px rgba(0, 168, 107, 0.2)',
+                      ? '0 8px 32px rgba(0, 229, 161, 0.2), 0 16px 48px rgba(0, 209, 132, 0.15), 0 24px 64px rgba(0, 0, 0, 0.3)'
+                      : '0 8px 32px rgba(0, 168, 107, 0.15), 0 16px 48px rgba(0, 168, 107, 0.1), 0 24px 64px rgba(0, 0, 0, 0.08)',
                     '&::before': {
                       opacity: 1,
                     },
+                    cursor: 'pointer',
                   },
                 })}
               >
@@ -470,14 +517,17 @@ export default function Contact({ onFormSubmit }: ContactProps = {}) {
                     <Box
                       sx={(theme) => ({
                         p: 2.5,
-                        borderRadius: '20px',
+                        borderRadius: '12px',
                         background: theme.palette.mode === 'dark'
                           ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.25), rgba(0, 229, 161, 0.15))'
                           : 'linear-gradient(135deg, rgba(0, 168, 107, 0.2), rgba(0, 168, 107, 0.1))',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        border: `2px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.4)' : 'rgba(0, 168, 107, 0.4)'}`,
+                        border: 'none',
+                        boxShadow: theme.palette.mode === 'dark'
+                          ? '0 4px 16px rgba(0, 229, 161, 0.2), 0 8px 24px rgba(0, 0, 0, 0.25)'
+                          : '0 4px 16px rgba(0, 168, 107, 0.15), 0 8px 24px rgba(0, 0, 0, 0.06)',
                         minWidth: '64px',
                         minHeight: '64px',
                         boxShadow: theme.palette.mode === 'dark'
@@ -524,7 +574,7 @@ export default function Contact({ onFormSubmit }: ContactProps = {}) {
                   </Box>
 
                   {/* Ability Enhancement - Action Buttons */}
-                  <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mt: 2 }}>
+                  <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5, mt: 3 }}>
                     <Button
                       component="a"
                       href={`tel:${contact.phone.replace(/\s/g, '')}`}
@@ -535,7 +585,7 @@ export default function Contact({ onFormSubmit }: ContactProps = {}) {
                         background: theme.palette.mode === 'dark'
                           ? 'linear-gradient(135deg, #00E5A1, #00D184)'
                           : 'linear-gradient(135deg, #00a86b, #00d184)',
-                        color: theme.palette.mode === 'dark' ? '#0D131B' : 'white',
+                        color: theme.palette.mode === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],
                         textTransform: 'none',
                         py: 1.5,
                         borderRadius: '12px',
@@ -620,14 +670,17 @@ export default function Contact({ onFormSubmit }: ContactProps = {}) {
                 sx={(theme) => ({
                   p: { xs: 3, md: 4 },
                   bgcolor: 'background.paper',
-                  borderRadius: 3,
-                  border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.2)' : 'rgba(0, 168, 107, 0.2)'}`,
+                  borderRadius: '10px',
+                  border: 'none',
+                boxShadow: theme.palette.mode === 'dark'
+                  ? '0 2px 8px rgba(0, 229, 161, 0.1), 0 4px 16px rgba(0, 0, 0, 0.15)'
+                  : '0 2px 8px rgba(0, 168, 107, 0.08), 0 4px 16px rgba(0, 0, 0, 0.03)',
                   ...theme.applyStyles('dark', {
-                    bgcolor: '#1C2630',
+                    bgcolor: theme.palette.grey[800],
                   }),
                 })}
               >
-                <Stack spacing={3}>
+                <Stack spacing={4}>
                   <TextField
                     required
                     fullWidth
@@ -730,7 +783,7 @@ export default function Contact({ onFormSubmit }: ContactProps = {}) {
                       size="large"
                       sx={(theme) => ({
                         bgcolor: 'primary.main',
-                        color: theme.palette.mode === 'dark' ? '#0D131B' : 'white',
+                        color: theme.palette.mode === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],
                         px: 6,
                         py: 1.5,
                         borderRadius: '50px',
