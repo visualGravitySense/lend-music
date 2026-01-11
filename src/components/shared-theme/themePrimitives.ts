@@ -23,6 +23,12 @@ declare module '@mui/material/styles' {
 
   interface Palette {
     baseShadow: string;
+    accent: {
+      light: string;
+      main: string;
+      dark: string;
+      contrastText: string;
+    };
   }
 }
 
@@ -95,6 +101,19 @@ export const red = {
   900: 'hsl(0, 93%, 6%)',
 };
 
+export const accent = {
+  50: 'hsl(15, 100%, 97%)',
+  100: 'hsl(15, 95%, 92%)',
+  200: 'hsl(15, 90%, 85%)',
+  300: 'hsl(15, 85%, 75%)',
+  400: 'hsl(15, 80%, 60%)', // #FF6B6B / коралловый
+  500: 'hsl(15, 75%, 50%)',
+  600: 'hsl(15, 70%, 42%)',
+  700: 'hsl(15, 65%, 35%)',
+  800: 'hsl(15, 60%, 25%)',
+  900: 'hsl(15, 55%, 18%)',
+};
+
 export const getDesignTokens = (mode: PaletteMode) => {
   customShadows[1] =
     mode === 'dark'
@@ -158,6 +177,17 @@ export const getDesignTokens = (mode: PaletteMode) => {
           dark: green[700],
         }),
       },
+      accent: {
+        light: accent[200],
+        main: accent[400],
+        dark: accent[700],
+        contrastText: '#ffffff',
+        ...(mode === 'dark' && {
+          light: accent[300],
+          main: accent[400],
+          dark: accent[600],
+        }),
+      },
       grey: {
         ...gray,
       },
@@ -168,10 +198,10 @@ export const getDesignTokens = (mode: PaletteMode) => {
         ...(mode === 'dark' && { default: gray[900], paper: 'hsl(220, 30%, 7%)' }),
       },
       text: {
-        primary: gray[800],
-        secondary: gray[600],
+        primary: gray[900],
+        secondary: gray[500],
         warning: orange[400],
-        ...(mode === 'dark' && { primary: 'hsl(0, 0%, 100%)', secondary: gray[400] }),
+        ...(mode === 'dark' && { primary: 'hsl(0, 0%, 100%)', secondary: gray[500] }),
       },
       action: {
         hover: alpha(gray[200], 0.2),
@@ -185,50 +215,63 @@ export const getDesignTokens = (mode: PaletteMode) => {
     typography: {
       fontFamily: 'Inter, sans-serif',
       h1: {
-        fontSize: defaultTheme.typography.pxToRem(48),
-        fontWeight: 600,
+        fontSize: defaultTheme.typography.pxToRem(52),
+        fontWeight: 700,
+        lineHeight: 1.2,
+        letterSpacing: -0.8,
+      },
+      h2: {
+        fontSize: defaultTheme.typography.pxToRem(40),
+        fontWeight: 700,
         lineHeight: 1.2,
         letterSpacing: -0.5,
       },
-      h2: {
-        fontSize: defaultTheme.typography.pxToRem(36),
-        fontWeight: 600,
-        lineHeight: 1.2,
-      },
       h3: {
-        fontSize: defaultTheme.typography.pxToRem(30),
+        fontSize: defaultTheme.typography.pxToRem(32),
+        fontWeight: 700,
         lineHeight: 1.2,
+        letterSpacing: -0.3,
       },
       h4: {
-        fontSize: defaultTheme.typography.pxToRem(24),
-        fontWeight: 600,
-        lineHeight: 1.5,
+        fontSize: defaultTheme.typography.pxToRem(26),
+        fontWeight: 700,
+        lineHeight: 1.4,
+        letterSpacing: -0.2,
       },
       h5: {
-        fontSize: defaultTheme.typography.pxToRem(20),
-        fontWeight: 600,
+        fontSize: defaultTheme.typography.pxToRem(22),
+        fontWeight: 700,
+        lineHeight: 1.5,
       },
       h6: {
-        fontSize: defaultTheme.typography.pxToRem(18),
-        fontWeight: 600,
+        fontSize: defaultTheme.typography.pxToRem(19),
+        fontWeight: 700,
+        lineHeight: 1.5,
       },
       subtitle1: {
         fontSize: defaultTheme.typography.pxToRem(18),
+        fontWeight: 500,
+        lineHeight: 1.6,
       },
       subtitle2: {
         fontSize: defaultTheme.typography.pxToRem(14),
         fontWeight: 500,
+        lineHeight: 1.6,
       },
       body1: {
-        fontSize: defaultTheme.typography.pxToRem(14),
+        fontSize: defaultTheme.typography.pxToRem(16),
+        fontWeight: 400,
+        lineHeight: 1.75,
       },
       body2: {
         fontSize: defaultTheme.typography.pxToRem(14),
         fontWeight: 400,
+        lineHeight: 1.7,
       },
       caption: {
         fontSize: defaultTheme.typography.pxToRem(12),
         fontWeight: 400,
+        lineHeight: 1.5,
       },
     },
     shape: {
@@ -267,6 +310,12 @@ export const colorSchemes = {
         light: green[300],
         main: green[400],
         dark: green[800],
+      },
+      accent: {
+        light: accent[200],
+        main: accent[400],
+        dark: accent[700],
+        contrastText: '#ffffff',
       },
       grey: {
         ...gray,
@@ -318,6 +367,12 @@ export const colorSchemes = {
         main: green[500],
         dark: green[700],
       },
+      accent: {
+        light: accent[300],
+        main: accent[400],
+        dark: accent[600],
+        contrastText: '#ffffff',
+      },
       grey: {
         ...gray,
       },
@@ -343,50 +398,63 @@ export const colorSchemes = {
 export const typography = {
   fontFamily: 'Inter, sans-serif',
   h1: {
-    fontSize: defaultTheme.typography.pxToRem(48),
-    fontWeight: 600,
+    fontSize: defaultTheme.typography.pxToRem(52),
+    fontWeight: 700,
+    lineHeight: 1.2,
+    letterSpacing: -0.8,
+  },
+  h2: {
+    fontSize: defaultTheme.typography.pxToRem(40),
+    fontWeight: 700,
     lineHeight: 1.2,
     letterSpacing: -0.5,
   },
-  h2: {
-    fontSize: defaultTheme.typography.pxToRem(36),
-    fontWeight: 600,
-    lineHeight: 1.2,
-  },
   h3: {
-    fontSize: defaultTheme.typography.pxToRem(30),
+    fontSize: defaultTheme.typography.pxToRem(32),
+    fontWeight: 700,
     lineHeight: 1.2,
+    letterSpacing: -0.3,
   },
   h4: {
-    fontSize: defaultTheme.typography.pxToRem(24),
-    fontWeight: 600,
-    lineHeight: 1.5,
+    fontSize: defaultTheme.typography.pxToRem(26),
+    fontWeight: 700,
+    lineHeight: 1.4,
+    letterSpacing: -0.2,
   },
   h5: {
-    fontSize: defaultTheme.typography.pxToRem(20),
-    fontWeight: 600,
+    fontSize: defaultTheme.typography.pxToRem(22),
+    fontWeight: 700,
+    lineHeight: 1.5,
   },
   h6: {
-    fontSize: defaultTheme.typography.pxToRem(18),
-    fontWeight: 600,
+    fontSize: defaultTheme.typography.pxToRem(19),
+    fontWeight: 700,
+    lineHeight: 1.5,
   },
   subtitle1: {
     fontSize: defaultTheme.typography.pxToRem(18),
+    fontWeight: 500,
+    lineHeight: 1.6,
   },
   subtitle2: {
     fontSize: defaultTheme.typography.pxToRem(14),
     fontWeight: 500,
+    lineHeight: 1.6,
   },
   body1: {
-    fontSize: defaultTheme.typography.pxToRem(14),
+    fontSize: defaultTheme.typography.pxToRem(16),
+    fontWeight: 400,
+    lineHeight: 1.75,
   },
   body2: {
     fontSize: defaultTheme.typography.pxToRem(14),
     fontWeight: 400,
+    lineHeight: 1.7,
   },
   caption: {
     fontSize: defaultTheme.typography.pxToRem(12),
     fontWeight: 400,
+    lineHeight: 1.5,
   },
 };
 

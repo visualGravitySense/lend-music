@@ -59,24 +59,35 @@ export const surfacesCustomizations: Components<Theme> = {
     styleOverrides: {
       root: ({ theme }) => {
         return {
-          padding: 16,
-          gap: 16,
-          transition: 'all 100ms ease',
+          padding: 24,
+          gap: 20,
+          transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
           backgroundColor: gray[50],
           borderRadius: theme.vars?.shape?.borderRadius ?? theme.shape.borderRadius,
-          border: `1px solid ${theme.vars?.palette?.divider ?? theme.palette.divider}`,
-          boxShadow: 'none',
+          border: 'none',
+          boxShadow: theme.palette.mode === 'dark'
+            ? '0 2px 8px rgba(0, 0, 0, 0.15), 0 4px 16px rgba(0, 0, 0, 0.1)'
+            : '0 2px 8px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.02)',
+          cursor: 'pointer',
           ...theme.applyStyles('dark', {
             backgroundColor: gray[800],
           }),
+          '&:hover': {
+            transform: 'translateY(-8px) scale(1.02)',
+            boxShadow: theme.palette.mode === 'dark'
+              ? '0 8px 32px rgba(0, 0, 0, 0.25), 0 16px 48px rgba(0, 0, 0, 0.15)'
+              : '0 8px 32px rgba(0, 0, 0, 0.08), 0 16px 48px rgba(0, 0, 0, 0.04)',
+          },
           variants: [
             {
               props: {
                 variant: 'outlined',
               },
               style: {
-                border: `1px solid ${theme.vars?.palette?.divider ?? theme.palette.divider}`,
-                boxShadow: 'none',
+                border: 'none',
+                boxShadow: theme.palette.mode === 'dark'
+                  ? '0 2px 8px rgba(0, 0, 0, 0.15), 0 4px 16px rgba(0, 0, 0, 0.1)'
+                  : '0 2px 8px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.02)',
                 background: 'hsl(0, 0%, 100%)',
                 ...theme.applyStyles('dark', {
                   background: alpha(gray[900], 0.4),

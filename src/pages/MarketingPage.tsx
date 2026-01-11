@@ -156,48 +156,154 @@ export default function MarketingPage({ disableCustomTheme, onNavigate }: Market
         
         {/* EVALUATION Section - Benefits & Value Proposition */}
         <Box
-          sx={{
-            py: { xs: 6, md: 10 },
-            px: { xs: 2, sm: 3 },
+          sx={(theme) => ({
+            py: { xs: 8, md: 12 },
+            px: { xs: 3, sm: 4 },
             bgcolor: 'background.default',
-          }}
+            position: 'relative',
+            background: theme.palette.mode === 'dark'
+              ? 'linear-gradient(180deg, hsl(220, 30%, 7%) 0%, hsl(220, 30%, 8%) 50%, hsl(220, 30%, 7%) 100%)'
+              : 'linear-gradient(180deg, hsl(0, 0%, 99%) 0%, hsl(220, 35%, 97%) 50%, hsl(0, 0%, 99%) 100%)',
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: theme.palette.mode === 'dark'
+                ? 'radial-gradient(ellipse 100% 60% at 50% 0%, rgba(0, 229, 161, 0.06) 0%, transparent 60%)'
+                : 'radial-gradient(ellipse 100% 60% at 50% 0%, rgba(0, 168, 107, 0.04) 0%, transparent 60%)',
+              pointerEvents: 'none',
+            },
+          })}
         >
           <Container maxWidth="lg">
             <Typography
               variant="h2"
-              sx={{
+              sx={(theme) => ({
                 fontSize: { xs: '2rem', md: '3rem' },
                 fontWeight: 800,
                 textAlign: 'center',
-                mb: 6,
+                mb: 8,
                 color: 'text.primary',
-              }}
+                position: 'relative',
+                display: 'inline-block',
+                width: '100%',
+                '&::after': {
+                  content: '""',
+                  position: 'absolute',
+                  bottom: '-8px',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  width: '80px',
+                  height: '4px',
+                  borderRadius: '2px',
+                  background: theme.palette.mode === 'dark'
+                    ? 'linear-gradient(90deg, transparent, #FF6B6B, transparent)'
+                    : 'linear-gradient(90deg, transparent, #FF6B6B, transparent)',
+                  boxShadow: theme.palette.mode === 'dark'
+                    ? '0 0 16px rgba(255, 107, 107, 0.6)'
+                    : '0 0 16px rgba(255, 107, 107, 0.5)',
+                },
+              })}
             >
               Miks Valida Meid?
             </Typography>
-            <Grid container spacing={4}>
+            <Grid container spacing={5}>
               <Grid size={{ xs: 12, md: 4 }}>
                 <Card
                   sx={(theme) => ({
-                    p: 4,
+                    p: { xs: 3, sm: 4, md: 5 },
                     height: '100%',
                     textAlign: 'center',
+                    position: 'relative',
                     background: theme.palette.mode === 'dark'
-                      ? 'linear-gradient(135deg, rgba(0, 209, 132, 0.1), rgba(0, 168, 107, 0.05))'
-                      : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
-                    border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 209, 132, 0.3)' : 'rgba(0, 168, 107, 0.3)'}`,
-                    borderRadius: 3,
-                    transition: 'all 0.3s ease',
+                      ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.15) 0%, rgba(0, 209, 132, 0.1) 50%, rgba(0, 168, 107, 0.08) 100%)'
+                      : 'linear-gradient(135deg, rgba(0, 168, 107, 0.15) 0%, rgba(0, 168, 107, 0.1) 50%, rgba(0, 168, 107, 0.08) 100%)',
+                    border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.25)' : 'rgba(0, 168, 107, 0.2)'}`,
+                    borderRadius: '12px',
+                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    overflow: 'hidden',
+                    boxShadow: theme.palette.mode === 'dark'
+                      ? '0 4px 16px rgba(0, 229, 161, 0.1), 0 2px 8px rgba(0, 0, 0, 0.2)'
+                      : '0 4px 16px rgba(0, 168, 107, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04)',
+                    '&::before': {
+                      content: '""',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      background: theme.palette.mode === 'dark'
+                        ? 'radial-gradient(circle at 50% 0%, rgba(0, 229, 161, 0.12) 0%, transparent 60%)'
+                        : 'radial-gradient(circle at 50% 0%, rgba(0, 168, 107, 0.1) 0%, transparent 60%)',
+                      opacity: 0,
+                      transition: 'opacity 0.4s ease',
+                    },
                     '&:hover': {
-                      transform: 'translateY(-5px)',
+                      transform: 'translateY(-8px) scale(1.02)',
                       boxShadow: theme.palette.mode === 'dark'
-                        ? '0 12px 40px rgba(0, 209, 132, 0.2)'
-                        : '0 12px 40px rgba(0, 168, 107, 0.2)',
+                        ? '0 8px 32px rgba(0, 229, 161, 0.25), 0 16px 48px rgba(0, 209, 132, 0.2), 0 24px 64px rgba(0, 0, 0, 0.3)'
+                        : '0 8px 32px rgba(0, 168, 107, 0.2), 0 16px 48px rgba(0, 168, 107, 0.15), 0 24px 64px rgba(0, 0, 0, 0.08)',
+                      '&::before': {
+                        opacity: 1,
+                      },
+                      cursor: 'pointer',
                     },
                   })}
                 >
-                  <ThumbUpIcon sx={{ fontSize: '3.5rem', color: 'primary.main', mb: 2 }} />
-                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      mb: 3,
+                    }}
+                  >
+                    <Box
+                      sx={(theme) => ({
+                        position: 'relative',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        '&::before': {
+                          content: '""',
+                          position: 'absolute',
+                          width: '100%',
+                          height: '100%',
+                          borderRadius: '50%',
+                          background: theme.palette.mode === 'dark'
+                            ? 'radial-gradient(circle, rgba(0, 229, 161, 0.3) 0%, transparent 70%)'
+                            : 'radial-gradient(circle, rgba(0, 168, 107, 0.25) 0%, transparent 70%)',
+                          filter: 'blur(20px)',
+                          opacity: 0.6,
+                          animation: 'pulse 2s ease-in-out infinite',
+                          '@keyframes pulse': {
+                            '0%, 100%': { opacity: 0.4, transform: 'scale(1)' },
+                            '50%': { opacity: 0.8, transform: 'scale(1.1)' },
+                          },
+                        },
+                      })}
+                    >
+                      <ThumbUpIcon 
+                        sx={{ 
+                          fontSize: { xs: '4rem', sm: '4.5rem', md: '5rem' },
+                          position: 'relative',
+                          zIndex: 1,
+                          background: (theme) => theme.palette.mode === 'dark'
+                            ? 'linear-gradient(135deg, #00E5A1, #00D184, #00C175)'
+                            : 'linear-gradient(135deg, #00a86b, #00d184, #00b870)',
+                          backgroundClip: 'text',
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                          filter: (theme) => theme.palette.mode === 'dark'
+                            ? 'drop-shadow(0 0 12px rgba(0, 229, 161, 0.6)) drop-shadow(0 4px 8px rgba(0, 229, 161, 0.4))'
+                            : 'drop-shadow(0 0 10px rgba(0, 168, 107, 0.5)) drop-shadow(0 4px 8px rgba(0, 168, 107, 0.3))',
+                        }} 
+                      />
+                    </Box>
+                  </Box>
+                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2.5 }}>
                     Professionaalne Teenus
                   </Typography>
                   <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8 }}>
@@ -208,25 +314,96 @@ export default function MarketingPage({ disableCustomTheme, onNavigate }: Market
               <Grid size={{ xs: 12, md: 4 }}>
                 <Card
                   sx={(theme) => ({
-                    p: 4,
+                    p: { xs: 3, sm: 4, md: 5 },
                     height: '100%',
                     textAlign: 'center',
+                    position: 'relative',
                     background: theme.palette.mode === 'dark'
-                      ? 'linear-gradient(135deg, rgba(0, 209, 132, 0.1), rgba(0, 168, 107, 0.05))'
-                      : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
-                    border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 209, 132, 0.3)' : 'rgba(0, 168, 107, 0.3)'}`,
-                    borderRadius: 3,
-                    transition: 'all 0.3s ease',
+                      ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.15) 0%, rgba(0, 209, 132, 0.1) 50%, rgba(0, 168, 107, 0.08) 100%)'
+                      : 'linear-gradient(135deg, rgba(0, 168, 107, 0.15) 0%, rgba(0, 168, 107, 0.1) 50%, rgba(0, 168, 107, 0.08) 100%)',
+                    border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.25)' : 'rgba(0, 168, 107, 0.2)'}`,
+                    borderRadius: '12px',
+                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    overflow: 'hidden',
+                    boxShadow: theme.palette.mode === 'dark'
+                      ? '0 4px 16px rgba(0, 229, 161, 0.1), 0 2px 8px rgba(0, 0, 0, 0.2)'
+                      : '0 4px 16px rgba(0, 168, 107, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04)',
+                    '&::before': {
+                      content: '""',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      background: theme.palette.mode === 'dark'
+                        ? 'radial-gradient(circle at 50% 0%, rgba(0, 229, 161, 0.12) 0%, transparent 60%)'
+                        : 'radial-gradient(circle at 50% 0%, rgba(0, 168, 107, 0.1) 0%, transparent 60%)',
+                      opacity: 0,
+                      transition: 'opacity 0.4s ease',
+                    },
                     '&:hover': {
-                      transform: 'translateY(-5px)',
+                      transform: 'translateY(-8px) scale(1.02)',
                       boxShadow: theme.palette.mode === 'dark'
-                        ? '0 12px 40px rgba(0, 209, 132, 0.2)'
-                        : '0 12px 40px rgba(0, 168, 107, 0.2)',
+                        ? '0 8px 32px rgba(0, 229, 161, 0.25), 0 16px 48px rgba(0, 209, 132, 0.2), 0 24px 64px rgba(0, 0, 0, 0.3)'
+                        : '0 8px 32px rgba(0, 168, 107, 0.2), 0 16px 48px rgba(0, 168, 107, 0.15), 0 24px 64px rgba(0, 0, 0, 0.08)',
+                      '&::before': {
+                        opacity: 1,
+                      },
+                      cursor: 'pointer',
                     },
                   })}
                 >
-                  <CompareArrowsIcon sx={{ fontSize: '3.5rem', color: 'primary.main', mb: 2 }} />
-                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      mb: 3,
+                    }}
+                  >
+                    <Box
+                      sx={(theme) => ({
+                        position: 'relative',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        '&::before': {
+                          content: '""',
+                          position: 'absolute',
+                          width: '100%',
+                          height: '100%',
+                          borderRadius: '50%',
+                          background: theme.palette.mode === 'dark'
+                            ? 'radial-gradient(circle, rgba(0, 229, 161, 0.3) 0%, transparent 70%)'
+                            : 'radial-gradient(circle, rgba(0, 168, 107, 0.25) 0%, transparent 70%)',
+                          filter: 'blur(20px)',
+                          opacity: 0.6,
+                          animation: 'pulse 2s ease-in-out infinite',
+                          '@keyframes pulse': {
+                            '0%, 100%': { opacity: 0.4, transform: 'scale(1)' },
+                            '50%': { opacity: 0.8, transform: 'scale(1.1)' },
+                          },
+                        },
+                      })}
+                    >
+                      <CompareArrowsIcon 
+                        sx={{ 
+                          fontSize: { xs: '4rem', sm: '4.5rem', md: '5rem' },
+                          position: 'relative',
+                          zIndex: 1,
+                          background: (theme) => theme.palette.mode === 'dark'
+                            ? 'linear-gradient(135deg, #00E5A1, #00D184, #00C175)'
+                            : 'linear-gradient(135deg, #00a86b, #00d184, #00b870)',
+                          backgroundClip: 'text',
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                          filter: (theme) => theme.palette.mode === 'dark'
+                            ? 'drop-shadow(0 0 12px rgba(0, 229, 161, 0.6)) drop-shadow(0 4px 8px rgba(0, 229, 161, 0.4))'
+                            : 'drop-shadow(0 0 10px rgba(0, 168, 107, 0.5)) drop-shadow(0 4px 8px rgba(0, 168, 107, 0.3))',
+                        }} 
+                      />
+                    </Box>
+                  </Box>
+                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2.5 }}>
                     Lai Valik Artistid
                   </Typography>
                   <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8 }}>
@@ -237,25 +414,96 @@ export default function MarketingPage({ disableCustomTheme, onNavigate }: Market
               <Grid size={{ xs: 12, md: 4 }}>
                 <Card
                   sx={(theme) => ({
-                    p: 4,
+                    p: { xs: 3, sm: 4, md: 5 },
                     height: '100%',
                     textAlign: 'center',
+                    position: 'relative',
                     background: theme.palette.mode === 'dark'
-                      ? 'linear-gradient(135deg, rgba(0, 209, 132, 0.1), rgba(0, 168, 107, 0.05))'
-                      : 'linear-gradient(135deg, rgba(0, 168, 107, 0.1), rgba(0, 168, 107, 0.05))',
-                    border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 209, 132, 0.3)' : 'rgba(0, 168, 107, 0.3)'}`,
-                    borderRadius: 3,
-                    transition: 'all 0.3s ease',
+                      ? 'linear-gradient(135deg, rgba(0, 229, 161, 0.15) 0%, rgba(0, 209, 132, 0.1) 50%, rgba(0, 168, 107, 0.08) 100%)'
+                      : 'linear-gradient(135deg, rgba(0, 168, 107, 0.15) 0%, rgba(0, 168, 107, 0.1) 50%, rgba(0, 168, 107, 0.08) 100%)',
+                    border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(0, 229, 161, 0.25)' : 'rgba(0, 168, 107, 0.2)'}`,
+                    borderRadius: '12px',
+                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    overflow: 'hidden',
+                    boxShadow: theme.palette.mode === 'dark'
+                      ? '0 4px 16px rgba(0, 229, 161, 0.1), 0 2px 8px rgba(0, 0, 0, 0.2)'
+                      : '0 4px 16px rgba(0, 168, 107, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04)',
+                    '&::before': {
+                      content: '""',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      background: theme.palette.mode === 'dark'
+                        ? 'radial-gradient(circle at 50% 0%, rgba(0, 229, 161, 0.12) 0%, transparent 60%)'
+                        : 'radial-gradient(circle at 50% 0%, rgba(0, 168, 107, 0.1) 0%, transparent 60%)',
+                      opacity: 0,
+                      transition: 'opacity 0.4s ease',
+                    },
                     '&:hover': {
-                      transform: 'translateY(-5px)',
+                      transform: 'translateY(-8px) scale(1.02)',
                       boxShadow: theme.palette.mode === 'dark'
-                        ? '0 12px 40px rgba(0, 209, 132, 0.2)'
-                        : '0 12px 40px rgba(0, 168, 107, 0.2)',
+                        ? '0 8px 32px rgba(0, 229, 161, 0.25), 0 16px 48px rgba(0, 209, 132, 0.2), 0 24px 64px rgba(0, 0, 0, 0.3)'
+                        : '0 8px 32px rgba(0, 168, 107, 0.2), 0 16px 48px rgba(0, 168, 107, 0.15), 0 24px 64px rgba(0, 0, 0, 0.08)',
+                      '&::before': {
+                        opacity: 1,
+                      },
+                      cursor: 'pointer',
                     },
                   })}
                 >
-                  <AccessTimeIcon sx={{ fontSize: '3.5rem', color: 'primary.main', mb: 2 }} />
-                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      mb: 3,
+                    }}
+                  >
+                    <Box
+                      sx={(theme) => ({
+                        position: 'relative',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        '&::before': {
+                          content: '""',
+                          position: 'absolute',
+                          width: '100%',
+                          height: '100%',
+                          borderRadius: '50%',
+                          background: theme.palette.mode === 'dark'
+                            ? 'radial-gradient(circle, rgba(0, 229, 161, 0.3) 0%, transparent 70%)'
+                            : 'radial-gradient(circle, rgba(0, 168, 107, 0.25) 0%, transparent 70%)',
+                          filter: 'blur(20px)',
+                          opacity: 0.6,
+                          animation: 'pulse 2s ease-in-out infinite',
+                          '@keyframes pulse': {
+                            '0%, 100%': { opacity: 0.4, transform: 'scale(1)' },
+                            '50%': { opacity: 0.8, transform: 'scale(1.1)' },
+                          },
+                        },
+                      })}
+                    >
+                      <AccessTimeIcon 
+                        sx={{ 
+                          fontSize: { xs: '4rem', sm: '4.5rem', md: '5rem' },
+                          position: 'relative',
+                          zIndex: 1,
+                          background: (theme) => theme.palette.mode === 'dark'
+                            ? 'linear-gradient(135deg, #00E5A1, #00D184, #00C175)'
+                            : 'linear-gradient(135deg, #00a86b, #00d184, #00b870)',
+                          backgroundClip: 'text',
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                          filter: (theme) => theme.palette.mode === 'dark'
+                            ? 'drop-shadow(0 0 12px rgba(0, 229, 161, 0.6)) drop-shadow(0 4px 8px rgba(0, 229, 161, 0.4))'
+                            : 'drop-shadow(0 0 10px rgba(0, 168, 107, 0.5)) drop-shadow(0 4px 8px rgba(0, 168, 107, 0.3))',
+                        }} 
+                      />
+                    </Box>
+                  </Box>
+                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2.5 }}>
                     Kiire Reageerimine
                   </Typography>
                   <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8 }}>

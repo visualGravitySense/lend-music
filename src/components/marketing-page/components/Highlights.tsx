@@ -56,8 +56,8 @@ export default function Highlights() {
     <Box
       id="highlights"
       sx={{
-        pt: { xs: 4, sm: 12 },
-        pb: { xs: 8, sm: 16 },
+        pt: { xs: 6, sm: 14 },
+        pb: { xs: 10, sm: 18 },
         color: 'white',
         bgcolor: 'grey.900',
       }}
@@ -68,7 +68,7 @@ export default function Highlights() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: { xs: 3, sm: 6 },
+          gap: { xs: 4, sm: 8 },
         }}
       >
         <Box
@@ -77,7 +77,31 @@ export default function Highlights() {
             textAlign: { sm: 'left', md: 'center' },
           }}
         >
-          <Typography component="h2" variant="h4" gutterBottom>
+          <Typography 
+            component="h2" 
+            variant="h4" 
+            gutterBottom
+            sx={(theme) => ({
+              position: 'relative',
+              display: 'inline-block',
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                bottom: '-4px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '50px',
+                height: '3px',
+                borderRadius: '2px',
+                background: theme.palette.mode === 'dark'
+                  ? 'linear-gradient(90deg, transparent, #FF6B6B, transparent)'
+                  : 'linear-gradient(90deg, transparent, #FF6B6B, transparent)',
+                boxShadow: theme.palette.mode === 'dark'
+                  ? '0 0 10px rgba(255, 107, 107, 0.6)'
+                  : '0 0 10px rgba(255, 107, 107, 0.5)',
+              },
+            })}
+          >
             Highlights
           </Typography>
           <Typography variant="body1" sx={{ color: 'grey.400' }}>
@@ -86,28 +110,28 @@ export default function Highlights() {
             precision in every detail.
           </Typography>
         </Box>
-        <Grid container spacing={2}>
+        <Grid container spacing={3}>
           {items.map((item, index) => (
             <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
               <Stack
                 direction="column"
                 component={Card}
-                spacing={1}
+                spacing={3}
                 useFlexGap
                 sx={{
                   color: 'inherit',
-                  p: 3,
+                  p: { xs: 3.5, sm: 4, md: 5 },
                   height: '100%',
                   borderColor: 'hsla(220, 25%, 25%, 0.3)',
                   backgroundColor: 'grey.800',
                 }}
               >
-                <Box sx={{ opacity: '50%' }}>{item.icon}</Box>
+                <Box sx={{ opacity: '50%', mb: 1 }}>{item.icon}</Box>
                 <div>
-                  <Typography gutterBottom sx={{ fontWeight: 'medium' }}>
+                  <Typography gutterBottom sx={{ fontWeight: 700, fontSize: '1.1rem', mb: 1.5 }}>
                     {item.title}
                   </Typography>
-                  <Typography variant="body2" sx={{ color: 'grey.400' }}>
+                  <Typography variant="body2" sx={{ color: 'grey.400', lineHeight: 1.7 }}>
                     {item.description}
                   </Typography>
                 </div>
